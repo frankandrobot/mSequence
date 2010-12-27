@@ -1,0 +1,210 @@
+package uris.apps.com;
+
+import android.widget.*;
+import android.widget.AdapterView.*;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.*;
+import android.view.View.*;
+import android.content.*;
+import android.graphics.PorterDuff.Mode;
+
+/* the PlayGame class coordinates: (1) the TreeGenerator (which is
+ * actually the underlying board, I don't know why I called it
+ * TreeGenerator), (2) the GameGridView that displays the pictures, (3)
+ * the progress bar, (4) the running clock. */
+
+public class PlayGame extends Activity
+{
+    private GameGridView mGameGridView;
+    private TreeGenerator mTree;
+    private ImageAdapter mAdapter;
+    private ClockTextView mRunningClock;
+
+    //debug
+    private TextView mTextView;
+
+    // Menu
+    static final private int RESTART = Menu.FIRST;
+    static final private int BACK = Menu.FIRST + 1;
+
+    public void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+
+	//get settings from OptionsMenu
+	Intent settings=getIntent();
+	int difficulty = settings.getIntExtra("level",
+					      TreeGenerator.EASY);
+	//create progress bar - must be called before setcontentview
+	requestWindowFeature(Window.FEATURE_PROGRESS);
+
+	setContentView(R.layout.play_game);
+
+	//Set up TreeGenerator
+
+	//difficulty = TreeGenerator.HARD;
+	mTree = new TreeGenerator(12, difficulty, 3); // no art pieces,
+						     // difficulty, no
+						     // of stages
+	
+	//Set up GridView
+	mGameGridView = (GameGridView) findViewById(R.id.game_grid_view);
+	mAdapter = new ImageAdapter(this, mTree);
+	mGameGridView.setAdapter(mAdapter);
+
+	//Set up RunningClock
+	mRunningClock = (ClockTextView) findViewById(R.id.running_clock);
+	mRunningClock.initStartTime();
+	
+	//Call this method when user selects an image 
+	mGameGridView.setOnItemClickListener(new OnItemClickListener() {
+		public void onItemClick(AdapterView<?> parent, 
+					View v, 
+					int position, 
+					long id) {
+		    TreeGenerator mTree = PlayGame.this.mTree;
+
+		    //check answer
+		    boolean result = mTree.checkAnswer(position);
+		    String text = "Almost!";
+
+		    PlayGame.this.mGameGridView.deselect(); //if any
+
+		    if ( result ) { // if answer correct
+			text = "Correct!";
+			//update text view
+			PlayGame.this.mGameGridView.flashGreen(position);
+		    }
+		    else {
+			 PlayGame.this.mGameGridView.flashRed(position);
+		    }
+
+		    //check if game complete
+		    if ( mTree.gameComplete() ) {
+			mTree.nextGame();
+
+			//PlayGame.this.mRunningClock.stop();
+			//tally score/calculate scores
+			//: max_score = no_stages * 1000;
+			//: ideal_time = 2 * no_stages + 4;
+			//: f(time,stage) = 1/time * max_score * ideal_time;
+
+			float time = PlayGame.this.mRunningClock
+			    .getRunningTime();
+			float max_score = mTree.getStages() * 1000.0f;
+			float ideal_time = 2.0f * mTree.getStages() + 4.0f;
+			Score.time_bonus = (int) (1.0f / time * max_score * ideal_time);
+			PlayGame.this.mRunningClock.initStartTime();
+
+			// Intent scoreReport = new 
+			//     Intent(
+			// 	   PlayGame.this, 
+			// 	   uris.apps.com.ScoreLayout
+			// 	   );
+			// scoreReport.putExtra("score",);
+			// scoreReport.putExtra("incorrect");
+			// scoreReport.putExtra("timebonus");
+			// scoreReport.putExtra("noerrorbonus");
+			// startActivity(scoreReport);
+		    }
+
+		    //update pictures
+		    PlayGame.this.mGameGridView.updateImages();
+
+		    //update progress bar
+		    PlayGame.this.updateProgressBar();
+		    
+		    if ( MyDebug.playGameDebug ) {
+			//say if correct or not
+			Toast.makeText(PlayGame.this, 
+				       text + " " + position,
+				       Toast.LENGTH_SHORT).show();
+		    }
+		}
+	    });
+
+	if ( MyDebug.playGameDebug) {
+	    Toast.makeText(PlayGame.this, 
+	    		   "Level: "+String.valueOf(difficulty), 
+	    		   Toast.LENGTH_SHORT).show();
+	
+	    mTextView = (TextView) findViewById(R.id.textview);
+	    
+	    mTextView.setText(
+	    		      mTree.toString() 
+	    		      //+ "\n" + "Item sel: " + position
+	    		      );
+	}
+
+	//init progress bar
+	getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 0);
+    }
+
+    public void updateProgressBar() {
+	//10000 / no_stages = x / currentStage
+	int x = 10000 / mTree.totalStages() 
+	    * (mTree.currentStage()-1); 
+	getWindow().setFeatureInt(
+				  Window.FEATURE_PROGRESS, 
+				  x);
+		    
+	//debug
+	if ( MyDebug.playGameDebug) {
+	    mTextView.setText(
+			      mTree.toString() + "\n" +
+			      mTree.currentStage() + " / "
+			      + mTree.totalStages()
+			      + mAdapter.toString() + "\n" 
+			      + Score.mytoString()
+			      );
+	}
+
+       
+    }
+
+    //----------------------------------
+    //Setup menus
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	super.onCreateOptionsMenu(menu);
+	
+	menu.add(0, RESTART, Menu.NONE, "Restart");
+	menu.add(0, BACK, Menu.NONE, "Back");
+
+	return true;
+    }
+
+    @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+	super.onPrepareOptionsMenu(menu);
+	
+	menu.findItem(RESTART).setVisible(true);
+	menu.findItem(BACK).setVisible(true);
+	return true;
+    }
+
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	super.onOptionsItemSelected(item);
+	
+	switch (item.getItemId()) {
+	case (RESTART): {
+	    mTree.reset();
+	    mGameGridView.updateImages();
+	    mRunningClock.initStartTime();
+	    updateProgressBar();
+	    return true;
+	}
+	case (BACK) : {
+	    Intent dummy = new Intent();
+	    setResult(RESULT_OK,dummy);
+	    finish();
+	    return true;
+	}
+
+	}
+	
+	return false;
+    }
+
+}

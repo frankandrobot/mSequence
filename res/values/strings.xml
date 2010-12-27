@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">InterArt</string>
+  <string name="difficulty_prompt">Choose difficulty:</string>
+  <string-array name="difficulty_array">
+    <item>Easy</item>
+    <item>Medium</item>
+    <item>Hard</item>
+  </string-array>
+</resources>
