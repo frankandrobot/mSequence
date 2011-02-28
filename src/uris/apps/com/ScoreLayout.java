@@ -18,13 +18,6 @@ import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation;
 
-//Files needed:
-
-//assets/fonts
-//res/anim/score_rotate.xml
-//res/main/score_table.xml
-//src/ScoreLayout.java
-//src/UriSound.java
  
 public class ScoreLayout extends LinearLayout {
 
@@ -59,9 +52,6 @@ public class ScoreLayout extends LinearLayout {
     	    FrameLayout root = (FrameLayout) getParent();
     	    LinearLayout total = (LinearLayout) root.findViewById(R.id.myfinal_layout);
     	    total.setVisibility(VISIBLE);
-	// android:shadowDx="1.3"
-	// android:shadowDy="1.3"
-	// android:shadowRadius="1"
 
 	    TextView finalText = (TextView) 
 		root.findViewById(R.id.myfinal_score);
@@ -73,6 +63,9 @@ public class ScoreLayout extends LinearLayout {
 	    totalText.startAnimation(rotate);
     	    cur_score++;
     	    super.dispatchDraw(canvas);
+	    if (MyDebug.scoreLayout == false) {
+		//finish activity
+	    }
     	    return;
      	}
     	if ( cur_score > scores.length ) {
@@ -82,7 +75,7 @@ public class ScoreLayout extends LinearLayout {
     	//update one score at a time
     	//update cur_score
 
-    	//positve score
+    	//positive score
     	if ( scores[cur_score] > 0 ) {
     	    if ( ctr[cur_score] < scores[cur_score]-1 ) {
     		TextView score = (TextView) getChildAt(2*cur_score+1);
@@ -92,6 +85,7 @@ public class ScoreLayout extends LinearLayout {
     					   );
     		score.setText(String.valueOf( ctr[cur_score] ));
     		inc += inc;
+		UriSound.playChime("once");
     	    }
     	    else {
     		cur_score++;
@@ -108,20 +102,26 @@ public class ScoreLayout extends LinearLayout {
     					   );
     		score.setText(String.valueOf( ctr[cur_score] ));
     		inc += inc;
+		UriSound.playChime("once");
     	    }
     	    else {
     		cur_score++;
     		initInc();
     	    }
     	}
+	// 0 score
+	else if ( scores[cur_score] == 0 ) {
+	    cur_score++;
+	    UriSound.playThunk("once");
+	}
     	super.dispatchDraw(canvas);
     	//score.invalidate();
     	invalidate();
     }
     
-     private void initInc() {
-    	 inc = 1;
-     }
+    private void initInc() {
+	inc = 1;
+    }
 
     public void setScores(int[] s) {
 	cur_score = 0;

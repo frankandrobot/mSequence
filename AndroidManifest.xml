@@ -27,7 +27,7 @@
 	<activity android:name=".OptionsMenu"
 		  android:label="@string/app_name">
 	</activity>
-	<activity android:name=".ScoreLayout"
+	<activity android:name=".ScoreReport"
 		  android:label="@string/app_name">
 	</activity>
     </application>

@@ -56,34 +56,26 @@ public class ClockTextView extends TextView {
     @Override
 	public void onDraw(Canvas canvas) {
  
-	//number of milliseconds elapsed
-	long curTime = SystemClock.uptimeMillis() - startTime;
-	//convert to seconds
-	secs = curTime / 1000.0f;
-	//Round to 1 decimal place
-	//float p = (float) Math.pow(10,1);
-	secs = (float) (Math.round(secs*10.0f)/10.0f);
-
+	if ( running ) {
+	    //number of milliseconds elapsed
+	    long curTime = SystemClock.uptimeMillis() - startTime;
+	    //convert to seconds
+	    secs = curTime / 1000.0f;
+	    //Round to 1 decimal place
+	    //float p = (float) Math.pow(10,1);
+	    secs = (float) (Math.round(secs*10.0f)/10.0f);
+	}
 	canvas.drawText(String.valueOf(secs), 60, 60, textPaintColor);
-	// Color as paper
-	// canvas.drawColor(paperColor);
-
-	// // Draw ruled lines
-	// canvas.drawLine(0, 0, getMeasuredHeight(), 0, linePaint);
-	// canvas.drawLine(0, getMeasuredHeight(), 
-	//                    getMeasuredWidth(), getMeasuredHeight(), 
-	//                    linePaint);
-
-	// // Draw margin
-	// canvas.drawLine(margin, 0, margin, getMeasuredHeight(), marginPaint);
-
-	// // Move the text across from the margin
-	// canvas.save();
-	// canvas.translate(margin, 0);
-
+	
 	// Use the TextView to render the text.
 	super.onDraw(canvas);
 	//canvas.restore();
 	invalidate();
     }
+
+    public void stop() { running=false; }
+
+    public void resume() { running=true; }
+
+    private boolean running=true;
 }

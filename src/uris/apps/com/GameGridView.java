@@ -42,19 +42,19 @@ public class GameGridView extends GridView {
 	//margin = myResources.getDimension(R.dimen.notepad_margin);
     }
 
-    public void deselect() {
-	if (greenFrameCounter > 0 || redFrameCounter > 0) {
-	    greenFrameCounter = 0;
-	    redFrameCounter = 0;
-	    ImageView sel = (ImageView) getChildAt(flashPosition);
-	    sel.clearColorFilter();
-	}
-    }
+    // public void deselect() {
+    // 	if (greenFrameCounter > 0 || redFrameCounter > 0) {
+    // 	    greenFrameCounter = 0;
+    // 	    redFrameCounter = 0;
+    // 	    ImageView sel = (ImageView) getChildAt(flashPosition);
+    // 	    sel.clearColorFilter();
+    // 	}
+    // }
 
     @Override
 	public void onDraw(Canvas canvas) {
 
-	if (greenFrameCounter > 0) {
+	if (SystemClock.uptimeMillis() < greenTime) {
 	    ImageView sel = (ImageView) getChildAt(flashPosition);
 	    sel.setColorFilter(0xFF00FF00,  
 				Mode.DARKEN);
@@ -62,12 +62,12 @@ public class GameGridView extends GridView {
 	    greenFrameCounter--;
 	    invalidate();
 	}
-	else if (greenFrameCounter == 0) {
-	    ImageView sel = (ImageView) getChildAt(flashPosition);
-	    sel.clearColorFilter();
-	    greenFrameCounter--;
-	    invalidate();
-	}
+	// else if (greenFrameCounter == 0) {
+	//     ImageView sel = (ImageView) getChildAt(flashPosition);
+	//     sel.clearColorFilter();
+	//     greenFrameCounter--;
+	//     invalidate();
+	// }
 	if (redFrameCounter > 0) {
 	    ImageView sel = (ImageView) getChildAt(flashPosition);
 	    sel.setColorFilter(0xFFFF0000,  
@@ -106,15 +106,16 @@ public class GameGridView extends GridView {
     }
 
     public void updateImages() {
-	// greenFrameCounter = 0;
-	// redFrameCounter = 0;
 	ImageAdapter ia = 
 	    (ImageAdapter) getAdapter();
 	ia.updateImages();
     }
 
     public void flashGreen(int position) {
-	greenFrameCounter = 8;
+	greenTime = SystemClock.uptimeMillis() + 2000;
+	
+	//	greenFrameCounter = 8;
+
 	flashPosition = position;
 	invalidate();
     }
@@ -128,4 +129,5 @@ public class GameGridView extends GridView {
     private int greenFrameCounter = -1;
     private int redFrameCounter = -1;
     private int flashPosition = 0;
+    private float greenTime;
 }

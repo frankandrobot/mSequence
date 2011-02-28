@@ -81,9 +81,7 @@ public class PlayGame extends Activity
 
 		    //check if game complete
 		    if ( mTree.gameComplete() ) {
-			mTree.nextGame();
-
-			//PlayGame.this.mRunningClock.stop();
+			PlayGame.this.mRunningClock.stop();
 			//tally score/calculate scores
 			//: max_score = no_stages * 1000;
 			//: ideal_time = 2 * no_stages + 4;
@@ -93,19 +91,24 @@ public class PlayGame extends Activity
 			    .getRunningTime();
 			float max_score = mTree.getStages() * 1000.0f;
 			float ideal_time = 2.0f * mTree.getStages() + 4.0f;
-			Score.time_bonus = (int) (1.0f / time * max_score * ideal_time);
-			PlayGame.this.mRunningClock.initStartTime();
+			Score.time_bonus = (int) (1.0f 
+						  / time * max_score 
+						  * ideal_time);
+			Intent scoreReport = new 
+			    Intent(
+				   PlayGame.this, 
+				   uris.apps.com.ScoreReport.class
+				   );
+			scoreReport.putExtra("score",Score.score);
+			scoreReport.putExtra("incorrect",Score.incorrect_penal);
+			scoreReport.putExtra("timebonus",Score.time_bonus);
+			scoreReport.putExtra("noerrorbonus",Score.error_bonus);
+			startActivity(scoreReport);
 
-			// Intent scoreReport = new 
-			//     Intent(
-			// 	   PlayGame.this, 
-			// 	   uris.apps.com.ScoreLayout
-			// 	   );
-			// scoreReport.putExtra("score",);
-			// scoreReport.putExtra("incorrect");
-			// scoreReport.putExtra("timebonus");
-			// scoreReport.putExtra("noerrorbonus");
-			// startActivity(scoreReport);
+			PlayGame.this.mRunningClock.initStartTime();
+			PlayGame.this.mRunningClock.resume();
+			mTree.nextGame();
+
 		    }
 
 		    //update pictures

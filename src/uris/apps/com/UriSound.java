@@ -10,4 +10,9 @@ class UriSound {
 	// 
     }
 
+    static void playChime(String s) {
+    }
+
+    static void playThunk(String s) {
+    }
 }
