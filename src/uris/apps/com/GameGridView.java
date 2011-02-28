@@ -123,7 +123,7 @@ public class GameGridView extends GridView {
 
     public void reset() { selected=false; }
 
-    private int redPosition,greenPosition;
-    private float greenTime,redTime;
+    private int redPosition=0,greenPosition=0;
+    private float greenTime=0,redTime=0;
     private boolean selected=false;
 }
