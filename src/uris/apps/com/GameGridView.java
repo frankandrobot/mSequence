@@ -44,11 +44,11 @@ public class GameGridView extends GridView {
 
     public void deselect() {
 	if ( selected ) {
-	    ImageView sel;
-	    for(int i=0; i<getChildCount(); i++) {
-		sel = (ImageView) getChildAt(0);
-		sel.clearColorFilter();
-	    }
+	    // ImageView sel;
+	    // for(int i=0; i<getChildCount(); i++) {
+	    // 	sel = (ImageView) getChildAt(0);
+	    // 	sel.clearColorFilter();
+	    // } 
 	}
     }
 
@@ -124,6 +124,6 @@ public class GameGridView extends GridView {
     public void reset() { selected=false; }
 
     private int redPosition,greenPosition;
-    private float greenTime, redTime;
+    private float greenTime,redTime;
     private boolean selected=false;
 }
