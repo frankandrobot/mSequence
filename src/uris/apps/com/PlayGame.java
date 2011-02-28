@@ -105,6 +105,7 @@ public class PlayGame extends Activity
 			scoreReport.putExtra("noerrorbonus",Score.error_bonus);
 			startActivity(scoreReport);
 
+			PlayGame.this.mGameGridView.reset();
 			PlayGame.this.mRunningClock.initStartTime();
 			PlayGame.this.mRunningClock.resume();
 			mTree.nextGame();
