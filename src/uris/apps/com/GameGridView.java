@@ -43,39 +43,35 @@ public class GameGridView extends GridView {
     }
 
     public void deselect() {
-    // 	if (greenFrameCounter > 0 || redFrameCounter > 0) {
-    // 	    greenFrameCounter = 0;
-    // 	    redFrameCounter = 0;
-    // 	    ImageView sel = (ImageView) getChildAt(flashPosition);
-    // 	    sel.clearColorFilter();
-    // 	}
+	ImageView sel = (ImageView) getChildAt(greenPosition);
+	sel.clearColorFilter();
+	sel = (ImageView) getChildAt(redPosition);
+	sel.clearColorFilter();
     }
 
     @Override
 	public void onDraw(Canvas canvas) {
 
 	if (SystemClock.uptimeMillis() < greenTime) {
-	    ImageView sel = (ImageView) getChildAt(flashPosition);
+	    ImageView sel = (ImageView) getChildAt(greenPosition);
 	    sel.setColorFilter(0xFF00FF00,  
 				Mode.DARKEN);
 	    invalidate();
 	}
 	else {
-	     ImageView sel = (ImageView) getChildAt(flashPosition);
+	     ImageView sel = (ImageView) getChildAt(greenPosition);
 	     sel.clearColorFilter();
 	     invalidate();
 	}
-	if (redFrameCounter > 0) {
-	    ImageView sel = (ImageView) getChildAt(flashPosition);
+	if (SystemClock.uptimeMillis() < redTime) {
+	    ImageView sel = (ImageView) getChildAt(redPosition);
 	    sel.setColorFilter(0xFFFF0000,  
 				Mode.DARKEN);
-	    redFrameCounter--;
 	    invalidate();
 	}
-	else if (redFrameCounter == 0) {
-	    ImageView sel = (ImageView) getChildAt(flashPosition);
+	else {
+	    ImageView sel = (ImageView) getChildAt(redPosition);
 	    sel.clearColorFilter();
-	    redFrameCounter--;
 	    invalidate();
 	}
 
@@ -109,22 +105,17 @@ public class GameGridView extends GridView {
     }
 
     public void flashGreen(int position) {
-	greenTime = SystemClock.uptimeMillis() + 2000;
-	
-	//	greenFrameCounter = 8;
-
-	flashPosition = position;
+	greenTime = SystemClock.uptimeMillis() + 1000;
+	greenPosition = position;
 	invalidate();
     }
 
     public void flashRed(int position) {
-	redFrameCounter = 8;
-	flashPosition = position;
+	greenTime = SystemClock.uptimeMillis() + 1000;
+	redPosition = position;
 	invalidate();
     }
 
-    private int greenFrameCounter = -1;
-    private int redFrameCounter = -1;
-    private int flashPosition = 0;
-    private float greenTime;
+    private int redPosition,greenPosition;
+    private float greenTime, redTime;
 }
