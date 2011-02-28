@@ -43,13 +43,13 @@ public class GameGridView extends GridView {
     }
 
     public void deselect() {
-	if ( selected ) {
-	    // ImageView sel;
-	    // for(int i=0; i<getChildCount(); i++) {
-	    // 	sel = (ImageView) getChildAt(0);
-	    // 	sel.clearColorFilter();
-	    // } 
-	}
+	ImageView sel;
+	for(int i=0; i<getChildCount(); i++) {
+	    sel = (ImageView) getChildAt(0);
+	    sel.clearColorFilter();
+	} 
+	red = false;
+	green = false;
     }
 
     @Override
@@ -57,29 +57,34 @@ public class GameGridView extends GridView {
 
 	ImageView sel;
 
-	if (SystemClock.uptimeMillis() < greenTime) {
-	    sel = (ImageView) getChildAt(greenPosition);
-	    sel.setColorFilter(0xFF00FF00,  
-				Mode.DARKEN);
-	    invalidate();
+	if ( green ) {
+	    if (SystemClock.uptimeMillis() < greenTime) {
+		sel = (ImageView) getChildAt(greenPosition);
+		sel.setColorFilter(0xFF00FF00,  
+				   Mode.DARKEN);
+		invalidate();
+	    }
+	    else {
+		sel = (ImageView) getChildAt(greenPosition);
+		sel.clearColorFilter();
+		green = false;
+		invalidate();
+	    }
 	}
-	else {
-	     sel = (ImageView) getChildAt(greenPosition);
-	     sel.clearColorFilter();
-	     invalidate();
+	if ( red ) {
+	    if (SystemClock.uptimeMillis() < redTime) {
+		sel = (ImageView) getChildAt(redPosition);
+		sel.setColorFilter(0xFFFF0000,  
+				   Mode.DARKEN);
+		invalidate();
+	    }
+	    else {
+		sel = (ImageView) getChildAt(redPosition);
+		sel.clearColorFilter();
+		red = false;
+		invalidate();
+	    }
 	}
-	// if (SystemClock.uptimeMillis() < redTime) {
-	//     sel = (ImageView) getChildAt(redPosition);
-	//     sel.setColorFilter(0xFFFF0000,  
-	// 			Mode.DARKEN);
-	//     invalidate();
-	// }
-	// else {
-	//     sel = (ImageView) getChildAt(redPosition);
-	//     sel.clearColorFilter();
-	//     invalidate();
-	// }
-
 	// canvas.drawText(String.valueOf(secs), 10, 10, textPaintColor);
 	// // Color as paper
 	// // canvas.drawColor(paperColor);
@@ -112,18 +117,18 @@ public class GameGridView extends GridView {
     public void flashGreen(int position) {
 	greenTime = SystemClock.uptimeMillis() + 2000;
 	greenPosition = position;
-	selected = true;
+	green = true;
     }
 
     public void flashRed(int position) {
 	redTime = SystemClock.uptimeMillis() + 2000;
 	redPosition = position;
-	selected = true;
+	red = true;
     }
 
     public void reset() { selected=false; }
 
     private int redPosition=0,greenPosition=0;
     private float greenTime=0,redTime=0;
-    private boolean selected=false;
+    private boolean green=false,red=false;
 }
