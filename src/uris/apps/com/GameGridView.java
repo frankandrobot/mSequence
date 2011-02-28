@@ -58,16 +58,13 @@ public class GameGridView extends GridView {
 	    ImageView sel = (ImageView) getChildAt(flashPosition);
 	    sel.setColorFilter(0xFF00FF00,  
 				Mode.DARKEN);
-	    //canvas.drawColor(Color.GREEN);
-	    greenFrameCounter--;
 	    invalidate();
 	}
-	// else if (greenFrameCounter == 0) {
-	//     ImageView sel = (ImageView) getChildAt(flashPosition);
-	//     sel.clearColorFilter();
-	//     greenFrameCounter--;
-	//     invalidate();
-	// }
+	else {
+	     ImageView sel = (ImageView) getChildAt(flashPosition);
+	     sel.clearColorFilter();
+	     invalidate();
+	}
 	if (redFrameCounter > 0) {
 	    ImageView sel = (ImageView) getChildAt(flashPosition);
 	    sel.setColorFilter(0xFFFF0000,  
