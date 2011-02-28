@@ -111,7 +111,7 @@ public class GameGridView extends GridView {
     }
 
     public void flashRed(int position) {
-	greenTime = SystemClock.uptimeMillis() + 1000;
+	redTime = SystemClock.uptimeMillis() + 1000;
 	redPosition = position;
 	invalidate();
     }
