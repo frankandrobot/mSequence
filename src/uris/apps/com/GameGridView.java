@@ -55,25 +55,27 @@ public class GameGridView extends GridView {
     @Override
 	public void onDraw(Canvas canvas) {
 
+	ImageView sel;
+
 	if (SystemClock.uptimeMillis() < greenTime) {
-	    ImageView sel = (ImageView) getChildAt(greenPosition);
+	    sel = (ImageView) getChildAt(greenPosition);
 	    sel.setColorFilter(0xFF00FF00,  
 				Mode.DARKEN);
 	    invalidate();
 	}
 	else {
-	     ImageView sel = (ImageView) getChildAt(greenPosition);
-	     sel.clearColorFilter();
-	     invalidate();
+	     // sel = (ImageView) getChildAt(greenPosition);
+	     // sel.clearColorFilter();
+	     // invalidate();
 	}
 	if (SystemClock.uptimeMillis() < redTime) {
-	    ImageView sel = (ImageView) getChildAt(redPosition);
+	    sel = (ImageView) getChildAt(redPosition);
 	    sel.setColorFilter(0xFFFF0000,  
 				Mode.DARKEN);
 	    invalidate();
 	}
 	else {
-	    ImageView sel = (ImageView) getChildAt(redPosition);
+	    sel = (ImageView) getChildAt(redPosition);
 	    sel.clearColorFilter();
 	    invalidate();
 	}
