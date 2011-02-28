@@ -44,10 +44,11 @@ public class GameGridView extends GridView {
 
     public void deselect() {
 	if ( selected ) {
-	    ImageView sel = (ImageView) getChildAt(greenPosition);
-	    sel.clearColorFilter();
-	    sel = (ImageView) getChildAt(redPosition);
-	    sel.clearColorFilter();
+	    ImageView sel;
+	    for(int i=0; i<getChildCount(); i++) {
+		sel = (ImageView) getChildAt(0);
+		sel.clearColorFilter();
+	    }
 	}
     }
 
@@ -107,14 +108,14 @@ public class GameGridView extends GridView {
     }
 
     public void flashGreen(int position) {
-	greenTime = SystemClock.uptimeMillis() + 1000;
+	greenTime = SystemClock.uptimeMillis() + 2000;
 	greenPosition = position;
 	selected = true;
 	invalidate();
     }
 
     public void flashRed(int position) {
-	redTime = SystemClock.uptimeMillis() + 1000;
+	redTime = SystemClock.uptimeMillis() + 2000;
 	redPosition = position;
 	selected = true;
 	invalidate();
