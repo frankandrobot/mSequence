@@ -95,7 +95,6 @@
       android:layout_height="fill_parent"
       android:orientation="vertical"
       android:gravity="center"
-      <!-- android:background="#80ffffff" -->
       android:visibility="gone"
       android:id="@+id/myfinal_layout"
       >
