@@ -64,21 +64,21 @@ public class GameGridView extends GridView {
 	    invalidate();
 	}
 	else {
-	     // sel = (ImageView) getChildAt(greenPosition);
-	     // sel.clearColorFilter();
-	     // invalidate();
+	     sel = (ImageView) getChildAt(greenPosition);
+	     sel.clearColorFilter();
+	     invalidate();
 	}
-	if (SystemClock.uptimeMillis() < redTime) {
-	    sel = (ImageView) getChildAt(redPosition);
-	    sel.setColorFilter(0xFFFF0000,  
-				Mode.DARKEN);
-	    invalidate();
-	}
-	else {
-	    sel = (ImageView) getChildAt(redPosition);
-	    sel.clearColorFilter();
-	    invalidate();
-	}
+	// if (SystemClock.uptimeMillis() < redTime) {
+	//     sel = (ImageView) getChildAt(redPosition);
+	//     sel.setColorFilter(0xFFFF0000,  
+	// 			Mode.DARKEN);
+	//     invalidate();
+	// }
+	// else {
+	//     sel = (ImageView) getChildAt(redPosition);
+	//     sel.clearColorFilter();
+	//     invalidate();
+	// }
 
 	// canvas.drawText(String.valueOf(secs), 10, 10, textPaintColor);
 	// // Color as paper
@@ -113,14 +113,12 @@ public class GameGridView extends GridView {
 	greenTime = SystemClock.uptimeMillis() + 2000;
 	greenPosition = position;
 	selected = true;
-	invalidate();
     }
 
     public void flashRed(int position) {
 	redTime = SystemClock.uptimeMillis() + 2000;
 	redPosition = position;
 	selected = true;
-	invalidate();
     }
 
     public void reset() { selected=false; }
