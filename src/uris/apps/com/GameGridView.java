@@ -67,7 +67,6 @@ public class GameGridView extends GridView {
 	    else {
 		sel = (ImageView) getChildAt(greenPosition);
 		sel.clearColorFilter();
-		green = false;
 		invalidate();
 	    }
 	}
@@ -81,7 +80,6 @@ public class GameGridView extends GridView {
 	    else {
 		sel = (ImageView) getChildAt(redPosition);
 		sel.clearColorFilter();
-		red = false;
 		invalidate();
 	    }
 	}
