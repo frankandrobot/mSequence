@@ -42,14 +42,14 @@ public class GameGridView extends GridView {
 	//margin = myResources.getDimension(R.dimen.notepad_margin);
     }
 
-    // public void deselect() {
+    public void deselect() {
     // 	if (greenFrameCounter > 0 || redFrameCounter > 0) {
     // 	    greenFrameCounter = 0;
     // 	    redFrameCounter = 0;
     // 	    ImageView sel = (ImageView) getChildAt(flashPosition);
     // 	    sel.clearColorFilter();
     // 	}
-    // }
+    }
 
     @Override
 	public void onDraw(Canvas canvas) {
