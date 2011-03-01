@@ -61,9 +61,11 @@ public class ScoreReport extends Activity
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-	scores.touched();
+	if (first) { scores.touched(); first=false;}
+	else { finish(); }
 	return super.onTouchEvent(event);
     }
 
+    private boolean first=true;
 }
 
