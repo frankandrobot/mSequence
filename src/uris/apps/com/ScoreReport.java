@@ -21,6 +21,8 @@ import android.os.Debug;
 
 public class ScoreReport extends Activity
 {
+    private ScoreLayout scores;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -37,8 +39,7 @@ public class ScoreReport extends Activity
 	s[2] = userScores.getIntExtra("timebonus",Score.time_bonus);
 	s[3] = userScores.getIntExtra("noerrorbonus",Score.error_bonus);
 
-
-	ScoreLayout scores = (ScoreLayout) findViewById(R.id.scores);
+	scores = (ScoreLayout) findViewById(R.id.scores);
 	scores.setScores( s );
 
 	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Helwoodica.otf");
@@ -57,5 +58,12 @@ public class ScoreReport extends Activity
 	// myScores = (TextView) findViewById(R.id.total);
 	// myScores.setTypeface(font);
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+	scores.touched();
+	return super.onTouchEvent(event);
+    }
+
 }
 
