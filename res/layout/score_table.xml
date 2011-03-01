@@ -106,7 +106,6 @@
 	android:id="@+id/myfinal_score"
 	android:textColor="#ff0000"
 	android:textSize="47sp"
-	android:paddingBottom="50sp"
 	/>
     <TextView
 	android:id="@+id/total"
