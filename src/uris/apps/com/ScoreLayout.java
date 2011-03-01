@@ -135,26 +135,22 @@ public class ScoreLayout extends LinearLayout {
     	initInc();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-	if ( first ) {
-	    if ( cur_score<scores.length ) {
-		System.arraycopy( scores, 0, ctr, 0, scores.length );
-		for(int i=0; i<scores.length; i++) {
-		    TextView score = (TextView) getChildAt(2*i+1);
-		    if ( scores[i] > 0 )
-			score.setText(String.valueOf( scores[i]-1 ));
-		    else
-			score.setText(String.valueOf( scores[i]+1 ));
-		}
-		invalidate();
+    //    @Override
+    //public boolean onTouchEvent(MotionEvent event) {
+    public void touched() {
+	if ( cur_score<scores.length ) {
+	    System.arraycopy( scores, 0, ctr, 0, scores.length );
+	    for(int i=0; i<scores.length; i++) {
+		TextView score = (TextView) getChildAt(2*i+1);
+		if ( scores[i] > 0 )
+		    score.setText(String.valueOf( scores[i]-1 ));
+		else
+		    score.setText(String.valueOf( scores[i]+1 ));
 	    }
-	    UriSound.playAnvil();
-	    first=false;
+	    invalidate();
 	}
-	else {
-	    finish();
-	}
+	UriSound.playAnvil();
+	//first=false;
 	return super.onTouchEvent(event);
     }
 
