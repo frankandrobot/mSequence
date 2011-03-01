@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.LinearLayout;
 import android.graphics.Typeface;
 import android.content.Intent;
+import android.view.MotionEvent;
 
 import android.os.Debug;
 
