@@ -151,7 +151,7 @@ public class ScoreLayout extends LinearLayout {
 	}
 	UriSound.playAnvil();
 	//first=false;
-	return super.onTouchEvent(event);
+	//return super.onTouchEvent(event);
     }
 
     private int cur_score=0, inc=0;
