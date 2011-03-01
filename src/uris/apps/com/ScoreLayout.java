@@ -137,7 +137,6 @@ public class ScoreLayout extends LinearLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-	static boolean first=true;
 	if ( first ) {
 	    if ( cur_score<scores.length ) {
 		System.arraycopy( scores, 0, ctr, 0, scores.length );
@@ -162,4 +161,5 @@ public class ScoreLayout extends LinearLayout {
     private int cur_score=0, inc=0;
     private int ctr[];
     private int scores[];
+    private boolean first=true;
 }
