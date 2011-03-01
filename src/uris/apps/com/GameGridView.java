@@ -45,7 +45,7 @@ public class GameGridView extends GridView {
     public void deselect() {
 	ImageView sel;
 	for(int i=0; i<getChildCount(); i++) {
-	    sel = (ImageView) getChildAt(0);
+	    sel = (ImageView) getChildAt(i);
 	    sel.clearColorFilter();
 	} 
 	red = false;
