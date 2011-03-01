@@ -102,10 +102,10 @@
 	android:text="total:"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:paddingBottom="5sp"
 	android:id="@+id/myfinal_score"
 	android:textColor="#ff0000"
 	android:textSize="47sp"
+	android:paddingBottom="55sp"
 	/>
     <TextView
 	android:id="@+id/total"
