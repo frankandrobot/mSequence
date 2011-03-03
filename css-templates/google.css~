@@ -1,0 +1,51 @@
+body {
+    width: 320px;
+    height: 480px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-position: center 0;
+}
+
+h1 { 
+    display: none;
+}
+
+h2 /* buttons */ {
+    display: none;
+}
+
+.outline-text-2 {
+}
+
+div#buttons {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#buttons ul {
+    list-style: none;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 0;
+    margin: 0;
+}
+
+div#buttons ul > li {
+    background: white;
+    padding: 0.2em;
+    text-align: center;
+    margin: 0.2em;
+    border: 3px solid black;
+    color: blue;
+    font-size: 2em;
+}
+
+/* resources that I need:
+ + Kruler
+ + Bookmarks
+ + Prince docs
+*/

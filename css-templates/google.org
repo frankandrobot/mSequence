@@ -1,0 +1,12 @@
+#+STYLE: <link rel="stylesheet" type="text/css" href="google.css" />
+
+#+OPTIONS: toc:nil num:nil
+
+* Buttons 
+@<div id=buttons>
+
+ + Play!
+ + Options
+ + Help
+
+@</div>
