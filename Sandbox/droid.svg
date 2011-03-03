@@ -620,6 +620,13 @@
        gradientUnits="userSpaceOnUse"
        gradientTransform="matrix(0.69711213,1,-1.9766834,1.37797,474.08062,-41.274817)"
        spreadMethod="repeat" />
+    <inkscape:perspective
+       id="perspective3175"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -628,11 +635,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="224.36272"
-     inkscape:cy="684.49716"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="463.23869"
+     inkscape:cy="376.91302"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:window-width="1024"
      inkscape:window-height="730"
@@ -668,59 +675,58 @@
      transform="translate(0,-198.36217)"
      style="display:none">
     <image
-       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/background.png"
+       sodipodi:absref="/home/uri/Documents/InterArt/Sandbox/background.png"
        xlink:href="background.png"
-       width="492"
-       height="840"
-       id="image3101"
+       y="208.36217"
        x="0"
-       y="208.36217" />
+       id="image3101"
+       height="840"
+       width="492" />
     <image
-       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/drawable/title.png"
+       sodipodi:absref="/home/uri/Documents/InterArt/Sandbox/drawable/title.png"
        xlink:href="drawable/title.png"
-       width="480.28571"
-       height="75.136719"
-       id="image3175"
+       y="215.29381"
        x="15.857142"
-       y="215.29381" />
+       id="image3175"
+       height="75.136719"
+       width="480.28571" />
     <image
-       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/drawable/play.png"
+       sodipodi:absref="/home/uri/Documents/InterArt/Sandbox/drawable/play.png"
        xlink:href="drawable/play.png"
-       width="306.09805"
-       height="149.24184"
-       id="image3246"
+       y="421.65259"
        x="95.429504"
-       y="421.65259" />
-    <image
-       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/drawable/options.png"
-       xlink:href="drawable/options.png"
-       width="466"
-       height="147.71895"
-       id="image3317"
-       x="5"
-       y="576.74127" />
-    <image
-       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/drawable/help.png"
-       xlink:href="drawable/help.png"
-       width="274.11765"
+       id="image3246"
        height="149.24184"
-       id="image3388"
+       width="306.09805" />
+    <image
+       sodipodi:absref="/home/uri/Documents/InterArt/Sandbox/drawable/options.png"
+       xlink:href="drawable/options.png"
+       y="576.74127"
+       x="5"
+       id="image3317"
+       height="147.71895"
+       width="466" />
+    <image
+       sodipodi:absref="/home/uri/Documents/InterArt/Sandbox/drawable/help.png"
+       xlink:href="drawable/help.png"
+       y="723.25854"
        x="103.98693"
-       y="723.25854" />
+       id="image3388"
+       height="149.24184"
+       width="274.11765" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Layer"
-     sodipodi:insensitive="true"
-     style="display:inline">
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke:none"
-       id="rect3393"
-       width="482.57358"
-       height="856.57874"
-       x="0"
-       y="-1.3045764" />
+     style="display:inline;opacity:0.62105263">
+    <image
+       y="0.7156499"
+       x="4.4569283"
+       id="image3177"
+       height="854"
+       width="480"
+       xlink:href="file:///home/uri/Documents/InterArt/Sandbox/backgrounds/background-04.png" />
   </g>
   <g
      inkscape:groupmode="layer"
