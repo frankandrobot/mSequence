@@ -630,14 +630,14 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
      inkscape:cx="224.36272"
-     inkscape:cy="455.92573"
+     inkscape:cy="684.49716"
      inkscape:document-units="px"
-     inkscape:current-layer="layer3"
+     inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1004"
-     inkscape:window-height="579"
-     inkscape:window-x="18"
-     inkscape:window-y="0"
+     inkscape:window-width="1024"
+     inkscape:window-height="730"
+     inkscape:window-x="-1"
+     inkscape:window-y="16"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -657,7 +657,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -666,49 +666,54 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-198.36217)"
-     sodipodi:insensitive="true"
      style="display:none">
     <image
-       y="208.36217"
-       x="0"
-       id="image3101"
-       height="840"
+       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/background.png"
+       xlink:href="background.png"
        width="492"
-       xlink:href="file:///home/uri/projects/css-templates/background.png" />
+       height="840"
+       id="image3101"
+       x="0"
+       y="208.36217" />
     <image
-       y="227.36217"
-       x="93"
+       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/drawable/title.png"
+       xlink:href="drawable/title.png"
+       width="480.28571"
+       height="75.136719"
        id="image3175"
-       height="51"
-       width="326"
-       xlink:href="file:///home/uri/projects/css-templates/drawable/title.png" />
+       x="15.857142"
+       y="215.29381" />
     <image
-       y="442.36218"
-       x="135"
+       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/drawable/play.png"
+       xlink:href="drawable/play.png"
+       width="306.09805"
+       height="149.24184"
        id="image3246"
-       height="98"
-       width="201"
-       xlink:href="file:///home/uri/projects/css-templates/drawable/play.png" />
+       x="95.429504"
+       y="421.65259" />
     <image
-       y="602.36218"
-       x="85"
+       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/drawable/options.png"
+       xlink:href="drawable/options.png"
+       width="466"
+       height="147.71895"
        id="image3317"
-       height="97"
-       width="306"
-       xlink:href="file:///home/uri/projects/css-templates/drawable/options.png" />
+       x="5"
+       y="576.74127" />
     <image
-       y="762.36218"
-       x="150"
+       sodipodi:absref="/home/uri/Documents/InterArt/css-templates/drawable/help.png"
+       xlink:href="drawable/help.png"
+       width="274.11765"
+       height="149.24184"
        id="image3388"
-       height="98"
-       width="180"
-       xlink:href="file:///home/uri/projects/css-templates/drawable/help.png" />
+       x="103.98693"
+       y="723.25854" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Layer"
-     sodipodi:insensitive="true">
+     sodipodi:insensitive="true"
+     style="display:inline">
     <rect
        style="fill:#000000;fill-opacity:1;stroke:none"
        id="rect3393"
@@ -720,7 +725,9 @@
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="Layer#1">
+     inkscape:label="Layer#1"
+     sodipodi:insensitive="true"
+     style="display:inline">
     <g
        id="g5196"
        transform="translate(4.0406106,178.46702)">
@@ -736,7 +743,7 @@
            sodipodi:cy="107.54441"
            sodipodi:rx="57.831234"
            sodipodi:ry="37.776855"
-           d="m 121.21831,107.54441 c 0,20.86358 -25.891928,37.77686 -57.831236,37.77686 -31.939309,0 -57.8312345,-16.91328 -57.8312345,-37.77686 0,-20.86358 25.8919255,-37.776855 57.8312345,-37.776855 31.939308,0 57.831236,16.913275 57.831236,37.776855 z"
+           d="m 121.21831,107.54441 a 57.831234,37.776855 0 1 1 -115.6624705,0 57.831234,37.776855 0 1 1 115.6624705,0 z"
            transform="matrix(1.105804,-0.714064,0.652553,1.032692,-71.59428,0.546336)" />
         <path
            style="fill:#0075ca;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.08405781;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dashoffset:5.4"
@@ -795,7 +802,7 @@
            sodipodi:cy="598.36652"
            sodipodi:rx="125.20509"
            sodipodi:ry="125.20509"
-           d="m -163.88631,598.36652 c 0,69.14886 -56.05623,125.20509 -125.20509,125.20509 -69.14886,0 -125.20509,-56.05623 -125.20509,-125.20509 0,-69.14887 56.05623,-125.2051 125.20509,-125.2051 69.14886,0 125.20509,56.05623 125.20509,125.2051 z"
+           d="m -163.88631,598.36652 a 125.20509,125.20509 0 1 1 -250.41018,0 125.20509,125.20509 0 1 1 250.41018,0 z"
            transform="matrix(-0.352957,0.00279877,5.125628e-4,0.06463434,-43.64993,79.15271)" />
         <path
            style="fill:#919191;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2.35479283;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
