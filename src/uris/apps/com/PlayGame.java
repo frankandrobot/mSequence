@@ -40,19 +40,18 @@ public class PlayGame extends Activity
 
 	setContentView(R.layout.play_game);
 
-	//Set up TreeGenerator
-
+	//Set up TreeGenerator - this is the underlying game engine
 	//difficulty = TreeGenerator.HARD;
 	mTree = new TreeGenerator(12, difficulty, 3); // no art pieces,
 						     // difficulty, no
 						     // of stages
 	
-	//Set up GridView
+	//Set up GridView - this is the View for the TreeGenerator
 	mGameGridView = (GameGridView) findViewById(R.id.game_grid_view);
 	mAdapter = new ImageAdapter(this, mTree);
 	mGameGridView.setAdapter(mAdapter);
 
-	//Set up RunningClock
+	//Set up RunningClock - this should be part of the View, but it's not
 	mRunningClock = (ClockTextView) findViewById(R.id.running_clock);
 	mRunningClock.initStartTime();
 	
