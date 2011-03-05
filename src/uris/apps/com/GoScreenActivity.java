@@ -14,7 +14,7 @@ import android.os.Debug;
 
 public class GoScreenActivity extends Activity
 {
-    private GoScreenLayout scores;
+    //  private GoScreenLayout scores;
 
     /** Called when the activity is first created. */
     @Override
