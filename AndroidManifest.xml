@@ -30,5 +30,8 @@
 	<activity android:name=".ScoreReport"
 		  android:label="@string/app_name">
 	</activity>
+	<activity android:name=".GoScreenActivity"
+		  android:label="@string/app_name">
+	</activity>
     </application>
 </manifest> 
