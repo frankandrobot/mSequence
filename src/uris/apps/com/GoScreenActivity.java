@@ -48,8 +48,8 @@ public class GoScreenActivity extends Activity
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-	if (first) { scores.touched(); first=false;}
-	else { finish(); }
+	// if (first) { scores.touched(); first=false;}
+	// else { finish(); }
 	return super.onTouchEvent(event);
     }
 
