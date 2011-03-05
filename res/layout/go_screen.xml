@@ -23,7 +23,6 @@
 <!--       android:gravity="center" -->
 <!--       android:id="@+id/scores" -->
 <!--       > -->
-<!--     <\!-- yellow -\-> -->
 <!--     <TextView -->
 <!-- 	android:id="@+id/score" -->
 <!-- 	android:layout_width="fill_parent" -->
@@ -42,7 +41,6 @@
 <!-- 	android:textSize="50sp" -->
 <!-- 	android:textColor="#eeff59" -->
 <!-- 	/> -->
-<!--     <\!-- purple -\-> -->
 <!--     <TextView -->
 <!-- 	android:id="@+id/penalty" -->
 <!-- 	android:layout_width="fill_parent" -->
@@ -61,7 +59,6 @@
 <!-- 	android:textSize="50sp" -->
 <!-- 	android:textColor="#ff599c" -->
 <!-- 	/> -->
-<!--     <\!-- blue -\-> -->
 <!--     <TextView -->
 <!-- 	android:id="@+id/timebonus" -->
 <!-- 	android:layout_width="fill_parent" -->
@@ -80,7 +77,6 @@
 <!-- 	android:textSize="50sp" -->
 <!-- 	android:textColor="#6a59ff" -->
 <!-- 	/> -->
-<!--     <\!-- green -\-> -->
 <!--     <TextView -->
 <!-- 	android:id="@+id/noerror_bonus" -->
 <!-- 	android:layout_width="fill_parent" -->
