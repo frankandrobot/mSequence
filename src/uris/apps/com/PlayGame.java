@@ -40,6 +40,11 @@ public class PlayGame extends Activity
 
 	setContentView(R.layout.play_game);
 
+	//Start GO screen
+	Intent goScreen = new 
+	    Intent(this,uris.apps.com.GoScreenActivity.class);
+	startActivity(goScreen);
+
 	//Set up TreeGenerator - this is the underlying game engine
 	//difficulty = TreeGenerator.HARD;
 	mTree = new TreeGenerator(12, difficulty, 3); // no art pieces,
