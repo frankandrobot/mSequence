@@ -20,8 +20,9 @@ public class InterArt extends Activity
     private View optionsView;
     
     // Menu
-    static final private int OPTIONS_MENU=1, PLAY_GAME=2;
-
+    static final private int OPTIONS_MENU=1;
+    static final public int PLAY_GAME=2,GO_SCREEN=3,SCORES=4;
+    
     Intent settings, optionsMenu;
     
     /** Called when the activity is first created. */
