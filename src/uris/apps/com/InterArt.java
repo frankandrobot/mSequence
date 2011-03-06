@@ -66,7 +66,7 @@ public class InterArt extends Activity
         case OPTIONS_MENU: {
     	    if (resultCode == RESULT_CANCELED){
                 Toast.makeText(InterArt.this, "Cancelled", Toast.LENGTH_SHORT).show();
-            } 
+           } 
             if (resultCode == RESULT_OK) {
                 //getSettings();
     		int level= data.getIntExtra("level",TreeGenerator.EASY);
