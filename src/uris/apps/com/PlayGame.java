@@ -40,7 +40,10 @@ public class PlayGame extends Activity
 
 	setContentView(R.layout.play_game);
 
-	//Start GO screen
+	//Start GO screen 
+
+	//this starts the GO screen but unfortunately, the rest of the
+	//constructor gets called
 	Intent goScreen = new 
 	    Intent(this,uris.apps.com.GoScreenActivity.class);
 	startActivity(goScreen);
@@ -58,7 +61,7 @@ public class PlayGame extends Activity
 
 	//Set up RunningClock - this should be part of the View, but it's not
 	mRunningClock = (ClockTextView) findViewById(R.id.running_clock);
-	mRunningClock.initStartTime();
+	//mRunningClock.initStartTime();
 	
 	//Call this method when user selects an image 
 	mGameGridView.setOnItemClickListener(new OnItemClickListener() {
@@ -67,7 +70,7 @@ public class PlayGame extends Activity
 					int position, 
 					long id) {
 		    TreeGenerator mTree = PlayGame.this.mTree;
-
+		
 		    //check answer
 		    boolean result = mTree.checkAnswer(position);
 		    String text = "Almost!";
@@ -98,6 +101,11 @@ public class PlayGame extends Activity
 			Score.time_bonus = (int) (1.0f 
 						  / time * max_score 
 						  * ideal_time);
+
+			//Call the score total screen
+
+			//Unfortunately, the rest of this function
+			//gets called too
 			Intent scoreReport = new 
 			    Intent(
 				   PlayGame.this, 
@@ -215,4 +223,30 @@ public class PlayGame extends Activity
 	return false;
     }
 
+    //This code gets after the start screen or the score screen
+    @Override
+    protected void onActivityResult(int requestCode, 
+				    int resultCode, 
+				    Intent returnedData) {
+
+	mRunningClock.initStartTime();
+	mRunningClock.resume();
+	
+	// // See which child activity is calling us back.
+	// switch (requestCode) {
+	// case <requestCode>: {
+	//     if (resultCode == RESULT_CANCELED){
+	// 	//
+	//     } 
+	//     if (resultCode == RESULT_OK) {
+	// 	//get returned data
+	// 	int intValue= returnedData.getIntExtra(<key>,<defaultValue>);
+	// 	String stringValue = returnedData.getStringExtra(<key>);
+	//     }
+	// }
+	// default:
+	//     break;
+	// }
+    }
+    
 }
