@@ -111,11 +111,11 @@ public class PlayGame extends Activity
 				   PlayGame.this, 
 				   uris.apps.com.ScoreReport.class
 				   );
-			scoreReport.putExtra("score",Score.score);
-			scoreReport.putExtra("incorrect",Score.incorrect_penal);
-			scoreReport.putExtra("timebonus",Score.time_bonus);
-			scoreReport.putExtra("noerrorbonus",Score.error_bonus);
-			startActivityForResult(scoreReport,InterArt.SCORES);
+			// scoreReport.putExtra("score",Score.score);
+			// scoreReport.putExtra("incorrect",Score.incorrect_penal);
+			// scoreReport.putExtra("timebonus",Score.time_bonus);
+			// scoreReport.putExtra("noerrorbonus",Score.error_bonus);
+			// startActivityForResult(scoreReport,InterArt.SCORES);
 
 			PlayGame.this.mGameGridView.reset();
 			PlayGame.this.mRunningClock.initStartTime();
