@@ -115,7 +115,7 @@ public class PlayGame extends Activity
 			scoreReport.putExtra("incorrect",Score.incorrect_penal);
 			scoreReport.putExtra("timebonus",Score.time_bonus);
 			scoreReport.putExtra("noerrorbonus",Score.error_bonus);
-			startActivity(scoreReport);
+			startActivityForResult(scoreReport,InterArt.SCORES);
 
 			PlayGame.this.mGameGridView.reset();
 			PlayGame.this.mRunningClock.initStartTime();
