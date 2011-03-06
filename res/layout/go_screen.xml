@@ -11,7 +11,7 @@
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
       android:text="Ready"
-      android:gravity="left"
+      android:gravity="center"
       android:textSize="24sp"
       android:textColor="#eeff59"
       />
