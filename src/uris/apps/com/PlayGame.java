@@ -46,7 +46,7 @@ public class PlayGame extends Activity
 	//constructor gets called
 	Intent goScreen = new 
 	    Intent(this,uris.apps.com.GoScreenActivity.class);
-	startActivity(goScreen);
+	startActivityForResult(goScreen,InterArt.GO_SCREEN);
 
 	//Set up TreeGenerator - this is the underlying game engine
 	//difficulty = TreeGenerator.HARD;
