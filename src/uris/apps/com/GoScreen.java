@@ -33,9 +33,9 @@ public class GoScreen extends TextView {
 
     private void init () {
 	startTime = SystemClock.uptimeMillis();
-	readyTime = startTime + 2000;
-	setTime = readyTime + 2000;
-	goTime = setTime + 2000;
+	readyTime = startTime + 1000;
+	setTime = readyTime + 1000;
+	goTime = setTime + 1000;
     }
     
     @Override
