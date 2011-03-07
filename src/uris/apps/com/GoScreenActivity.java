@@ -26,25 +26,12 @@ public class GoScreenActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.go_screen);
 
-     	goText = (TextView) findViewById(R.id.go_text);
+     	goText = (GoScreen) findViewById(R.id.go_text);
     // 	scores.setScores( s );
 	
      	Typeface font = Typeface.createFromAsset(getAssets(), 
 						 "fonts/Helwoodica.otf");
 	goText.setTypeface(font);
-	initStartTime();
-	readyTime = startTime + 2000;
-	setTime = readyTime + 2000;
-	goTime = setTime + 2000;
-    }
-
-    @Override
-    public void onDraw(Canvas canvas) {
-	long cur = SystemClock.uptimeMillis();
-	if ( cur > goTime ) goText.setText("Go!");
-	else if ( cur > setTime ) goText.setText("Set");
-	super.onDraw(canvas);
-	invalidate();
     }
 
     @Override
@@ -59,7 +46,6 @@ public class GoScreenActivity extends Activity
     }
 
     private boolean first=true;
-    private long startTime,readyTime,setTime,goTime;
-    private TextView goText;
+    private GoScreen goText;
 }
 
