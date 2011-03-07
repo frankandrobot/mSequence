@@ -33,19 +33,23 @@ public class GoScreen extends TextView {
 
     private void init () {
 	startTime = SystemClock.uptimeMillis();
-	readyTime = startTime + 1000;
-	setTime = readyTime + 1000;
+	setTime = startTime + 1000;
 	goTime = setTime + 1000;
+	quitTime = goTime + 1000;
     }
     
     @Override
     public void onDraw(Canvas canvas) {
 	long cur = SystemClock.uptimeMillis();
-	if ( cur > goTime ) setText("Go!");
+	if ( cur > quitTime ) { 
+	    Activity activity = (Activity) getContext();
+	    activity.finish();
+	}
+	else if ( cur > goTime ) setText("Go!");
 	else if ( cur > setTime ) setText("Set");
 	super.onDraw(canvas);
 	invalidate();
     }
 
-    private long startTime,readyTime,setTime,goTime;
+    private long startTime,readyTime,setTime,goTime,quitTime;
 }
