@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.graphics.Typeface;
 import android.content.Intent;
 import android.view.MotionEvent;
+import android.os.SystemClock;
 
 import android.os.Debug;
 
