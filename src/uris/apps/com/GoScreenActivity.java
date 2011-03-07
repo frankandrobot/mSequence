@@ -41,9 +41,9 @@ public class GoScreenActivity extends Activity
 	return super.onTouchEvent(event);
     }
 
-    private void initStartTime() {
-	startTime = SystemClock.uptimeMillis();
-    }
+    // private void initStartTime() {
+    // 	startTime = SystemClock.uptimeMillis();
+    // }
 
     private boolean first=true;
     private GoScreen goText;
