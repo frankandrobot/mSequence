@@ -39,7 +39,7 @@ public class GoScreenActivity extends Activity
 
     @Override
     public void onDraw(Canvas canvas) {
-	int long cur = SystemClock.uptimeMillis();
+	long cur = SystemClock.uptimeMillis();
 	if ( cur > goTime ) goText.setText("Go!");
 	else if ( cur > setTime ) goText.setText("Set");
 	super.onDraw(canvas);
