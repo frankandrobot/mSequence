@@ -7,7 +7,7 @@
     android:id="@+id/score_layout"
     >
   <TextView
-      android:id="@+id/score"
+      android:id="@+id/go_text"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
       android:text="Ready"
