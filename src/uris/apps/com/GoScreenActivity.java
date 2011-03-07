@@ -25,25 +25,25 @@ public class GoScreenActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.go_screen);
 
-    // 	scores = (GoScreenLayout) findViewById(R.id.scores);
+     	goText = (TextView) findViewById(R.id.go_text);
     // 	scores.setScores( s );
+	
+     	Typeface font = Typeface.createFromAsset(getAssets(), 
+						 "fonts/Helwoodica.otf");
+	goText.setTypeface(font);
+	initStartTime();
+	readyTime = startTime + 2000;
+	setTime = readyTime + 2000;
+	goTime = setTime + 2000;
+    }
 
-    // 	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Helwoodica.otf");
-    //     ScoreLayout parentView = (ScoreLayout)findViewById(R.id.scores);
-    // 	TextView myScores;
-    //     for (int i=0; i<parentView.getChildCount(); i++) {
-    // 	    myScores = (TextView) parentView.getChildAt(i);
-    // 	    myScores.setTypeface(font);
-    // 	}
-    // 	//and final total score
-    //     LinearLayout totalView = (LinearLayout)findViewById(R.id.myfinal_layout);
-    //     for (int i=0; i<totalView.getChildCount(); i++) {
-    // 	    myScores = (TextView) totalView.getChildAt(i);
-    // 	    myScores.setTypeface(font);
-    // 	}
-    // 	// myScores = (TextView) findViewById(R.id.total);
-    // 	// myScores.setTypeface(font);
-    // }
+    @Override
+    public void onDraw(Canvas canvas) {
+	int long cur = SystemClock.uptimeMillis();
+	if ( cur > goTime ) goText.setText("Go!");
+	else if ( cur > setTime ) goText.setText("Set");
+	super.onDraw(canvas);
+	invalidate();
     }
 
     @Override
@@ -53,6 +53,12 @@ public class GoScreenActivity extends Activity
 	return super.onTouchEvent(event);
     }
 
+    private void initStartTime() {
+	startTime = SystemClock.uptimeMillis();
+    }
+
     private boolean first=true;
+    private long startTime,readyTime,setTime,goTime;
+    private TextView goText;
 }
 
