@@ -21,12 +21,12 @@ import android.view.animation.Animation;
  
 public class GoScreen extends TextView {
 
-    public TextView (Context context) {
+    public GoScreen (Context context) {
 	super(context);
 	init();
     }
 
-    public TextView (Context context, AttributeSet attrs) {
+    public GoScreen (Context context, AttributeSet attrs) {
 	super(context, attrs);
 	init();
     }
