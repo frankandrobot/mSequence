@@ -41,8 +41,8 @@ public class GoScreen extends TextView {
     @Override
     public void onDraw(Canvas canvas) {
 	long cur = SystemClock.uptimeMillis();
-	if ( cur > goTime ) goText.setText("Go!");
-	else if ( cur > setTime ) goText.setText("Set");
+	if ( cur > goTime ) setText("Go!");
+	else if ( cur > setTime ) setText("Set");
 	super.onDraw(canvas);
 	invalidate();
     }
