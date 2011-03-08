@@ -18,6 +18,9 @@ public final class R {
     }
     public static final class color {
         public static final int clockTextColor=0x7f050000;
+        public static final int green=0x7f050001;
+        public static final int red=0x7f050003;
+        public static final int yellow=0x7f050002;
     }
     public static final class drawable {
         public static final int background=0x7f020000;

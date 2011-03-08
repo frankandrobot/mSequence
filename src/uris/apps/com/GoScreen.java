@@ -48,7 +48,7 @@ public class GoScreen extends TextView {
 	else if ( cur > goTime ) setText("Go!");
 	else if ( cur > setTime ) { 
 	    setText("Set");
-	    
+	    setTextColor(R.color.yellow);
 	}
 	super.onDraw(canvas);
 	invalidate();
