@@ -41,14 +41,18 @@ public class GoScreen extends TextView {
     @Override
     public void onDraw(Canvas canvas) {
 	long cur = SystemClock.uptimeMillis();
+	Resources myresources = getResources();
 	if ( cur > quitTime ) { 
 	    Activity activity = (Activity) getContext();
 	    activity.finish();
 	}
-	else if ( cur > goTime ) setText("Go!");
+	else if ( cur > goTime ) {
+	    setText("Go!");
+	    setTextColor(myResources.getColor(R.color.green));
+	}
 	else if ( cur > setTime ) { 
 	    setText("Set");
-	    setTextColor(R.color.yellow);
+	    setTextColor(myResources.getColor(R.color.yellow));
 	}
 	super.onDraw(canvas);
 	invalidate();
