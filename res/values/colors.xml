@@ -2,4 +2,7 @@
 
 <resources>
   <color name="clockTextColor">#FFFFFF</color>
+  <color name="green">#7fff66</color>
+  <color name="yellow">#eeff59</color>
+  <color name="red">#ff6a59</color>
 </resources>
