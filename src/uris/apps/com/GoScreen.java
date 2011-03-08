@@ -46,7 +46,10 @@ public class GoScreen extends TextView {
 	    activity.finish();
 	}
 	else if ( cur > goTime ) setText("Go!");
-	else if ( cur > setTime ) setText("Set");
+	else if ( cur > setTime ) { 
+	    setText("Set");
+	    
+	}
 	super.onDraw(canvas);
 	invalidate();
     }
