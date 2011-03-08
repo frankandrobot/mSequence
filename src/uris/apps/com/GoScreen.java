@@ -41,7 +41,7 @@ public class GoScreen extends TextView {
     @Override
     public void onDraw(Canvas canvas) {
 	long cur = SystemClock.uptimeMillis();
-	Resources myresources = getResources();
+	Resources myResources = getResources();
 	if ( cur > quitTime ) { 
 	    Activity activity = (Activity) getContext();
 	    activity.finish();
