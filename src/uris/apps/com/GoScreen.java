@@ -39,8 +39,8 @@ public class GoScreen extends TextView {
 	
 	//setup canvas
 	myResources = getResources();
-	ringColor = new Paint(Paint.ANTI_ALIAS_FLAG);
-	ringColor.setColor(myResources.getColor(R.color.clockTextColor))
+	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	ringPaint.setColor(myResources.getColor(R.color.clockTextColor))
 
     }
     
@@ -62,15 +62,21 @@ public class GoScreen extends TextView {
 	    invalidate();
 	}
 	//draw rotating ring
-	
+	int px = getWidth() / 2;
+	int py = getHeight() / 2;
+	int radius = Math.min(px,py);
+	canvas.drawCircle(px,py,radius,ringColor);
 	super.onDraw(canvas);
     }
 
+    //Called by parent. Gives the available dimensions for this view.
+    //Then setMeasureDimension sets the measurement specs.
     @Override 
-	protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec){ 
+    protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec){ 
 	int measuredHeight=measure(heightMeasureSpec); 
 	int measuredWidth=measure(widthMeasureSpec); 
-	setMeasuredDimension(measuredHeight,measuredWidth); 
+	int d = Math.max(measuredHeight,measuredWidth);
+	setMeasuredDimension(d,d); 
     }
   
     private int measure(int measureSpec) { 
@@ -88,5 +94,5 @@ public class GoScreen extends TextView {
 
     private long startTime,readyTime,setTime,goTime,quitTime;
     private Resources myResources;
-    private Paint ringColor;
+    private Paint ringPaint;
 }
