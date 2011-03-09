@@ -18,6 +18,7 @@ import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation;
 import android.graphics.RadialGradient;
+import android.graphics.Shader.TileMode;
  
 public class GoScreen extends TextView {
 
