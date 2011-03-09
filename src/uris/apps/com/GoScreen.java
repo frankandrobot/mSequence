@@ -73,7 +73,7 @@ public class GoScreen extends TextView {
 	int px = getWidth() / 2;
 	int py = getHeight() / 2;
 	int radius = Math.min(px,py);
-	ringPaint.setShader(new RadialGradient(px,py,r,
+	ringPaint.setShader(new RadialGradient(px,py,radius,
 					       0x00000000,0xffffffff,
 					       Shader.TileMode.CLAMP));
 	
