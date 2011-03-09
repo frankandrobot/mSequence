@@ -36,12 +36,17 @@ public class GoScreen extends TextView {
 	setTime = startTime + 1000;
 	goTime = setTime + 1000;
 	quitTime = goTime + 1000;
+	
+	//setup canvas
+	myResources = getResources();
+	ringColor = new Paint(Paint.ANTI_ALIAS_FLAG);
+	ringColor.setColor(myResources.getColor(R.color.clockTextColor))
+
     }
     
     @Override
     public void onDraw(Canvas canvas) {
 	long cur = SystemClock.uptimeMillis();
-	Resources myResources = getResources();
 	if ( cur > quitTime ) { 
 	    Activity activity = (Activity) getContext();
 	    activity.finish();
@@ -49,14 +54,39 @@ public class GoScreen extends TextView {
 	else if ( cur > goTime ) {
 	    setText("Go!");
 	    setTextColor(myResources.getColor(R.color.green));
+	    invalidate();
 	}
 	else if ( cur > setTime ) { 
 	    setText("Set");
 	    setTextColor(myResources.getColor(R.color.yellow));
+	    invalidate();
 	}
+	//draw rotating ring
+	
 	super.onDraw(canvas);
-	invalidate();
+    }
+
+    @Override 
+	protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec){ 
+	int measuredHeight=measure(heightMeasureSpec); 
+	int measuredWidth=measure(widthMeasureSpec); 
+	setMeasuredDimension(measuredHeight,measuredWidth); 
+    }
+  
+    private int measure(int measureSpec) { 
+	int specMode=MeasureSpec.getMode(measureSpec); 
+	int specSize=MeasureSpec.getSize(measureSpec); 
+      
+	//Default size
+	int result=500; 
+	if(specMode==MeasureSpec.AT_MOST ||
+	   specMode==MeasureSpec.EXACTLY) { 
+	    result=specSize; 
+	} 
+	return result;
     }
 
     private long startTime,readyTime,setTime,goTime,quitTime;
+    private Resources myResources;
+    private Paint ringColor;
 }
