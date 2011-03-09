@@ -17,7 +17,7 @@ import android.graphics.Typeface;
 import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation;
-
+import android.graphics.RadialGradient
  
 public class GoScreen extends TextView {
 
@@ -43,6 +43,12 @@ public class GoScreen extends TextView {
 	ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
 	ringPaint.setStyle(Paint.Style.STROKE);
 	ringPaint.setStrokeWidth(5);
+	int px = getWidth() / 2;
+	int py = getHeight() / 2;
+	int r = Math.min(px,py);
+	ringPaint.setShader(new RadialGradient(px,py,r,
+					       0x000000,0xffffffff,
+					       Shader.TileMode.CLAMP));
     }
     
     @Override
@@ -66,7 +72,7 @@ public class GoScreen extends TextView {
 	int px = getWidth() / 2;
 	int py = getHeight() / 2;
 	int radius = Math.min(px,py);
-	canvas.drawCircle(px,py,radius,ringPaint);
+	canvas.drawCircle(px,py,radius-5,ringPaint);
 	super.onDraw(canvas);
 	invalidate();
     }
