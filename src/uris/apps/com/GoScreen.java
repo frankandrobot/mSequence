@@ -18,7 +18,7 @@ import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation;
 import android.graphics.RadialGradient;
-import android.graphics.Shader.TileMode;
+import android.graphics.Shader;
  
 public class GoScreen extends TextView {
 
@@ -49,7 +49,7 @@ public class GoScreen extends TextView {
 	int r = Math.min(px,py);
 	ringPaint.setShader(new RadialGradient(px,py,r,
 					       0x000000,0xffffffff,
-					       TileMode.CLAMP));
+					       Shader.TileMode.CLAMP));
     }
     
     @Override
