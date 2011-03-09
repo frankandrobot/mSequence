@@ -77,7 +77,7 @@ public class GoScreen extends TextView {
     protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec){ 
 	int measuredHeight=measure(heightMeasureSpec); 
 	int measuredWidth=measure(widthMeasureSpec); 
-	int d = Math.max(measuredHeight,measuredWidth);
+	int d = Math.min(measuredHeight,measuredWidth);
 	setMeasuredDimension(d,d); 
     }
   
