@@ -44,8 +44,8 @@ public class GoScreen extends TextView {
 	ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
 	ringPaint.setStyle(Paint.Style.STROKE);
 	ringPaint.setStrokeWidth(5);
-	float px = getWidth() / 2.0;
-	float py = getHeight() / 2.0;
+	float px = ((float) getWidth()) / 2.0f;
+	float py = ((float) getHeight()) / 2.0f;
 	float r = Math.min(px,py);
 	ringPaint.setShader(new RadialGradient(px,py,r,
 					       0x00000000,0xffffffff,
