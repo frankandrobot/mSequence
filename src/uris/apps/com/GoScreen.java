@@ -49,7 +49,7 @@ public class GoScreen extends TextView {
 	int r = Math.min(px,py);
 	ringPaint.setShader(new RadialGradient(px,py,r,
 					       0x000000,0xffffffff,
-					       Shader.TileMode.CLAMP));
+					       TileMode.CLAMP));
     }
     
     @Override
