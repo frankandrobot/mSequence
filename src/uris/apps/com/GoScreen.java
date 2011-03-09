@@ -65,7 +65,7 @@ public class GoScreen extends TextView {
 	int px = getWidth() / 2;
 	int py = getHeight() / 2;
 	int radius = Math.min(px,py);
-	canvas.drawCircle(px,py,radius,ringColor);
+	canvas.drawCircle(px,py,radius,ringPaint);
 	super.onDraw(canvas);
     }
 
