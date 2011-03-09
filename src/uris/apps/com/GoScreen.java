@@ -41,7 +41,8 @@ public class GoScreen extends TextView {
 	myResources = getResources();
 	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
-
+	ringPaint.setStyle(Paint.style.STROKE);
+	ringPaint.setStroke(5);
     }
     
     @Override
@@ -67,6 +68,7 @@ public class GoScreen extends TextView {
 	int radius = Math.min(px,py);
 	canvas.drawCircle(px,py,radius,ringPaint);
 	super.onDraw(canvas);
+	invalidate();
     }
 
     //Called by parent. Gives the available dimensions for this view.
