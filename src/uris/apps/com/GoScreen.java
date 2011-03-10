@@ -83,10 +83,9 @@ public class GoScreen extends TextView {
 	
 	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
 	canvas.save();
-	int i = 0;
-	i += 10;
-	i %= 360;
-	canvas.rotate(i,px,py);
+	rotAngle += 2;
+	rotAngle %= 360;
+	canvas.rotate(rotAngle,px,py);
 	canvas.drawCircle(px,py,radius-ringThick,gradPaint);
 	canvas.restore();
 	super.onDraw(canvas);
@@ -119,5 +118,5 @@ public class GoScreen extends TextView {
     private long startTime,readyTime,setTime,goTime,quitTime;
     private Resources myResources;
     private Paint ringPaint, gradPaint;
-    private int ringThick;
+    private int ringThick, rotAngle;
 }
