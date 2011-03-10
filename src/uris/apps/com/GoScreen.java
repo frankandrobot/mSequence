@@ -83,7 +83,7 @@ public class GoScreen extends TextView {
 	
 	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
 	canvas.save();
-	rotAngle += 2;
+	rotAngle += 5;
 	rotAngle %= 360;
 	canvas.rotate(rotAngle,px,py);
 	canvas.drawCircle(px,py,radius-ringThick,gradPaint);
