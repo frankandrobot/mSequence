@@ -43,7 +43,7 @@ public class GoScreen extends TextView {
 	myResources = getResources();
 	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	//ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
-	//	ringPaint.setStyle(Paint.Style.STROKE);
+	ringPaint.setStyle(Paint.Style.STROKE);
 	ringPaint.setStrokeWidth(5);
 	// float px = ((float) getWidth()) / 2.0f;
 	// float py = ((float) getHeight()) / 2.0f;
