@@ -50,7 +50,7 @@ public class GoScreen extends TextView {
 	ringPaint.setStrokeWidth(ringThick);
 	gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	gradPaint.setStyle(Paint.Style.STROKE);
-	gradPaint.setStrokWidth(ringThick);
+	gradPaint.setStrokeWidth(ringThick);
     }
     
     @Override
