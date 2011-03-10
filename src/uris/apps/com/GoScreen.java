@@ -41,6 +41,7 @@ public class GoScreen extends TextView {
 	
 	//setup canvas
 	ringThick = 20;
+	//use measureText;
 	myResources = getResources();
 	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	//ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
