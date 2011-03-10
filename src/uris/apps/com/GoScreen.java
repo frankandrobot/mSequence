@@ -82,7 +82,13 @@ public class GoScreen extends TextView {
 	// 				       Shader.TileMode.CLAMP));
 	
 	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
+	canvas.save();
+	int i = 0;
+	i += 2;
+	i %= 360;
+	canvas.rotate(i,px,py);
 	canvas.drawCircle(px,py,radius-ringThick,gradPaint);
+	canvas.restore();
 	super.onDraw(canvas);
 	invalidate();
     }
