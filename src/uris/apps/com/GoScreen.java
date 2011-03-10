@@ -40,17 +40,16 @@ public class GoScreen extends TextView {
 	quitTime = goTime + 1000;
 	
 	//setup canvas
+	ringThick = 20;
 	myResources = getResources();
 	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	//ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
+	ringPaint.setColor(0xffff0000);
 	ringPaint.setStyle(Paint.Style.STROKE);
-	ringPaint.setStrokeWidth(5);
-	// float px = ((float) getWidth()) / 2.0f;
-	// float py = ((float) getHeight()) / 2.0f;
-	// float r = Math.min(px,py);
-	// ringPaint.setShader(new RadialGradient(px,py,r,
-	// 				       0x00000000,0xffffffff,
-	// 				       Shader.TileMode.CLAMP));
+	ringPaint.setStrokeWidth(ringThick);
+	gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	gradPaint.setStyle(Paint.Style.STROKE);
+	gradPiant.setStrokWidth(ringThick);
     }
     
     @Override
@@ -74,14 +73,15 @@ public class GoScreen extends TextView {
 	int px = getWidth() / 2;
 	int py = getHeight() / 2;
 	int radius = Math.min(px,py);
-	ringPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
+	gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
 					       0x00000000,0xffffffff,
 					       Shader.TileMode.CLAMP));
 	// ringPaint.setShader(new RadialGradient(px,py,radius+5,
 	// 				       0x00000000,0xffffffff,
 	// 				       Shader.TileMode.CLAMP));
 	
-	canvas.drawCircle(px,py,radius-5,ringPaint);
+	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
+	canvas.drawCircle(px,py,radius-ringThick,gradPaint);
 	super.onDraw(canvas);
 	invalidate();
     }
@@ -111,5 +111,6 @@ public class GoScreen extends TextView {
 
     private long startTime,readyTime,setTime,goTime,quitTime;
     private Resources myResources;
-    private Paint ringPaint;
+    private Paint ringPaint, gradPaint;
+    private int ringThick;
 }
