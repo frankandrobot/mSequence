@@ -131,27 +131,12 @@ public class PlayGame extends Activity
 		    PlayGame.this.updateProgressBar();
 		    
 		    MyDebug.logv("PlayGame", text + " " + position);
-		    if ( MyDebug.playGameDebug ) {
-			//say if correct or not
-			Toast.makeText(PlayGame.this, 
-				       text + " " + position,
-				       Toast.LENGTH_SHORT).show();
-		    }
+
 		}
 	    });
 
-	if ( MyDebug.playGameDebug) {
-	    Toast.makeText(PlayGame.this, 
-	    		   "Level: "+String.valueOf(difficulty), 
-	    		   Toast.LENGTH_SHORT).show();
-	
-	    mTextView = (TextView) findViewById(R.id.textview);
-	    
-	    mTextView.setText(
-	    		      mTree.toString() 
-	    		      //+ "\n" + "Item sel: " + position
-	    		      );
-	}
+	MyDebug.logv("PlayGame", "Level: "+String.valueOf(difficulty));
+	MyDebug.logv("PlayGame", mTree.toString() );
 
 	//init progress bar
 	getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 0);
