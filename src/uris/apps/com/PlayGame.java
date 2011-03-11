@@ -22,7 +22,7 @@ public class PlayGame extends Activity
     private ClockTextView mRunningClock;
 
     //debug
-    private TextView mTextView;
+    //private TextView mTextView;
 
     // Menu
     static final private int RESTART = Menu.FIRST;
@@ -130,6 +130,7 @@ public class PlayGame extends Activity
 		    //update progress bar
 		    PlayGame.this.updateProgressBar();
 		    
+		    MyDebug.logv("PlayGame", text + " " + position);
 		    if ( MyDebug.playGameDebug ) {
 			//say if correct or not
 			Toast.makeText(PlayGame.this, 
