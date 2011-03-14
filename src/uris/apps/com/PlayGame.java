@@ -21,9 +21,6 @@ public class PlayGame extends Activity
     private ImageAdapter mAdapter;
     private ClockTextView mRunningClock;
 
-    //debug
-    //private TextView mTextView;
-
     // Menu
     static final private int RESTART = Menu.FIRST;
     static final private int BACK = Menu.FIRST + 1;
@@ -130,13 +127,21 @@ public class PlayGame extends Activity
 		    //update progress bar
 		    PlayGame.this.updateProgressBar();
 		    
-		    MyDebug.logv("PlayGame", text + " " + position);
+		    //debug
+		    MyDebug.PlayGameLogv( 
+					 mTree.toString() + "\n" +
+					 mTree.currentStage() + " / "
+					 + mTree.totalStages()
+					 + mAdapter.toString() + "\n" 
+					 + Score.mytoString()
+					  );
+		    MyDebug.PlayGameLogv(text + " " + position);
 
 		}
 	    });
 
-	MyDebug.logv("PlayGame", "Level: "+String.valueOf(difficulty));
-	MyDebug.logv("PlayGame", mTree.toString() );
+	MyDebug.PlayGameLogv("Level: "+String.valueOf(difficulty));
+	MyDebug.PlayGameLogv(mTree.toString() );
 
 	//init progress bar
 	getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 0);
@@ -150,18 +155,6 @@ public class PlayGame extends Activity
 				  Window.FEATURE_PROGRESS, 
 				  x);
 		    
-	//debug
-	if ( MyDebug.playGameDebug) {
-	    mTextView.setText(
-			      mTree.toString() + "\n" +
-			      mTree.currentStage() + " / "
-			      + mTree.totalStages()
-			      + mAdapter.toString() + "\n" 
-			      + Score.mytoString()
-			      );
-	}
-
-       
     }
 
     //----------------------------------
