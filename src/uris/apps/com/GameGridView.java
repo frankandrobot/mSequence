@@ -119,7 +119,7 @@ public class GameGridView extends GridView {
     }
 
     public void flashRed(int position) {
-	redTime = SystemClock.uptimeMillis() + 2000;
+	redTime = SystemClock.uptimeMillis() + 1000;
 	redPosition = position;
 	red = true;
     }
