@@ -88,7 +88,7 @@ public class GameGridView extends GridView {
 	//draw rotating ring
 	int px = getWidth() / 2;
 	int py = getHeight() / 2;
-	int radius = Math.min(px,py);
+	int radius = Math.max(px,py);
 	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
 	gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
 					       0x00000000,0xffffffff,
