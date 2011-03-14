@@ -37,6 +37,7 @@ public class ClockTextView extends TextView {
 	// Get a reference to our resource table.
 	Resources myResources = getResources();
 
+	setText("");
 	// Create the paint brushes we will use in the onDraw method.
 	textPaintColor = new Paint(Paint.ANTI_ALIAS_FLAG);
 	textPaintColor.setColor(myResources.getColor(R.color.clockTextColor));
