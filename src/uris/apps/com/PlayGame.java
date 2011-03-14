@@ -58,7 +58,7 @@ public class PlayGame extends Activity
 
 	//Set up RunningClock - this should be part of the View, but it's not
 	mRunningClock = (ClockTextView) findViewById(R.id.running_clock);
-	mRunningClock.setText = "";
+	mRunningClock.setText("");
 	//mRunningClock.initStartTime();
 	
 	//Call this method when user selects an image 
