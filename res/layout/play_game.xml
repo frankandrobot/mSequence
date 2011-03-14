@@ -18,6 +18,7 @@
       android:horizontalSpacing="10dp"
       android:stretchMode="columnWidth"
       android:gravity="center"
+      android:background="#000"
       />
   <uris.apps.com.ClockTextView
       android:id="@+id/running_clock"
