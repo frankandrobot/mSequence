@@ -16,7 +16,7 @@
       android:numColumns="auto_fit"
       android:verticalSpacing="10dp"
       android:horizontalSpacing="10dp"
-      android:stretchMode="spacingWidth"
+      android:stretchMode="spacingWidthUniform"
       android:gravity="center"
       android:background="#fff"
       />
