@@ -22,7 +22,7 @@
       />
   <uris.apps.com.ClockTextView
       android:id="@+id/running_clock"
-      android:layout_width="wrap_content"
+      android:layout_width="fill_parent"
       android:layout_height="wrap_content"
       android:textColor="#ffffff"
       android:textSize="50sp"
