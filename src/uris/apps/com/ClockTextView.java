@@ -47,7 +47,6 @@ public class ClockTextView extends TextView {
 	// // Get the paper background color and the margin width.
 	// paperColor = myResources.getColor(R.color.notepad_paper);
 	//margin = myResources.getDimension(R.dimen.notepad_margin);
-	setText = "";
     }
 
     public float getRunningTime() {
