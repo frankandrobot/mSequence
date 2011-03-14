@@ -28,18 +28,19 @@ public class GameGridView extends GridView {
     }
 
     private void init() {
-	// Get a reference to our resource table.
-	// Resources myResources = getResources();
+	//setup canvas
+	ringThick = 20;
+	//use measureText;
+	myResources = getResources();
+	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	//ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
+	ringPaint.setColor(0xffff0000);
+	ringPaint.setStyle(Paint.Style.STROKE);
+	ringPaint.setStrokeWidth(ringThick);
+	gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	gradPaint.setStyle(Paint.Style.STROKE);
+	gradPaint.setStrokeWidth(ringThick);
 
-	// // Create the paint brushes we will use in the onDraw method.
-	// textPaintColor = new Paint(Paint.ANTI_ALIAS_FLAG);
-	// textPaintColor.setColor(myResources.getColor(R.color.clockTextColor));
-	
-	// startTime = SystemClock.uptimeMillis();
-
-	// // Get the paper background color and the margin width.
-	// paperColor = myResources.getColor(R.color.notepad_paper);
-	//margin = myResources.getDimension(R.dimen.notepad_margin);
     }
 
     public void deselect() {
@@ -83,6 +84,16 @@ public class GameGridView extends GridView {
 		invalidate();
 	    }
 	}
+
+	//draw rotating ring
+	int px = getWidth() / 2;
+	int py = getHeight() / 2;
+	int radius = Math.min(px,py);
+	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
+	gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
+					       0x00000000,0xffffffff,
+					       Shader.TileMode.CLAMP));
+
 	// canvas.drawText(String.valueOf(secs), 10, 10, textPaintColor);
 	// // Color as paper
 	// // canvas.drawColor(paperColor);
@@ -129,4 +140,7 @@ public class GameGridView extends GridView {
     private int redPosition=0,greenPosition=0;
     private float greenTime=0,redTime=0;
     private boolean green=false,red=false;
+    private Resources myResources;
+    private Paint ringPaint, gradPaint;
+    private int ringThick, rotAngle;
 }
