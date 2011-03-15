@@ -65,7 +65,7 @@ public class ProgressBarView extends GridView {
 	// gradPaint.setStyle(Paint.Style.STROKE);
 	// gradPaint.setStrokeWidth(ringThick);
     }
-}
+
     private void drawArcs(Canvas canvas) {
     }
     
