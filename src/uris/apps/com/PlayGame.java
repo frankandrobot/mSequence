@@ -20,6 +20,7 @@ public class PlayGame extends Activity
     private TreeGenerator mTree;
     private ImageAdapter mAdapter;
     private ClockTextView mRunningClock;
+    private ProgressBarView mProgress;
 
     // Menu
     static final private int RESTART = Menu.FIRST;
@@ -145,6 +146,10 @@ public class PlayGame extends Activity
 	MyDebug.PlayGameLogv(mTree.toString() );
 
 	//init progress bar
+	mProgress = (ProgressBarView) findViewById(R.id.progress_bar);
+	mProgress.setCount( mTree.totalStages() );
+	mProgress.setCurrent( 1 );
+
 	getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 0);
     }
 
