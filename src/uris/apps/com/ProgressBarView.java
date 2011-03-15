@@ -84,7 +84,6 @@ public class ProgressBarView extends GridView {
 		invalidate();
 	    }
 	}
-	    
 	canvas.drawArc(new RectF(px-r,py-r,px+r,py+r), 
 		       0, currentAngle, 
 		       false, 
