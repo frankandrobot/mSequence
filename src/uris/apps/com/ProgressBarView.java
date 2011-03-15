@@ -38,8 +38,11 @@ public class ProgressBarView extends GridView {
     }
 
     private void init() {
-	//setup canvas
 	ringThick = 20;
+	switchTime = SystemClock.uptimeMillis() + 1000;
+
+	//setup canvas
+
 	//use measureText;
 	myResources = getResources();
 	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -47,25 +50,39 @@ public class ProgressBarView extends GridView {
 	ringPaint.setColor(0xffff0000);
 	ringPaint.setStyle(Paint.Style.STROKE);
 	ringPaint.setStrokeWidth(ringThick);
-	gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	gradPaint.setStyle(Paint.Style.STROKE);
-	gradPaint.setStrokeWidth(ringThick);
+
+	indicatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	indicatorPaint.setColor(myResources
+				.getColor( R.color.green )
+				);
+	indicator.setStyle(Paint.Style.STROKE);
+	indicator.setStrokeWidth(ringThick);
+	// gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	// gradPaint.setStyle(Paint.Style.STROKE);
+	// gradPaint.setStrokeWidth(ringThick);
     }
 
     private void drawArcs(Canvas canvas) {
     }
-
+    
     private void drawCurrent(Canvas canvas,int px, int py, int radius) {
 	//hack assumes radius in min of width/height
-	canvas.drawArc(new RectF(px-radius,py-radius,px+radius,py+radius), 
+	int r = radius-ringThick;
+	if ( SystemClock.uptimeMillis() > switchTime ) {
+	    switchTime = SystemClock.uptimeMillis();
+	    curPaint = redPaint;
+	}
+	else { curPaint = indicatorPaint; }
+	    
+	canvas.drawArc(new RectF(px-r,py-r,px+r,py+r), 
 		       0, currentAngle, 
 		       false, 
-		       ringPaint);
+		       indicatorPaint);
     }
 
     @Override
 	public void onDraw(Canvas canvas) {
-
+	
 	//draw ring
 	int px = getWidth() / 2;
 	int py = getHeight() / 2;
@@ -87,8 +104,9 @@ public class ProgressBarView extends GridView {
     }
 
     private Resources myResources;
-    private Paint ringPaint, gradPaint;
+    private Paint ringPaint, indicatorPaint, curPaint;
     private int ringThick, rotAngle;
     private float sweepAngle, currentAngle;
     private int count, current;
+    private long switchTime;
 }
