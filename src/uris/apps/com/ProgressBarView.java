@@ -65,7 +65,7 @@ public class ProgressBarView extends GridView {
 	// gradPaint.setStyle(Paint.Style.STROKE);
 	// gradPaint.setStrokeWidth(ringThick);
     }
-
+}
     private void drawArcs(Canvas canvas) {
     }
     
@@ -89,7 +89,7 @@ public class ProgressBarView extends GridView {
 	    }
 	}
 	canvas.drawArc(new RectF(px-r,py-r,px+r,py+r), 
-		       0, currentAngle, 
+		       0, -1*currentAngle, 
 		       false, 
 		       curPaint);
     }
