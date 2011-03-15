@@ -55,8 +55,9 @@ public class ProgressBarView extends GridView {
     private void drawArcs(Canvas canvas) {
     }
 
-    private void drawCurrent(Canvas canvas) {
-	canvas.drawArc(new RectF(0,0,getWidth(),getHeight()), 
+    private void drawCurrent(Canvas canvas,int px, int py, int radius) {
+	//hack assumes radius in min of width/height
+	canvas.drawArc(new RectF(px-radius,py-radius,px+radius,py+radius), 
 		       0, currentAngle, 
 		       false, 
 		       ringPaint);
@@ -73,7 +74,7 @@ public class ProgressBarView extends GridView {
 
 	drawArcs(canvas);
 
-	drawCurrent(canvas);
+	drawCurrent(canvas,px,py,radius);
 
 	// gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
 	// 				       0x00000000,0xffffffff,
