@@ -30,7 +30,7 @@
       android:layout_width="250sp"
       android:layout_height="wrap_content"
       android:layout_below="@id/game_grid_view"
-      android:layout_centerHorizontal="true"
+      android:layout_centerHorizontal="true" 
       android:textColor="#ffffff"
       android:textSize="50sp"
       />
