@@ -57,6 +57,9 @@ public class ProgressBarView extends GridView {
 				);
 	indicator.setStyle(Paint.Style.STROKE);
 	indicator.setStrokeWidth(ringThick);
+
+	curPaint = blinkPaint;
+	blinking = true;
 	// gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	// gradPaint.setStyle(Paint.Style.STROKE);
 	// gradPaint.setStrokeWidth(ringThick);
@@ -87,7 +90,7 @@ public class ProgressBarView extends GridView {
 	canvas.drawArc(new RectF(px-r,py-r,px+r,py+r), 
 		       0, currentAngle, 
 		       false, 
-		       blinkPaint);
+		       curPaint);
     }
 
     @Override
