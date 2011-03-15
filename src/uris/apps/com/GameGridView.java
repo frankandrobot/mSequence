@@ -29,18 +29,7 @@ public class GameGridView extends GridView {
 
     private void init() {
 	//setup canvas
-	ringThick = 20;
-	//use measureText;
 	myResources = getResources();
-	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	//ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
-	ringPaint.setColor(0xffff0000);
-	ringPaint.setStyle(Paint.Style.STROKE);
-	ringPaint.setStrokeWidth(ringThick);
-	gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	gradPaint.setStyle(Paint.Style.STROKE);
-	gradPaint.setStrokeWidth(ringThick);
-
     }
 
     public void deselect() {
@@ -85,32 +74,6 @@ public class GameGridView extends GridView {
 	    }
 	}
 
-	//draw rotating ring
-	int px = getWidth() / 2;
-	int py = getHeight() / 2;
-	int radius = Math.max(px,py);
-	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
-	gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
-					       0x00000000,0xffffffff,
-					       Shader.TileMode.CLAMP));
-
-	// canvas.drawText(String.valueOf(secs), 10, 10, textPaintColor);
-	// // Color as paper
-	// // canvas.drawColor(paperColor);
-
-	// // // Draw ruled lines
-	// canvas.drawLine(0, 0, getMeasuredHeight(), 0, linePaint);
-	// canvas.drawLine(0, getMeasuredHeight(), 
-	//                    getMeasuredWidth(), getMeasuredHeight(), 
-	//                    linePaint);
-
-	// // Draw margin
-	// canvas.drawLine(margin, 0, margin, getMeasuredHeight(), marginPaint);
-
-	// // Move the text across from the margin
-	// canvas.save();
-	// canvas.translate(margin, 0);
-
 	// Use the TextView to render the text.
 	super.onDraw(canvas);
 	//canvas.restore();
@@ -141,6 +104,4 @@ public class GameGridView extends GridView {
     private float greenTime=0,redTime=0;
     private boolean green=false,red=false;
     private Resources myResources;
-    private Paint ringPaint, gradPaint;
-    private int ringThick, rotAngle;
 }
