@@ -56,7 +56,7 @@ public class ProgressBarView extends GridView {
     }
 
     private void drawCurrent(Canvas canvas) {
-	canvas.drawArc(new Rect(0,0,getWidth(),getHeight()), 
+	canvas.drawArc(new RectF(0,0,getWidth(),getHeight()), 
 		       0, currentAngle, 
 		       false, 
 		       ringPaint);
