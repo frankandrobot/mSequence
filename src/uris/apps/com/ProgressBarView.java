@@ -55,8 +55,8 @@ public class ProgressBarView extends GridView {
 	blinkPaint.setColor(myResources
 				.getColor( R.color.green )
 				);
-	indicator.setStyle(Paint.Style.STROKE);
-	indicator.setStrokeWidth(ringThick);
+	blinkPaint.setStyle(Paint.Style.STROKE);
+	blinkPaint.setStrokeWidth(ringThick);
 
 	curPaint = blinkPaint;
 	blinking = true;
@@ -74,7 +74,7 @@ public class ProgressBarView extends GridView {
 	if ( blinking ) {
 	    if ( SystemClock.uptimeMillis() > switchTime ) {
 		switchTime = SystemClock.uptimeMillis() + 1000;
-		curPaint = redPaint;
+		curPaint = ringPaint;
 		blinking = false;
 		invalidate();
 	    }
