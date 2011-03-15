@@ -29,7 +29,7 @@ public class ProgressBarView extends GridView {
 
     public void setCount(int c) { 
 	count = c; 
-	sweepAngle = -1f * 360f / (float) c;
+	sweepAngle = 360f / (float) c;
     }
     
     public void setCurrent(int c) { 
