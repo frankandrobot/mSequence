@@ -39,7 +39,8 @@ public class ProgressBarView extends GridView {
 
     private void init() {
 	ringThick = 20;
-	switchTime = SystemClock.uptimeMillis() + 1000;
+	switchTime = SystemClock.uptimeMillis() + blinkTime;
+	blinkTime = 500;
 
 	//setup canvas
 
@@ -73,7 +74,7 @@ public class ProgressBarView extends GridView {
 	int r = radius-ringThick;
 	if ( blinking ) {
 	    if ( SystemClock.uptimeMillis() > switchTime ) {
-		switchTime = SystemClock.uptimeMillis() + 1000;
+		switchTime = SystemClock.uptimeMillis() + blinkTime;
 		curPaint = ringPaint;
 		blinking = false;
 		invalidate();
@@ -81,7 +82,7 @@ public class ProgressBarView extends GridView {
 	}
 	else { 
 	    if ( SystemClock.uptimeMillis() > switchTime ) {
-		switchTime = SystemClock.uptimeMillis() + 1000;
+		switchTime = SystemClock.uptimeMillis() + blinkTime;
 		curPaint = blinkPaint;
 		blinking = true;
 		invalidate();
@@ -121,6 +122,6 @@ public class ProgressBarView extends GridView {
     private int ringThick, rotAngle;
     private float sweepAngle, currentAngle;
     private int count, current;
-    private long switchTime;
+    private long switchTime, blinkTime;
     private boolean blinking=true;
 }
