@@ -51,8 +51,8 @@ public class ProgressBarView extends GridView {
 	ringPaint.setStyle(Paint.Style.STROKE);
 	ringPaint.setStrokeWidth(ringThick);
 
-	indicatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	indicatorPaint.setColor(myResources
+	blinkPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	blinkPaint.setColor(myResources
 				.getColor( R.color.green )
 				);
 	indicator.setStyle(Paint.Style.STROKE);
@@ -68,16 +68,27 @@ public class ProgressBarView extends GridView {
     private void drawCurrent(Canvas canvas,int px, int py, int radius) {
 	//hack assumes radius in min of width/height
 	int r = radius-ringThick;
-	if ( SystemClock.uptimeMillis() > switchTime ) {
-	    switchTime = SystemClock.uptimeMillis() + 1000;
-	    curPaint = redPaint;
+	if ( blinking ) {
+	    if ( SystemClock.uptimeMillis() > switchTime ) {
+		switchTime = SystemClock.uptimeMillis() + 1000;
+		curPaint = redPaint;
+		blinking = false;
+		invalidate();
+	    }
 	}
-	else { curPaint = indicatorPaint; }
+	else { 
+	    if ( SystemClock.uptimeMillis() > switchTime ) {
+		switchTime = SystemClock.uptimeMillis() + 1000;
+		curPaint = blinkPaint;
+		blinking = true;
+		invalidate();
+	    }
+	}
 	    
 	canvas.drawArc(new RectF(px-r,py-r,px+r,py+r), 
 		       0, currentAngle, 
 		       false, 
-		       indicatorPaint);
+		       blinkPaint);
     }
 
     @Override
@@ -104,9 +115,10 @@ public class ProgressBarView extends GridView {
     }
 
     private Resources myResources;
-    private Paint ringPaint, indicatorPaint, curPaint;
+    private Paint ringPaint, blinkPaint, curPaint;
     private int ringThick, rotAngle;
     private float sweepAngle, currentAngle;
     private int count, current;
     private long switchTime;
+    private boolean blinking=true;
 }
