@@ -69,7 +69,7 @@ public class ProgressBarView extends GridView {
 	//hack assumes radius in min of width/height
 	int r = radius-ringThick;
 	if ( SystemClock.uptimeMillis() > switchTime ) {
-	    switchTime = SystemClock.uptimeMillis();
+	    switchTime = SystemClock.uptimeMillis() + 1000;
 	    curPaint = redPaint;
 	}
 	else { curPaint = indicatorPaint; }
