@@ -42,7 +42,10 @@ public class ProgressBarView extends GridView {
 	currentAngle = sweepAngle * current;
     }
 
-    public void reset() { current = 1; }
+    public void reset() { 
+	current = 1; 
+	currentAngle = sweepAngle;
+    }
 
     private void init() {
 	ringThick = 20;
