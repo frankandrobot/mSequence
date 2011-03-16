@@ -115,8 +115,8 @@ public class ProgressBarView extends GridView {
 
     private void drawTicks(Canvas canvas,int px,int py,int radius) {
 	canvas.save();
-	int y0=py+radius-ringThick;
-	int y1=py+radius+ringThick;
+	int y0=py+radius-ringThick-ringThick;
+	int y1=py+radius;
 	for(int i=0; i<getCount(); i++) {
 	    canvas.rotate(sweepAngle,px,py);
 	    canvas.drawLine(px,y0,px,y1,tickPaint);
