@@ -79,6 +79,7 @@ public class ProgressBarView extends GridView {
 	tickPaint.setColor(myResources
 			   .getColor( R.color.white )
 			   );
+	tickPaint.setStyle(Paint.Style.STROKE);
 	tickPaint.setStrokeWidth(tickWeight);
 	// gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	// gradPaint.setStyle(Paint.Style.STROKE);
@@ -88,9 +89,8 @@ public class ProgressBarView extends GridView {
     private void drawArcs(Canvas canvas) {
     }
     
-    private void drawCurrent(Canvas canvas,int px, int py, int radius) {
+    private void drawCurrent(Canvas canvas) {
 	//hack assumes radius in min of width/height
-	int r = radius-ringThick;
 	if ( blinking ) {
 	    if ( SystemClock.uptimeMillis() > switchTime ) {
 		switchTime = SystemClock.uptimeMillis() + blinkTime;
@@ -108,7 +108,6 @@ public class ProgressBarView extends GridView {
 	    }
 	}
 	//draw up to currrent
-	RectF box = new RectF(px-r,py-r,px+r,py+r);
 	if ( currentAngle-90 != 0) {
 	canvas.drawArc(box, -90, currentAngle-90, false, blinkPaint);
 	}
@@ -119,14 +118,15 @@ public class ProgressBarView extends GridView {
 		       curPaint);
     }
 
-    private void drawTicks(Canvas canvas,int px,int py,int radius) {
+    private void drawTicks(Canvas canvas) {
 	int fudge = 2;
 	canvas.save();
-	int y0=py+radius-ringThick-fudge;
-	int y1=py+radius-fudge;
+	//int y0=py+radius-ringThick-fudge;
+	//int y1=py+radius-fudge;
 	for(int i=0; i<getCount(); i++) {
 	    canvas.rotate(sweepAngle,px,py);
-	    canvas.drawLine(px,y0,px,y1,tickPaint);
+	    canvas.drawArc(box, -90-tickWidth,-90+tickWidth, false, tickPaint);
+	    //canvas.drawLine(px,y0,px,y1,tickPaint);
 	}
 	canvas.restore();
     }
@@ -135,16 +135,19 @@ public class ProgressBarView extends GridView {
 	public void onDraw(Canvas canvas) {
 	
 	//draw ring
-	int px = getWidth() / 2;
-	int py = getHeight() / 2;
-	int radius = Math.min(px,py);
-	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
+	px = getWidth() / 2;
+	py = getHeight() / 2;
+	radius = Math.min(px,py);
+	int radiusmod = radius-ringThick;
+	box = new RectF(px-radiusmod,py-radiusmod,
+			px+radiusmod,py+radiusmod);
+	canvas.drawCircle(px,py,radiusmod,ringPaint);
 
 	//	drawArcs(canvas,px,py,radius);
 
-	drawCurrent(canvas,px,py,radius);
+	drawCurrent(canvas);
 
-	drawTicks(canvas,px,py,radius);
+	drawTicks(canvas);
 
 	// gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
 	// 				       0x00000000,0xffffffff,
@@ -163,4 +166,8 @@ public class ProgressBarView extends GridView {
     private int count, current;
     private long switchTime, blinkTime;
     private boolean blinking=true;
+
+    //for drawing
+    private int px,py,radius;
+    private RectF box;
 }
