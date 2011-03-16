@@ -80,9 +80,11 @@ public class PlayGame extends Activity
 			text = "Correct!";
 			//update text view
 			PlayGame.this.mGameGridView.flashGreen(position);
+			PlayGame.this.mProgress.next();
 		    }
 		    else {
 			 PlayGame.this.mGameGridView.flashRed(position);
+			 PlayGame.this.mProgress.reset();
 		    }
 
 		    //check if game complete
@@ -116,6 +118,9 @@ public class PlayGame extends Activity
 			scoreReport.putExtra("noerrorbonus",Score.error_bonus);
 			startActivityForResult(scoreReport,InterArt.SCORES);
 
+			PlayGame.this.mProgress.
+			    setCount( PlayGame.this.mTree.totalStages() );
+			mProgress.setCount( 1 );
 			PlayGame.this.mGameGridView.reset();
 			PlayGame.this.mRunningClock.initStartTime();
 			PlayGame.this.mRunningClock.resume();
