@@ -37,6 +37,8 @@ public class ProgressBarView extends GridView {
 	currentAngle = sweepAngle * c;
     }
 
+    public void next() { current++; }
+
     private void init() {
 	ringThick = 20;
 	switchTime = SystemClock.uptimeMillis() + blinkTime;
