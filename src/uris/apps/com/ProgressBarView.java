@@ -32,6 +32,8 @@ public class ProgressBarView extends GridView {
 	sweepAngle = 360 / c;
     }
     
+    public int getCount() { return count; }
+
     public void setCurrent(int c) { 
 	current = c; 
 	currentAngle = sweepAngle * c;
@@ -50,7 +52,8 @@ public class ProgressBarView extends GridView {
     private void init() {
 	ringThick = 20;
 	switchTime = SystemClock.uptimeMillis() + blinkTime;
-	blinkTime = 500;
+	blinkTime = 250;
+	tickWeight = 2;
 
 	//setup canvas
 
@@ -71,6 +74,12 @@ public class ProgressBarView extends GridView {
 
 	curPaint = blinkPaint;
 	blinking = true;
+
+	tickPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	tickPaint.setColor(myResources
+			   .getColor( R.color.white )
+			   );
+	tickPaint.setStrokeWidth(tickWeight);
 	// gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	// gradPaint.setStyle(Paint.Style.STROKE);
 	// gradPaint.setStrokeWidth(ringThick);
@@ -104,6 +113,17 @@ public class ProgressBarView extends GridView {
 		       curPaint);
     }
 
+    private void drawTicks(Canvas canvas,int px,int py,int radius) {
+	canvas.save();
+	int y0=py+radius-ringThick;
+	int y1=py+radius+ringThick;
+	for(int i=0; i<getCount(); i++) {
+	    canvas.rotate(sweepAngle,px,py);
+	    canvas.drawLine(px,y0,px,y1,tickPaint);
+	}
+	canvas.restore();
+    }
+
     @Override
 	public void onDraw(Canvas canvas) {
 	
@@ -117,6 +137,8 @@ public class ProgressBarView extends GridView {
 
 	drawCurrent(canvas,px,py,radius);
 
+	drawTicks(canvas,px,py,radius);
+
 	// gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
 	// 				       0x00000000,0xffffffff,
 	// 				       Shader.TileMode.CLAMP));
@@ -128,8 +150,8 @@ public class ProgressBarView extends GridView {
     }
 
     private Resources myResources;
-    private Paint ringPaint, blinkPaint, curPaint;
-    private int ringThick, rotAngle;
+    private Paint ringPaint, tickPaint, blinkPaint, curPaint;
+    private int ringThick, rotAngle, tickWeight;
     private int sweepAngle, currentAngle;
     private int count, current;
     private long switchTime, blinkTime;
