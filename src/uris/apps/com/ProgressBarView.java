@@ -39,6 +39,8 @@ public class ProgressBarView extends GridView {
 
     public void next() { current++; }
 
+    public void reset() { current = 1; }
+
     private void init() {
 	ringThick = 20;
 	switchTime = SystemClock.uptimeMillis() + blinkTime;
