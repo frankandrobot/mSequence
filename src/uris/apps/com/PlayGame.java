@@ -124,7 +124,7 @@ public class PlayGame extends Activity
 			mTree.nextGame();
 			PlayGame.this.mProgress.
 			    setCount( mTree.totalStages()+1 );
-			PlayGame.this.mProgress.setCount( 1 );
+			PlayGame.this.mProgress.setCurrent( 1 );
 		    }
 
 		    //update pictures
