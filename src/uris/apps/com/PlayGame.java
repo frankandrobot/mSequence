@@ -118,14 +118,13 @@ public class PlayGame extends Activity
 			scoreReport.putExtra("noerrorbonus",Score.error_bonus);
 			startActivityForResult(scoreReport,InterArt.SCORES);
 
-			PlayGame.this.mProgress.
-			    setCount( PlayGame.this.mTree.totalStages() );
-			mProgress.setCount( 1 );
 			PlayGame.this.mGameGridView.reset();
 			PlayGame.this.mRunningClock.initStartTime();
 			PlayGame.this.mRunningClock.resume();
 			mTree.nextGame();
-
+			PlayGame.this.mProgress.
+			    setCount( mTree.totalStages()+1 );
+			mProgress.setCount( 1 );
 		    }
 
 		    //update pictures
@@ -152,7 +151,7 @@ public class PlayGame extends Activity
 
 	//init progress bar
 	mProgress = (ProgressBarView) findViewById(R.id.progress_bar);
-	mProgress.setCount( mTree.totalStages() );
+	mProgress.setCount( mTree.totalStages()+1 );
 	mProgress.setCurrent( 1 );
 
 	getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 0);
