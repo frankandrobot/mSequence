@@ -109,7 +109,9 @@ public class ProgressBarView extends GridView {
 	}
 	//draw up to currrent
 	RectF box = new RectF(px-r,py-r,px+r,py+r);
-	canvas.drawArc(box, -90, currentAngle, false, curPaint);
+	if ( currentAngle-90 != 0) {
+	canvas.drawArc(box, -90, currentAngle-90, false, blinkPaint);
+	}
 	//draw current
 	canvas.drawArc(box,
 		       currentAngle-180, currentAngle, 
