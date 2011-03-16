@@ -107,7 +107,11 @@ public class ProgressBarView extends GridView {
 		invalidate();
 	    }
 	}
-	canvas.drawArc(new RectF(px-r,py-r,px+r,py+r), 
+	//draw up to currrent
+	RectF box = new RectF(px-r,py-r,px+r,py+r);
+	canvas.drawArc(box, -90, currentAngle, false, curPaint);
+	//draw current
+	canvas.drawArc(box,
 		       currentAngle-180, currentAngle, 
 		       false, 
 		       curPaint);
@@ -134,7 +138,7 @@ public class ProgressBarView extends GridView {
 	int radius = Math.min(px,py);
 	canvas.drawCircle(px,py,radius-ringThick,ringPaint);
 
-	drawArcs(canvas);
+	//	drawArcs(canvas,px,py,radius);
 
 	drawCurrent(canvas,px,py,radius);
 
