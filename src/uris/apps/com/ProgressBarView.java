@@ -81,9 +81,9 @@ public class ProgressBarView extends GridView {
 	blinking = true;
 
 	tickPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	//	tickPaint.setColor(myResources
-	//		   .getColor( R.color.white )
-	//		   );
+	tickPaint.setColor(myResources
+			   .getColor( R.color.white )
+			   );
 	tickPaint.setStyle(Paint.Style.STROKE);
 	tickPaint.setStrokeWidth(ringThick);
 	// gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
