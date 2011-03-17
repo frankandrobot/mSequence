@@ -117,14 +117,14 @@ public class ProgressBarView extends GridView {
 	for(int i=0; i<getCurrent()-1; i++) {
 	    canvas.rotate(sweepAngle,px,py);
 	    canvas.drawArc(box,
-			   -90+tickWidth,sweepAngle-tickWidth,
+			   -90+tickWeight,sweepAngle-tickWeight,
 			   false,
 			   blinkPaint);
 	}
 	//draw current
 	canvas.rotate(sweepAngle,px,py);
 	canvas.drawArc(box,
-		       -90+tickWidth,sweepAngle-tickWidth,
+		       -90+tickWeight,sweepAngle-tickWeight,
 		       false,
 		       curPaint);
 	canvas.restore();
@@ -148,10 +148,10 @@ public class ProgressBarView extends GridView {
 					       0x00000000,0xffffffff,
 					       Shader.TileMode.CLAMP));
 	    canvas.drawArc(box,
-			   -90+tickWidth,sweepAngle-tickWidth,
+			   -90+tickWeight,sweepAngle-tickWeight,
 			   false,
 			   tickPaint);
-	    //canvas.drawArc(box, -90-tickWidth,-90+tickWidth, false, tickPaint);
+	    //canvas.drawArc(box, -90-tickWeight,-90+tickWeight, false, tickPaint);
 	    //canvas.drawLine(px,y0,px,y1,tickPaint);
 	}
 	canvas.restore();
