@@ -150,7 +150,7 @@ public class ProgressBarView extends GridView {
 	    // 		   -90+tickWeight,sweepAngle-tickWeight,
 	    // 		   false,
 	    // 		   tickPaint);
-	    canvas.drawArc(box, -90-tickWeight,-90+tickWeight, false, tickPaint);
+	    canvas.drawArc(box, -90-tickWeight,tickWeight+tickWeight, false, tickPaint);
 	    canvas.rotate(sweepAngle,px,py);
 	}
 	canvas.restore();
