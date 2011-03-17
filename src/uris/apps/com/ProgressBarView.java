@@ -56,18 +56,18 @@ public class ProgressBarView extends GridView {
 	//pixels
 	ringThick = 20;
 	tickWeight = 2;
+	htickWeight = tickWeight / 2;
 	//end
 	blinkTime = 250;
 	switchTime = SystemClock.uptimeMillis() + blinkTime;
 
 	//setup canvas
 
-	//use measureText;
 	myResources = getResources();
+
 	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	//ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
 	ringPaint.setColor(myResources
-			   .getColor( R.color.orange) );
+			   .getColor( R.color.red ) );
 	ringPaint.setStyle(Paint.Style.STROKE);
 	ringPaint.setStrokeWidth(ringThick);
 
@@ -79,6 +79,12 @@ public class ProgressBarView extends GridView {
 
 	curPaint = blinkPaint;
 	blinking = true;
+
+	progressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+	progressPaint.setColor(myResources
+			    .getColor( R.color.orange ));
+	progressPaint.setStyle(Paint.Style.STROKE);
+	progressPaint.setStrokeWidth(ringThick);
 
 	tickPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	tickPaint.setColor(myResources
@@ -118,7 +124,7 @@ public class ProgressBarView extends GridView {
 	    canvas.drawArc(box,
 			   -90+tickWeight,sweepAngle-tickWeight,
 			   false,
-			   blinkPaint);
+			   progressPaint);
 	    canvas.rotate(sweepAngle,px,py);
 	}
 	//draw current
@@ -150,7 +156,10 @@ public class ProgressBarView extends GridView {
 	    // 		   -90+tickWeight,sweepAngle-tickWeight,
 	    // 		   false,
 	    // 		   tickPaint);
-	    canvas.drawArc(box, -90-tickWeight,tickWeight+tickWeight, false, tickPaint);
+	    canvas.drawArc(box, 
+			   -90-htickWeight,tickWeight, 
+			   false, 
+			   tickPaint);
 	    canvas.rotate(sweepAngle,px,py);
 	}
 	canvas.restore();
@@ -190,8 +199,8 @@ public class ProgressBarView extends GridView {
     }
 
     private Resources myResources;
-    private Paint ringPaint, tickPaint, blinkPaint, curPaint;
-    private int ringThick, rotAngle, tickWeight;
+    private Paint ringPaint, tickPaint, blinkPaint, curPaint, progressPaint;
+    private int ringThick, rotAngle, tickWeight, htickWeight;
     private int sweepAngle, currentAngle;
     private int count, current;
     private long switchTime, blinkTime;
