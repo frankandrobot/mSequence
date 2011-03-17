@@ -44,8 +44,8 @@ public class GoScreen extends TextView {
 	//use measureText;
 	myResources = getResources();
 	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	//ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
-	ringPaint.setColor(0xffff0000);
+	ringPaint.setColor(myResources
+			   .getColor(R.color.orange));				
 	ringPaint.setStyle(Paint.Style.STROKE);
 	ringPaint.setStrokeWidth(ringThick);
 	gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
