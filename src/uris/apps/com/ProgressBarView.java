@@ -122,40 +122,22 @@ public class ProgressBarView extends GridView {
 	//draw up to current
 	for(int i=0; i<getCurrent()-1; i++) {
 	    canvas.drawArc(box,
-			   -90+tickWeight,sweepAngle-tickWeight,
+			   -90+htickWeight,sweepAngle-htickWeight,
 			   false,
 			   progressPaint);
 	    canvas.rotate(sweepAngle,px,py);
 	}
 	//draw current
-	//canvas.rotate(sweepAngle,px,py);
 	canvas.drawArc(box,
-		       -90+tickWeight,sweepAngle-tickWeight,
+		       -90+htickWeight,sweepAngle-htickWeight,
 		       false,
 		       curPaint);
 	canvas.restore();
-
-	// //draw up to currrent
-	// if ( currentAngle-90 != 0) {
-	// canvas.drawArc(box, -90, currentAngle-90, false, blinkPaint);
-	// }
-	// //draw current
-	// canvas.drawArc(box,
-	// 	       currentAngle-180, currentAngle, 
-	// 	       false, 
-	// 	       curPaint);
     }
 
     private void drawTicks(Canvas canvas) {
 	canvas.save();
 	for(int i=0; i<getCount(); i++) {
-	    // tickPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
-	    // 				       0x00000000,0xffffffff,
-	    // 				       Shader.TileMode.CLAMP));
-	    // canvas.drawArc(box,
-	    // 		   -90+tickWeight,sweepAngle-tickWeight,
-	    // 		   false,
-	    // 		   tickPaint);
 	    canvas.drawArc(box, 
 			   -90-htickWeight,tickWeight, 
 			   false, 
@@ -179,23 +161,14 @@ public class ProgressBarView extends GridView {
 	box = new RectF(px-radiusmod,py-radiusmod,
 			px+radiusmod,py+radiusmod);
 	//end
-	canvas.drawCircle(px,py,radiusmod,ringPaint);
 
-	//	drawArcs(canvas,px,py,radius);
+	canvas.drawCircle(px,py,radiusmod,ringPaint);
 
 	drawTicks(canvas);
 
 	drawCurrent(canvas);
 
-
-	// gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
-	// 				       0x00000000,0xffffffff,
-	// 				       Shader.TileMode.CLAMP));
-
-	// Use the TextView to render the text.
 	super.onDraw(canvas);
-	//canvas.restore();
-	//	invalidate();
     }
 
     private Resources myResources;
