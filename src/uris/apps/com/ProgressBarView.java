@@ -143,16 +143,15 @@ public class ProgressBarView extends GridView {
     private void drawTicks(Canvas canvas) {
 	canvas.save();
 	for(int i=0; i<getCount(); i++) {
+	    // tickPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
+	    // 				       0x00000000,0xffffffff,
+	    // 				       Shader.TileMode.CLAMP));
+	    // canvas.drawArc(box,
+	    // 		   -90+tickWeight,sweepAngle-tickWeight,
+	    // 		   false,
+	    // 		   tickPaint);
+	    canvas.drawArc(box, -90-tickWeight,-90+tickWeight, false, tickPaint);
 	    canvas.rotate(sweepAngle,px,py);
-	    tickPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
-					       0x00000000,0xffffffff,
-					       Shader.TileMode.CLAMP));
-	    canvas.drawArc(box,
-			   -90+tickWeight,sweepAngle-tickWeight,
-			   false,
-			   tickPaint);
-	    //canvas.drawArc(box, -90-tickWeight,-90+tickWeight, false, tickPaint);
-	    //canvas.drawLine(px,y0,px,y1,tickPaint);
 	}
 	canvas.restore();
     }
