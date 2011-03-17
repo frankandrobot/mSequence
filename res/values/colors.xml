@@ -2,8 +2,9 @@
 
 <resources>
   <color name="clockTextColor">#FFFFFF</color>
-  <color name="green">#7fff66</color>
+  <color name="green">#7fff82</color>
   <color name="yellow">#eeff59</color>
   <color name="red">#ff6a59</color>
   <color name="white">#ffffff</color>
+  <color name="orange">#ffc17f</color>
 </resources>
