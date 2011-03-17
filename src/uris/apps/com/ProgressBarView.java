@@ -29,7 +29,7 @@ public class ProgressBarView extends GridView {
 
     public void setCount(int c) { 
 	count = c; 
-	sweepAngle = 360 / c;
+	sweepAngle = 360f / (float) c;
     }
     
     public int getCount() { return count; }
@@ -192,7 +192,7 @@ public class ProgressBarView extends GridView {
     private Resources myResources;
     private Paint ringPaint, tickPaint, blinkPaint, curPaint;
     private int ringThick, rotAngle, tickWeight;
-    private int sweepAngle, currentAngle;
+    private float sweepAngle, currentAngle;
     private int count, current;
     private long switchTime, blinkTime;
     private boolean blinking=true;
