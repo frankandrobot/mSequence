@@ -176,7 +176,7 @@ public class ProgressBarView extends GridView {
 
 	drawTicks(canvas);
 
-	//	drawCurrent(canvas);
+	drawCurrent(canvas);
 
 
 	// gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
