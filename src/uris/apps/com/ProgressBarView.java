@@ -66,14 +66,14 @@ public class ProgressBarView extends GridView {
 	myResources = getResources();
 	ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	//ringPaint.setColor(myResources.getColor(R.color.clockTextColor));
-	ringPaint.setColor(0xffff0000);
+	ringPaint.setColor(myResources
+			   .getColor( R.color.orange) );
 	ringPaint.setStyle(Paint.Style.STROKE);
 	ringPaint.setStrokeWidth(ringThick);
 
 	blinkPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	blinkPaint.setColor(myResources
-				.getColor( R.color.green )
-				);
+			    .getColor( R.color.green ));
 	blinkPaint.setStyle(Paint.Style.STROKE);
 	blinkPaint.setStrokeWidth(ringThick);
 
