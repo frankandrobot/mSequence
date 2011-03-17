@@ -50,10 +50,13 @@ public class ProgressBarView extends GridView {
     }
 
     private void init() {
+	//Eventually these need to be replaced w/ device independent
+	//pixels
 	ringThick = 20;
-	switchTime = SystemClock.uptimeMillis() + blinkTime;
-	blinkTime = 250;
 	tickWeight = 2;
+	//end
+	blinkTime = 250;
+	switchTime = SystemClock.uptimeMillis() + blinkTime;
 
 	//setup canvas
 
@@ -134,13 +137,17 @@ public class ProgressBarView extends GridView {
     @Override
 	public void onDraw(Canvas canvas) {
 	
-	//draw ring
+	//Eventually these need to move to a function that gets called
+	//only when the view is resized
 	px = getWidth() / 2;
 	py = getHeight() / 2;
 	radius = Math.min(px,py);
-	int radiusmod = radius-ringThick;
+	int radiusmod = radius-ringThick; //actual radius adjusting
+					  //for the thickness of the
+					  //radius
 	box = new RectF(px-radiusmod,py-radiusmod,
 			px+radiusmod,py+radiusmod);
+	//end
 	canvas.drawCircle(px,py,radiusmod,ringPaint);
 
 	//	drawArcs(canvas,px,py,radius);
@@ -167,7 +174,7 @@ public class ProgressBarView extends GridView {
     private long switchTime, blinkTime;
     private boolean blinking=true;
 
-    //for drawing
+    //"global variables" for drawing
     private int px,py,radius;
     private RectF box;
 }
