@@ -115,14 +115,14 @@ public class ProgressBarView extends GridView {
 	canvas.save();
 	//draw up to current
 	for(int i=0; i<getCurrent()-1; i++) {
-	    canvas.rotate(sweepAngle,px,py);
 	    canvas.drawArc(box,
 			   -90+tickWeight,sweepAngle-tickWeight,
 			   false,
 			   blinkPaint);
+	    canvas.rotate(sweepAngle,px,py);
 	}
 	//draw current
-	canvas.rotate(sweepAngle,px,py);
+	//canvas.rotate(sweepAngle,px,py);
 	canvas.drawArc(box,
 		       -90+tickWeight,sweepAngle-tickWeight,
 		       false,
@@ -175,9 +175,10 @@ public class ProgressBarView extends GridView {
 
 	//	drawArcs(canvas,px,py,radius);
 
+	drawTicks(canvas);
+
 	drawCurrent(canvas);
 
-	drawTicks(canvas);
 
 	// gradPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
 	// 				       0x00000000,0xffffffff,
