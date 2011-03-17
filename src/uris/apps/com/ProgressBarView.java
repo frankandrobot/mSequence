@@ -39,6 +39,8 @@ public class ProgressBarView extends GridView {
 	currentAngle = sweepAngle * c;
     }
 
+    public int getCurrent() { return current; }
+
     public void next() { 
 	current++; 
 	currentAngle = sweepAngle * current;
@@ -79,11 +81,11 @@ public class ProgressBarView extends GridView {
 	blinking = true;
 
 	tickPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-	tickPaint.setColor(myResources
-			   .getColor( R.color.white )
-			   );
+	//	tickPaint.setColor(myResources
+	//		   .getColor( R.color.white )
+	//		   );
 	tickPaint.setStyle(Paint.Style.STROKE);
-	tickPaint.setStrokeWidth(tickWeight);
+	tickPaint.setStrokeWidth(ringThick);
 	// gradPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	// gradPaint.setStyle(Paint.Style.STROKE);
 	// gradPaint.setStrokeWidth(ringThick);
@@ -110,25 +112,46 @@ public class ProgressBarView extends GridView {
 		invalidate();
 	    }
 	}
-	//draw up to currrent
-	if ( currentAngle-90 != 0) {
-	canvas.drawArc(box, -90, currentAngle-90, false, blinkPaint);
+	canvas.save();
+	//draw up to current
+	for(int i=0; i<getCurrent()-1; i++) {
+	    canvas.rotate(sweepAngle,px,py);
+	    canvas.drawArc(box,
+			   -90+tickWidth,sweepAngle-tickWidth,
+			   false,
+			   blinkPaint);
 	}
 	//draw current
+	canvas.rotate(sweepAngle,px,py);
 	canvas.drawArc(box,
-		       currentAngle-180, currentAngle, 
-		       false, 
+		       -90+tickWidth,sweepAngle-tickWidth,
+		       false,
 		       curPaint);
+	canvas.restore();
+
+	// //draw up to currrent
+	// if ( currentAngle-90 != 0) {
+	// canvas.drawArc(box, -90, currentAngle-90, false, blinkPaint);
+	// }
+	// //draw current
+	// canvas.drawArc(box,
+	// 	       currentAngle-180, currentAngle, 
+	// 	       false, 
+	// 	       curPaint);
     }
 
     private void drawTicks(Canvas canvas) {
-	int fudge = 2;
 	canvas.save();
-	//int y0=py+radius-ringThick-fudge;
-	//int y1=py+radius-fudge;
 	for(int i=0; i<getCount(); i++) {
 	    canvas.rotate(sweepAngle,px,py);
-	    canvas.drawArc(box, -90-tickWidth,-90+tickWidth, false, tickPaint);
+	    tickPaint.setShader(new LinearGradient(0, 0, getWidth(), 0, 
+					       0x00000000,0xffffffff,
+					       Shader.TileMode.CLAMP));
+	    canvas.drawArc(box,
+			   -90+tickWidth,sweepAngle-tickWidth,
+			   false,
+			   tickPaint);
+	    //canvas.drawArc(box, -90-tickWidth,-90+tickWidth, false, tickPaint);
 	    //canvas.drawLine(px,y0,px,y1,tickPaint);
 	}
 	canvas.restore();
