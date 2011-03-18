@@ -79,7 +79,7 @@ public class ProgressBarView extends GridView {
 
 	curPaint = blinkPaint;
 	blinking = true;
-
+	
 	progressPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 	progressPaint.setColor(myResources
 			    .getColor( R.color.orange ));
