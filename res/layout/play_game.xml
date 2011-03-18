@@ -16,9 +16,10 @@
   <!-- This holds the buttons -->
   <uris.apps.com.GameGridView 
       android:id="@+id/game_grid_view"
-      android:layout_width="fill_parent" 
+      android:layout_width="wrap_content" 
       android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
+      android:layout_centerVertical="true"
+      android:layout_centerHorizontal="true"
       android:verticalSpacing="10dp"
       android:horizontalSpacing="10dp"
       android:columnWidth="90dp"
