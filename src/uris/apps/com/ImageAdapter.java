@@ -65,7 +65,7 @@ public class ImageAdapter extends BaseAdapter {
             imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setPadding(8, 8, 8, 8);
-	    Resources myResources = getResources();
+	    Resources myResources = imageView.getResources();
 	    imageView.setBackgroundDrawable(
 					    myResources.getDrawable
 					    (R.drawable.button)
