@@ -25,7 +25,6 @@
       android:columnWidth="90dp"
       android:numColumns="2"
       android:gravity="center"
-      android:stretchMode="none"
       />
   <uris.apps.com.ClockTextView
       android:id="@+id/running_clock"
