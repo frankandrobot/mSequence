@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.content.*;
 import android.view.*;
+import android.content.res.Resources;
 
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
