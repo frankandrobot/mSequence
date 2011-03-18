@@ -18,13 +18,13 @@
       android:id="@+id/game_grid_view"
       android:layout_width="wrap_content" 
       android:layout_height="wrap_content"
-      android:columnWidth="90dp"
-      android:numColumns="2"
-      android:gravity="center"
+      android:layout_centerInParent="true"
       android:verticalSpacing="10dp"
       android:horizontalSpacing="10dp"
-      android:stretchMode="columnWidth"
-      android:layout_centerInParent="true"
+      android:columnWidth="50dp"
+      android:numColumns="2"
+      android:gravity="center"
+      android:stretchMode="none"
       />
   <uris.apps.com.ClockTextView
       android:id="@+id/running_clock"
