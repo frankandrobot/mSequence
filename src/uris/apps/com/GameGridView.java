@@ -38,8 +38,10 @@ public class GameGridView extends GridView {
 	    sel = (ImageView) getChildAt(i);
 	    sel.clearColorFilter();
 	} 
-	red = false;
-	green = false;
+	redFlash = false;
+	greenFlash = false;
+	redSet = false;
+	greenSet = false;
     }
 
     @Override
@@ -47,29 +49,50 @@ public class GameGridView extends GridView {
 
 	ImageView sel;
 
-	if ( green ) {
+	if ( greenFlash ) {
 	    if (SystemClock.uptimeMillis() < greenTime) {
-		sel = (ImageView) getChildAt(greenPosition);
-		sel.setColorFilter(0xFF00FF00,  
+		if ( greenSet == false ) {
+		    sel = (ImageView) getChildAt(greenPosition);
+		    sel.setColorFilter(0xFF00FF00,  
 				   Mode.DARKEN);
-		invalidate();
+		    sel.setBackgroundDrawable(
+					      myResources.getDrawable
+					      (R.drawable.button_green)
+					      );
+		    invalidate();
+		    greenSet = true;
+		}
 	    }
 	    else {
 		sel = (ImageView) getChildAt(greenPosition);
 		sel.clearColorFilter();
+		sel.setBackgroundDrawable(
+					  myResources.getDrawable
+					  (R.drawable.button)
+					  );
 		invalidate();
 	    }
 	}
-	if ( red ) {
+	if ( redFlash ) {
 	    if (SystemClock.uptimeMillis() < redTime) {
-		sel = (ImageView) getChildAt(redPosition);
-		sel.setColorFilter(0xFFFF0000,  
+		if ( redSet == false ) {
+		    sel = (ImageView) getChildAt(redPosition);
+		    sel.setColorFilter(0xFFFF0000,  
 				   Mode.DARKEN);
-		invalidate();
+		    sel.setBackgroundDrawable(
+					      myResources.getDrawable
+					      (R.drawable.button_red)
+					      );
+		    invalidate();
+		    redSet = true;
 	    }
 	    else {
 		sel = (ImageView) getChildAt(redPosition);
 		sel.clearColorFilter();
+		sel.setBackgroundDrawable(
+					  myResources.getDrawable
+					  (R.drawable.button)
+					  );
 		invalidate();
 	    }
 	}
@@ -89,19 +112,22 @@ public class GameGridView extends GridView {
     public void flashGreen(int position) {
 	greenTime = SystemClock.uptimeMillis() + 1000;
 	greenPosition = position;
-	green = true;
+	greenFlash = true;
+	greenSet = false;
     }
 
     public void flashRed(int position) {
 	redTime = SystemClock.uptimeMillis() + 1000;
 	redPosition = position;
-	red = true;
+	redFlash = true;
+	redSet = false;
     }
 
     public void reset() { deselect(); }
 
     private int redPosition=0,greenPosition=0;
     private float greenTime=0,redTime=0;
-    private boolean green=false,red=false;
+    private boolean greenFlash=false,redFlash=false;
+    private boolean greenSet=false,redSet=false;
     private Resources myResources;
 }
