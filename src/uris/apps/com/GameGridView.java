@@ -45,8 +45,6 @@ public class GameGridView extends GridView {
 	public void onDraw(Canvas canvas) {
 
 	super.onDraw(canvas);
-	//canvas.restore();
-	//	invalidate();
     }
 
     public void updateImages() {
