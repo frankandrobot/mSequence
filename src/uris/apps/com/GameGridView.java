@@ -35,10 +35,9 @@ public class GameGridView extends GridView {
     }
 
     public void deselect() {
-	PhotoView sel;
 	for(int i=0; i<getChildCount(); i++) {
-	    sel = (PhotoView) getChildAt(i);
-	    sel.deselect();
+	    button = (PhotoView) getChildAt(i);
+	    button.deselect();
 	} 
 	redFlash = false;
 	greenFlash = false;
@@ -111,10 +110,12 @@ public class GameGridView extends GridView {
     }
 
     public void flashGreen(int position) {
-	greenTime = SystemClock.uptimeMillis() + 1000;
-	greenPosition = position;
-	greenFlash = true;
-	greenSet = false;
+	button = (PhotoView) getChildAt(position);
+	button.flashGreen( SystemClock.uptimeMillis() + 1000 );
+	// greenTime = SystemClock.uptimeMillis() + 1000;
+	// greenPosition = position;
+	// greenFlash = true;
+	// greenSet = false;
     }
 
     public void flashRed(int position) {
@@ -131,4 +132,5 @@ public class GameGridView extends GridView {
     private boolean greenFlash=false,redFlash=false;
     private boolean greenSet=false,redSet=false;
     private Resources myResources;
+    private PhotoView button;
 }
