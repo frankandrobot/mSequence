@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.content.*;
 import android.util.AttributeSet;
 import android.view.*;
+import android.graphics.PorterDuff.Mode;
 
 public class PhotoView extends ImageView {
     public PhotoView (Context context, AttributeSet ats, int ds) {
