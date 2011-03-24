@@ -35,17 +35,18 @@ public class PhotoView extends ImageView {
     @Override
 	public void onDraw(Canvas canvas) {
 
-	// if (greenFrameCounter > 0) {
-	//     canvas.drawColor(Color.GREEN);
-	//     greenFrameCounter--;
-	//     invalidate();
-	// }
-	// else if (redFrameCounter > 0) {
-	//     canvas.drawColor(Color.RED);
-	//     redFrameCounter--;
-	//     invalidate();
-	// }
+	if ( greenFlash ) {
+	    if (SystemClock.uptimeMillis() > greenTime) {
+		deselect();
+	    }
+	}
+	else if ( redFlash ) {
+	    if (SystemClock.uptimeMillis() > redTime) {
+		deselect();
+	    }
+	}
 
+	// Use the TextView to render the text.
 	super.onDraw(canvas);
 	//canvas.restore();
 	//	invalidate();
@@ -53,27 +54,40 @@ public class PhotoView extends ImageView {
 
     public void flashGreen() {
 	greenTime = SystemClock.uptimeMillis() + 1000;
-	greenPosition = position;
 	greenFlash = true;
 	greenSet = false;
+
+	setColorFilter(0xFF00FF00,  
+		       Mode.DARKEN);
+	setBackgroundDrawable(
+			      myResources.getDrawable
+			      (R.drawable.button_green)
+			      );
 	invalidate();
     }
 
     public void flashRed() {
 	redTime = SystemClock.uptimeMillis() + 1000;
-	redPosition = position;
 	redFlash = true;
 	redSet = false;
+	setColorFilter(0xFFFF0000,  
+		       Mode.DARKEN);
+	setBackgroundDrawable(
+			      myResources.getDrawable
+			      (R.drawable.button_red)
+			      );
 	invalidate();
     }
 
     public void deselect() {
-	sel.clearColorFilter();
-	sel.setBackgroundDrawable(
-				  myResources.getDrawable
-				  (R.drawable.button)
-				  );
-
+	clearColorFilter();
+	setBackgroundDrawable(
+			      myResources.getDrawable
+			      (R.drawable.button)
+			      );
+	invalidate();
+	redFlash = false;
+	greenFlash = false;
     }
 
     private Resources myResources;
