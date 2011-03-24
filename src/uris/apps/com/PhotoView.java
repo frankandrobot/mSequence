@@ -29,6 +29,7 @@ public class PhotoView extends ImageView {
     }
 
     private void init() {
+	myResources = getResources();
     }
 
     @Override
@@ -60,6 +61,16 @@ public class PhotoView extends ImageView {
 	invalidate();
     }
 
+    public void deselect() {
+	sel.clearColorFilter();
+	sel.setBackgroundDrawable(
+				  myResources.getDrawable
+				  (R.drawable.button)
+				  );
+
+    }
+
+    private Resources myResources;
     private int greenFrameCounter = -1;
     private int redFrameCounter = -1;
 
