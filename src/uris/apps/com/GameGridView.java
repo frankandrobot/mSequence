@@ -85,6 +85,7 @@ public class GameGridView extends GridView {
 					      );
 		    invalidate();
 		    redSet = true;
+		}
 	    }
 	    else {
 		sel = (ImageView) getChildAt(redPosition);
