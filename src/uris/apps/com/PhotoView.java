@@ -77,7 +77,8 @@ public class PhotoView extends ImageView {
     }
 
     private Resources myResources;
-    private int greenFrameCounter = -1;
-    private int redFrameCounter = -1;
-
+    private int redPosition=0,greenPosition=0;
+    private float greenTime=0,redTime=0;
+    private boolean greenFlash=false,redFlash=false;
+    private boolean greenSet=false,redSet=false;
 }
