@@ -34,16 +34,16 @@ public class PhotoView extends ImageView {
     @Override
 	public void onDraw(Canvas canvas) {
 
-	if (greenFrameCounter > 0) {
-	    canvas.drawColor(Color.GREEN);
-	    greenFrameCounter--;
-	    invalidate();
-	}
-	else if (redFrameCounter > 0) {
-	    canvas.drawColor(Color.RED);
-	    redFrameCounter--;
-	    invalidate();
-	}
+	// if (greenFrameCounter > 0) {
+	//     canvas.drawColor(Color.GREEN);
+	//     greenFrameCounter--;
+	//     invalidate();
+	// }
+	// else if (redFrameCounter > 0) {
+	//     canvas.drawColor(Color.RED);
+	//     redFrameCounter--;
+	//     invalidate();
+	// }
 
 	super.onDraw(canvas);
 	//canvas.restore();
