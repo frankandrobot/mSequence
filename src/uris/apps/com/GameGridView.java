@@ -112,28 +112,15 @@ public class GameGridView extends GridView {
     public void flashGreen(int position) {
 	button = (PhotoView) getChildAt(position);
 	button.flashGreen();
-	// greenTime = SystemClock.uptimeMillis() + 1000;
-	// greenPosition = position;
-	// greenFlash = true;
-	// greenSet = false;
     }
 
     public void flashRed(int position) {
 	button = (PhotoView) getChildAt(position);
-	button.flashRed( SystemClock.uptimeMillis() + 1000 );
-
-	// redTime = SystemClock.uptimeMillis() + 1000;
-	// redPosition = position;
-	// redFlash = true;
-	// redSet = false;
+	button.flashRed();
     }
 
     public void reset() { deselect(); }
 
-    private int redPosition=0,greenPosition=0;
-    private float greenTime=0,redTime=0;
-    private boolean greenFlash=false,redFlash=false;
-    private boolean greenSet=false,redSet=false;
     private Resources myResources;
     private PhotoView button;
 }
