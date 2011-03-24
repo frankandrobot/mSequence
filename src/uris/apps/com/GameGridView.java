@@ -37,7 +37,7 @@ public class GameGridView extends GridView {
     public void deselect() {
 	for(int i=0; i<getChildCount(); i++) {
 	    button = (PhotoView) getChildAt(i);
-	    button.deselect();
+ 	    button.deselect();
 	} 
     }
 
