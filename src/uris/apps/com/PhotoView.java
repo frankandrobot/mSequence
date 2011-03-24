@@ -55,8 +55,6 @@ public class PhotoView extends ImageView {
     public void flashGreen() {
 	greenTime = SystemClock.uptimeMillis() + 1000;
 	greenFlash = true;
-	greenSet = false;
-
 	setColorFilter(0xFF00FF00,  
 		       Mode.DARKEN);
 	setBackgroundDrawable(
@@ -69,7 +67,6 @@ public class PhotoView extends ImageView {
     public void flashRed() {
 	redTime = SystemClock.uptimeMillis() + 1000;
 	redFlash = true;
-	redSet = false;
 	setColorFilter(0xFFFF0000,  
 		       Mode.DARKEN);
 	setBackgroundDrawable(
