@@ -111,7 +111,7 @@ public class GameGridView extends GridView {
 
     public void flashGreen(int position) {
 	button = (PhotoView) getChildAt(position);
-	button.flashGreen( SystemClock.uptimeMillis() + 1000 );
+	button.flashGreen();
 	// greenTime = SystemClock.uptimeMillis() + 1000;
 	// greenPosition = position;
 	// greenFlash = true;
