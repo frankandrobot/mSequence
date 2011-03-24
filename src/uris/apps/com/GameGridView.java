@@ -40,8 +40,8 @@ public class GameGridView extends GridView {
 	} 
 	redFlash = false;
 	greenFlash = false;
-	redSet = false;
-	greenSet = false;
+	// redSet = false;
+	// greenSet = false;
     }
 
     @Override
