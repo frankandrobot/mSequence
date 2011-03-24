@@ -46,56 +46,6 @@ public class GameGridView extends GridView {
     @Override
 	public void onDraw(Canvas canvas) {
 
-	ImageView sel;
-
-	if ( greenFlash ) {
-	    if (SystemClock.uptimeMillis() < greenTime) {
-		if ( greenSet == false ) {
-		    sel = (ImageView) getChildAt(greenPosition);
-		    sel.setColorFilter(0xFF00FF00,  
-				   Mode.DARKEN);
-		    sel.setBackgroundDrawable(
-					      myResources.getDrawable
-					      (R.drawable.button_green)
-					      );
-		    invalidate();
-		    greenSet = true;
-		}
-	    }
-	    else {
-		sel = (ImageView) getChildAt(greenPosition);
-		sel.clearColorFilter();
-		sel.setBackgroundDrawable(
-					  myResources.getDrawable
-					  (R.drawable.button)
-					  );
-		invalidate();
-	    }
-	}
-	if ( redFlash ) {
-	    if (SystemClock.uptimeMillis() < redTime) {
-		if ( redSet == false ) {
-		    sel = (ImageView) getChildAt(redPosition);
-		    sel.setColorFilter(0xFFFF0000,  
-				   Mode.DARKEN);
-		    sel.setBackgroundDrawable(
-					      myResources.getDrawable
-					      (R.drawable.button_red)
-					      );
-		    invalidate();
-		    redSet = true;
-		}
-	    }
-	    else {
-		sel = (ImageView) getChildAt(redPosition);
-		sel.clearColorFilter();
-		sel.setBackgroundDrawable(
-					  myResources.getDrawable
-					  (R.drawable.button)
-					  );
-		invalidate();
-	    }
-	}
 
 	// Use the TextView to render the text.
 	super.onDraw(canvas);
