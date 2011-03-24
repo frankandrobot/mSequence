@@ -37,6 +37,10 @@ public class GameGridView extends GridView {
 	for(int i=0; i<getChildCount(); i++) {
 	    sel = (ImageView) getChildAt(i);
 	    sel.clearColorFilter();
+	    sel.setBackgroundDrawable(
+				      myResources.getDrawable
+				      (R.drawable.button)
+				      );
 	} 
 	redFlash = false;
 	greenFlash = false;
