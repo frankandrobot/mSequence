@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.os.SystemClock;
 import android.graphics.PorterDuff.Mode;
 
+/* Game Screen */
+
 public class GameGridView extends GridView {
     private Paint textPaintColor;
     private long startTime;
