@@ -29,7 +29,7 @@
       />
   <uris.apps.com.ClockTextView
       android:id="@+id/running_clock"
-      android:layout_width="250sp"
+      android:layout_width="200sp"
       android:layout_height="wrap_content"
       android:layout_below="@id/game_grid_view"
       android:layout_centerHorizontal="true" 
