@@ -35,14 +35,10 @@ public class GameGridView extends GridView {
     }
 
     public void deselect() {
-	ImageView sel;
+	PhotoView sel;
 	for(int i=0; i<getChildCount(); i++) {
-	    sel = (ImageView) getChildAt(i);
-	    sel.clearColorFilter();
-	    sel.setBackgroundDrawable(
-				      myResources.getDrawable
-				      (R.drawable.button)
-				      );
+	    sel = (PhotoView) getChildAt(i);
+	    sel.deselect();
 	} 
 	redFlash = false;
 	greenFlash = false;
