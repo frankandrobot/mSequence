@@ -39,15 +39,11 @@ public class GameGridView extends GridView {
 	    button = (PhotoView) getChildAt(i);
 	    button.deselect();
 	} 
-	redFlash = false;
-	greenFlash = false;
     }
 
     @Override
 	public void onDraw(Canvas canvas) {
 
-
-	// Use the TextView to render the text.
 	super.onDraw(canvas);
 	//canvas.restore();
 	//	invalidate();
