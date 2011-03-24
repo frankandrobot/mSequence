@@ -52,7 +52,10 @@ public class PhotoView extends ImageView {
     }
 
     public void flashGreen() {
-	greenFrameCounter = 8;
+	greenTime = SystemClock.uptimeMillis() + 1000;
+	greenPosition = position;
+	greenFlash = true;
+	greenSet = false;
 	invalidate();
     }
 
