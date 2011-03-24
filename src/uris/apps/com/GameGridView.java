@@ -119,10 +119,13 @@ public class GameGridView extends GridView {
     }
 
     public void flashRed(int position) {
-	redTime = SystemClock.uptimeMillis() + 1000;
-	redPosition = position;
-	redFlash = true;
-	redSet = false;
+	button = (PhotoView) getChildAt(position);
+	button.flashRed( SystemClock.uptimeMillis() + 1000 );
+
+	// redTime = SystemClock.uptimeMillis() + 1000;
+	// redPosition = position;
+	// redFlash = true;
+	// redSet = false;
     }
 
     public void reset() { deselect(); }
