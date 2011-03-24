@@ -60,7 +60,10 @@ public class PhotoView extends ImageView {
     }
 
     public void flashRed() {
-	redFrameCounter = 8;
+	redTime = SystemClock.uptimeMillis() + 1000;
+	redPosition = position;
+	redFlash = true;
+	redSet = false;
 	invalidate();
     }
 
