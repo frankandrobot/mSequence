@@ -21,8 +21,11 @@ public class ImageAdapter extends BaseAdapter {
         mContext = c;
 	mTree = g;
 	mDisplayIds = new Integer[mTree.getNumberOfChoices()];	
+	getIcons();
 	updateImages();
     }
+
+    public void getIcons() {}
 
     public void updateImages() { //based on current choices
 	if ( !mTree.gameComplete() ) {
