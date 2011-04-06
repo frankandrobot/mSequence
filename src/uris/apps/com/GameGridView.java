@@ -54,12 +54,12 @@ public class GameGridView extends GridView {
     }
 
     public void flashGreen(int position) {
-	button = (PhotoView) getChildAt((position + 1) % 2);
+	button = (PhotoView) getChildAt(position);
 	button.flashGreen();
     }
 
     public void flashRed(int position) {
-	button = (PhotoView) getChildAt((position + 1) % 2);
+	button = (PhotoView) getChildAt(position);
 	button.flashRed();
     }
 
