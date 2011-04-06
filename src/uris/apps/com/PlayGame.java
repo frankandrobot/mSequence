@@ -128,7 +128,7 @@ public class PlayGame extends Activity
 		    }
 
 		    //update pictures
-		    PlayGame.this.mGameGridView.updateImages();
+		    //PlayGame.this.mGameGridView.updateImages();
 
 		    //update progress bar
 		    PlayGame.this.updateProgressBar();
