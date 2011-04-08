@@ -62,22 +62,20 @@ public class ImageAdapter extends BaseAdapter {
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
+	Resources myResources = imageView.getResources();
         if (convertView == null) { // if it's not recycled, initialize
 				   // some attributes
             imageView = new PhotoView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
-	    Resources myResources = imageView.getResources();
-	    imageView.setBackgroundDrawable(
-					    myResources.getDrawable
-					    (R.drawable.button)
-					    );
-								    
         } else {
             imageView = (PhotoView) convertView;
         }
-
+	imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+	imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+	imageView.setPadding(8, 8, 8, 8);
+	imageView.setBackgroundDrawable(
+					myResources.getDrawable
+					(R.drawable.button)
+					);
         imageView.setImageResource(mDisplayIds[position]);
         return imageView;
     }
