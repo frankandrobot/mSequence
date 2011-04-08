@@ -62,13 +62,13 @@ public class ImageAdapter extends BaseAdapter {
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
-	Resources myResources = imageView.getResources();
         if (convertView == null) { // if it's not recycled, initialize
 				   // some attributes
             imageView = new PhotoView(mContext);
         } else {
             imageView = (PhotoView) convertView;
         }
+	Resources myResources = imageView.getResources();
 	imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
 	imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 	imageView.setPadding(8, 8, 8, 8);
