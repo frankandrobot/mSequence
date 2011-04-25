@@ -12,7 +12,7 @@ import android.graphics.PorterDuff.Mode;
 
 /* This is the screen the user sees when he plays the game. It
  * contains GameButtonViews (PhotoViews) and interacts with a
- * GameEngine */
+ * GameEngine. The GameDataAdapter holds the views. */
 
 public class GameGridView extends GridView {
     private Paint textPaintColor;
