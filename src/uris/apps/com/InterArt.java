@@ -14,7 +14,7 @@ public class InterArt extends Activity
 {
     private TextView mTextView;
     private TreeGenerator mTree;
-    private ImageAdapter mAdapter;
+    private GameDataAdapter mAdapter;
     
     //Settings
     private View optionsView;
