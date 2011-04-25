@@ -2,7 +2,7 @@ package uris.apps.com;
 
 import java.util.Random;
 
-public class TreeGenerator {
+public class GameEngine {
     //settings
     static int EASY=0, MEDIUM=1, HARD=2;
     static int MAX_CHOICES=3;
@@ -27,7 +27,7 @@ public class TreeGenerator {
     int no_correct;
     int scores[][];
 
-    //This creates a TreeGenerator with no_art_pieces of art pieces, given
+    //This creates a GameEngine with no_art_pieces of art pieces, given
     //difficulty, and the given number of stages.
 
     //Difficulty is self-explanatory. no_stages tells how many levels
@@ -41,7 +41,7 @@ public class TreeGenerator {
     //However, the catch is that the choices actually represent art
     //pieces and sometimes you don't want repetitions.
 
-    public TreeGenerator(int art, int difficulty_, int stages) {
+    public GameEngine(int art, int difficulty_, int stages) {
 	//setup variables
 	no_art_pieces = art;
 	difficulty = difficulty_;
@@ -79,7 +79,7 @@ public class TreeGenerator {
 	game_complete=false;
     }
 
-    //Actually initializes the TreeGenerator given the difficulty
+    //Actually initializes the GameEngine given the difficulty
     //settings, no of art pices, and number of stages.
     public void generateStages() {
 	init();
@@ -175,7 +175,7 @@ public class TreeGenerator {
     public int totalStages() { return no_stages; }
 
     public String toString() { /* for debugging */
-	String tmp="\n TreeGenerator Output:\n";
+	String tmp="\n GameEngine Output:\n";
 	for( int i=0; i < no_stages; i++) {
 	    tmp += "Choices: ";
 	    for (int j=0; j < no_choices; j++) {
