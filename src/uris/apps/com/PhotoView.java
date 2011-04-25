@@ -19,18 +19,18 @@ import android.graphics.PorterDuff.Mode;
    GameGridView 
 */
 
-public class PhotoView extends ImageView {
-    public PhotoView (Context context, AttributeSet ats, int ds) {
+public class GameButtonView extends ImageView {
+    public GameButtonView (Context context, AttributeSet ats, int ds) {
 	super(context, ats, ds);
 	init();
     }
 
-    public PhotoView (Context context) {
+    public GameButtonView (Context context) {
 	super(context);
 	init();
     }
 
-    public PhotoView (Context context, AttributeSet attrs) {
+    public GameButtonView (Context context, AttributeSet attrs) {
 	super(context, attrs);
 	init();
     }
