@@ -64,9 +64,9 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView;
         if (convertView == null) { // if it's not recycled, initialize
 				   // some attributes
-            imageView = new PhotoView(mContext);
+            imageView = new GameButtonView(mContext);
         } else {
-            imageView = (PhotoView) convertView;
+            imageView = (GameButtonView) convertView;
         }
 	Resources myResources = imageView.getResources();
 	imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
