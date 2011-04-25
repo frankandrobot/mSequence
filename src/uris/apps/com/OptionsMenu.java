@@ -13,7 +13,7 @@ public class OptionsMenu extends Activity
     // private GridView mGridView;
     // private TextView mTextView;
     // private TreeGenerator mTree;
-    // private ImageAdapter mAdapter;
+    // private GameDataAdapter mAdapter;
     private Spinner difficultySpinner;
     private ArrayAdapter<CharSequence> adapter;
 
