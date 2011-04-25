@@ -12,7 +12,7 @@ public class DifficultySetting extends Activity
 {
     // private GridView mGridView;
     // private TextView mTextView;
-    // private TreeGenerator mTree;
+    // private GameEngine mTree;
     // private GameDataAdapter mAdapter;
     private Spinner difficultySpinner;
     private ArrayAdapter adapter;
