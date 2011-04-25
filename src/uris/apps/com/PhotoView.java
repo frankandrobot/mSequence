@@ -13,6 +13,12 @@ import android.util.AttributeSet;
 import android.view.*;
 import android.graphics.PorterDuff.Mode;
 
+/* If I had to do this again, I would call this class
+   ButtonView.
+   These are the buttons the user presses, contained in the 
+   GameGridView 
+*/
+
 public class PhotoView extends ImageView {
     public PhotoView (Context context, AttributeSet ats, int ds) {
 	super(context, ats, ds);
