@@ -9,16 +9,16 @@ import android.view.View.*;
 import android.content.*;
 import android.graphics.PorterDuff.Mode;
 
-/* the PlayGame class coordinates: (1) the TreeGenerator (which is
+/* the PlayGame class coordinates: (1) the GameEngine (which is
  * actually the underlying board, I don't know why I called it
- * TreeGenerator), (2) the GameGridView that displays the pictures, (3)
+ * GameEngine), (2) the GameGridView that displays the pictures, (3)
  * the progress bar, (4) the running clock. */
 
 public class PlayGame extends Activity
 {
     private GameGridView mGameGridView;
-    private TreeGenerator mTree;
-    private GameDataAdapter mAdapter;
+    private GameEngine mGameEngine;
+    private GameDataAdapter mGameAdapter;
     private ClockTextView mRunningClock;
     private ProgressBarView mProgress;
 
@@ -32,7 +32,7 @@ public class PlayGame extends Activity
 	//get settings from OptionsMenu
 	Intent settings=getIntent();
 	int difficulty = settings.getIntExtra("level",
-					      TreeGenerator.EASY);
+					      GameEngine.EASY);
 	//create progress bar - must be called before setcontentview
 	requestWindowFeature(Window.FEATURE_PROGRESS);
 
@@ -46,16 +46,16 @@ public class PlayGame extends Activity
 	    Intent(this,uris.apps.com.GoScreenActivity.class);
 	startActivityForResult(goScreen,InterArt.GO_SCREEN);
 
-	//Set up TreeGenerator - this is the underlying game engine
-	//difficulty = TreeGenerator.HARD;
-	mTree = new TreeGenerator(12, difficulty, 3); // no art pieces,
+	//Set up GameEngine - this is the underlying game engine
+	//difficulty = GameEngine.HARD;
+	mGameEngine = new GameEngine(12, difficulty, 3); // no art pieces,
 						     // difficulty, no
 						     // of stages
 	
-	//Set up GridView - this is the View for the TreeGenerator
+	//Set up GridView - this is the View for the GameEngine
 	mGameGridView = (GameGridView) findViewById(R.id.game_grid_view);
-	mAdapter = new GameDataAdapter(this, mTree);
-	mGameGridView.setAdapter(mAdapter);
+	mGameAdapter = new GameDataAdapter(this, mGameEngine);
+	mGameGridView.setAdapter(mGameAdapter);
 
 	//Set up RunningClock - this should be part of the View, but it's not
 	mRunningClock = (ClockTextView) findViewById(R.id.running_clock);
@@ -68,11 +68,11 @@ public class PlayGame extends Activity
 					View v, 
 					int position, 
 					long id) {
-		    TreeGenerator mTree = PlayGame.this.mTree;
+		    GameEngine mGameEngine = PlayGame.this.mGameEngine;
 		
 		    //check answer
-		    boolean result = mTree.checkAnswer(position);
-		    String text = "Almost!";
+		    boolean result = mGameEngine.checkAnswer(position);
+		    String text = "";
 
 		    PlayGame.this.mGameGridView.deselect(); //if any
 
@@ -83,12 +83,13 @@ public class PlayGame extends Activity
 			PlayGame.this.mProgress.next();
 		    }
 		    else {
-			 PlayGame.this.mGameGridView.flashRed(position);
-			 PlayGame.this.mProgress.reset();
+			text = "Almost!";
+			PlayGame.this.mGameGridView.flashRed(position);
+			PlayGame.this.mProgress.reset();
 		    }
 
 		    //check if game complete
-		    if ( mTree.gameComplete() ) {
+		    if ( mGameEngine.gameComplete() ) {
 			PlayGame.this.mRunningClock.stop();
 			//tally score/calculate scores
 			//: max_score = no_stages * 1000;
@@ -97,8 +98,8 @@ public class PlayGame extends Activity
 
 			float time = PlayGame.this.mRunningClock
 			    .getRunningTime();
-			float max_score = mTree.getStages() * 1000.0f;
-			float ideal_time = 2.0f * mTree.getStages() + 4.0f;
+			float max_score = mGameEngine.getStages() * 1000.0f;
+			float ideal_time = 2.0f * mGameEngine.getStages() + 4.0f;
 			Score.time_bonus = (int) (1.0f 
 						  / time * max_score 
 						  * ideal_time);
@@ -121,9 +122,9 @@ public class PlayGame extends Activity
 			PlayGame.this.mGameGridView.reset();
 			PlayGame.this.mRunningClock.initStartTime();
 			PlayGame.this.mRunningClock.resume();
-			mTree.nextGame();
+			mGameEngine.nextGame();
 			PlayGame.this.mProgress.
-			    setCount( mTree.totalStages()+1 );
+			    setCount( mGameEngine.totalStages()+1 );
 			PlayGame.this.mProgress.setCurrent( 1 );
 		    }
 
@@ -135,10 +136,10 @@ public class PlayGame extends Activity
 		    
 		    //debug
 		    MyDebug.PlayGameLogv( 
-					 mTree.toString() + "\n" +
-					 mTree.currentStage() + " / "
-					 + mTree.totalStages()
-					 + mAdapter.toString() + "\n" 
+					 mGameEngine.toString() + "\n" +
+					 mGameEngine.currentStage() + " / "
+					 + mGameEngine.totalStages()
+					 + mGameAdapter.toString() + "\n" 
 					 + Score.mytoString()
 					  );
 		    MyDebug.PlayGameLogv(text + " " + position);
@@ -147,11 +148,11 @@ public class PlayGame extends Activity
 	    });
 
 	MyDebug.PlayGameLogv("Level: "+String.valueOf(difficulty));
-	MyDebug.PlayGameLogv(mTree.toString() );
+	MyDebug.PlayGameLogv(mGameEngine.toString() );
 
 	//init progress bar
 	mProgress = (ProgressBarView) findViewById(R.id.progress_bar);
-	mProgress.setCount( mTree.totalStages()+1 );
+	mProgress.setCount( mGameEngine.totalStages()+1 );
 	mProgress.setCurrent( 1 );
 
 	getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 0);
@@ -159,8 +160,8 @@ public class PlayGame extends Activity
 
     public void updateProgressBar() {
 	//10000 / no_stages = x / currentStage
-	int x = 10000 / mTree.totalStages() 
-	    * (mTree.currentStage()-1); 
+	int x = 10000 / mGameEngine.totalStages() 
+	    * (mGameEngine.currentStage()-1); 
 	getWindow().setFeatureInt(
 				  Window.FEATURE_PROGRESS, 
 				  x);
@@ -194,7 +195,7 @@ public class PlayGame extends Activity
 	
 	switch (item.getItemId()) {
 	case (RESTART): {
-	    mTree.reset();
+	    mGameEngine.reset();
 	    mGameGridView.updateImages();
 	    mRunningClock.initStartTime();
 	    updateProgressBar();
