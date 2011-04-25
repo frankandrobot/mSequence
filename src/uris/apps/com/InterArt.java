@@ -13,7 +13,7 @@ import android.app.Dialog;
 public class InterArt extends Activity
 {
     private TextView mTextView;
-    private TreeGenerator mTree;
+    private GameEngine mTree;
     private GameDataAdapter mAdapter;
     
     //Settings
@@ -34,7 +34,7 @@ public class InterArt extends Activity
 
  	//default settings
 	settings = new Intent(this, uris.apps.com.PlayGame.class);
-	settings.putExtra("level", TreeGenerator.EASY);
+	settings.putExtra("level", GameEngine.EASY);
 	
 	//create View for Difficulty setting
 	optionsMenu = new Intent(this, uris.apps.com.OptionsMenu.class);
@@ -70,7 +70,7 @@ public class InterArt extends Activity
            } 
             if (resultCode == RESULT_OK) {
                 //getSettings();
-    		int level= data.getIntExtra("level",TreeGenerator.EASY);
+    		int level= data.getIntExtra("level",GameEngine.EASY);
     		Toast.makeText(this, String.valueOf(level), 
 			       Toast.LENGTH_SHORT).show();
 		settings.putExtra("level", level);
