@@ -14,7 +14,7 @@ import android.view.*;
 import android.graphics.PorterDuff.Mode;
 
 /* If I had to do this again, I would call this class
-   ButtonView.
+   GameButtonView.
    These are the buttons the user presses, contained in the 
    GameGridView 
 */
