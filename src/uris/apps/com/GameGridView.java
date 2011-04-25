@@ -10,6 +10,10 @@ import android.graphics.PorterDuff.Mode;
 
 /* Game Screen */
 
+/* This is the screen the user sees when he plays the game. It
+ * contains GameButtonViews (PhotoViews) and interacts with a
+ * GameEngine */
+
 public class GameGridView extends GridView {
     private Paint textPaintColor;
     private long startTime;
@@ -36,7 +40,7 @@ public class GameGridView extends GridView {
 
     public void deselect() {
 	for(int i=0; i<getChildCount(); i++) {
-	    button = (PhotoView) getChildAt(i);
+	    button = (GameButtonView) getChildAt(i);
  	    button.deselect();
 	} 
     }
@@ -54,17 +58,17 @@ public class GameGridView extends GridView {
     }
 
     public void flashGreen(int position) {
-	button = (PhotoView) getChildAt(position);
+	button = (GameButtonView) getChildAt(position);
 	button.flashGreen();
     }
 
     public void flashRed(int position) {
-	button = (PhotoView) getChildAt(position);
+	button = (GameButtonView) getChildAt(position);
 	button.flashRed();
     }
 
     public void reset() { deselect(); }
 
     private Resources myResources;
-    private PhotoView button;
+    private GameButtonView button;
 }
