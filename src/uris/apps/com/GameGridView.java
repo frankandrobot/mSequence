@@ -52,8 +52,8 @@ public class GameGridView extends GridView {
     }
 
     public void updateImages() {
-	ImageAdapter ia = 
-	    (ImageAdapter) getAdapter();
+	GameDataAdapter ia = 
+	    (GameDataAdapter) getAdapter();
 	ia.updateImages();
     }
 
