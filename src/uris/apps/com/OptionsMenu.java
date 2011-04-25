@@ -12,14 +12,14 @@ public class OptionsMenu extends Activity
 {
     // private GridView mGridView;
     // private TextView mTextView;
-    // private TreeGenerator mTree;
+    // private GameEngine mTree;
     // private GameDataAdapter mAdapter;
     private Spinner difficultySpinner;
     private ArrayAdapter<CharSequence> adapter;
 
     // Settings
     Intent settings;
-    protected int level=TreeGenerator.EASY;
+    protected int level=GameEngine.EASY;
 
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -69,13 +69,13 @@ public class OptionsMenu extends Activity
             String selection = 
 		parent.getItemAtPosition(pos).toString();
 	    if ( selection.contentEquals("Easy") ) {
-		OptionsMenu.this.level = TreeGenerator.EASY;
+		OptionsMenu.this.level = GameEngine.EASY;
 	    }
 	    else if ( selection.contentEquals("Medium") ) {
-		OptionsMenu.this.level = TreeGenerator.MEDIUM;
+		OptionsMenu.this.level = GameEngine.MEDIUM;
 	    }
 	    else if ( selection.contentEquals("Hard") ) {
-		OptionsMenu.this.level = TreeGenerator.HARD;
+		OptionsMenu.this.level = GameEngine.HARD;
 	    }
 	    Toast.makeText(OptionsMenu.this, selection, Toast.LENGTH_SHORT).show();
             // TextView resultText = (TextView)findViewById(R.id.SpinnerResult);
