@@ -8,16 +8,16 @@ import android.content.*;
 import android.view.*;
 import android.content.res.Resources;
 
-public class ImageAdapter extends BaseAdapter {
+public class GameDataAdapter extends BaseAdapter {
     private Context mContext;
     private TreeGenerator mTree;
     private int[] mChoices;
 
-    public ImageAdapter(Context c) {
+    public GameDataAdapter(Context c) {
         mContext = c;
     }
 
-    public ImageAdapter(Context c, TreeGenerator g) {
+    public GameDataAdapter(Context c, TreeGenerator g) {
         mContext = c;
 	mTree = g;
 	mDisplayIds = new Integer[mTree.getNumberOfChoices()];	
