@@ -18,7 +18,7 @@ public class PlayGame extends Activity
 {
     private GameGridView mGameGridView;
     private TreeGenerator mTree;
-    private ImageAdapter mAdapter;
+    private GameDataAdapter mAdapter;
     private ClockTextView mRunningClock;
     private ProgressBarView mProgress;
 
@@ -54,7 +54,7 @@ public class PlayGame extends Activity
 	
 	//Set up GridView - this is the View for the TreeGenerator
 	mGameGridView = (GameGridView) findViewById(R.id.game_grid_view);
-	mAdapter = new ImageAdapter(this, mTree);
+	mAdapter = new GameDataAdapter(this, mTree);
 	mGameGridView.setAdapter(mAdapter);
 
 	//Set up RunningClock - this should be part of the View, but it's not
