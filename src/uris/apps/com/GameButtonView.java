@@ -95,8 +95,6 @@ public class GameButtonView extends ImageView {
     }
 
     private Resources myResources;
-    private int redPosition=0,greenPosition=0;
     private float greenTime=0,redTime=0;
     private boolean greenFlash=false,redFlash=false;
-    private boolean greenSet=false,redSet=false;
 }
