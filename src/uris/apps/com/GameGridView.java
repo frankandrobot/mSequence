@@ -55,8 +55,16 @@ public class GameGridView extends GridView {
 	GameDataAdapter ia = 
 	    (GameDataAdapter) getAdapter();
 	ia.changeGameButtons();
-	ia.refreshGameButtons();
+	refreshGameButtons(ia);
 	invalidate();
+    }
+
+    public void refreshGameButtons(GameDataAdapter ia) {
+	for(int i=0; i<getChildCount(); i++) {
+	    button = (GameButtonView) getChildAt(i);
+	    imageView.setImageResource( ia.getPictureId(i) );
+	} 
+	
     }
 
     public void flashGreen(int position) {
