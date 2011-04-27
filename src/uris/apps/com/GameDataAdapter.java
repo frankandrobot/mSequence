@@ -81,7 +81,7 @@ public class GameDataAdapter extends BaseAdapter {
     }
 
     public Integer getPictureId(int p) {
-	return mDisplayIds(p);
+	return mDisplayIds[p];
     }
 
     // references to our images
