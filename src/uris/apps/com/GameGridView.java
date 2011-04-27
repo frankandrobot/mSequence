@@ -51,10 +51,10 @@ public class GameGridView extends GridView {
 	super.onDraw(canvas);
     }
 
-    public void updateImages() {
+    public void updateGameButtons() {
 	GameDataAdapter ia = 
 	    (GameDataAdapter) getAdapter();
-	ia.updateImages();
+	ia.updateGameButtons();
     }
 
     public void flashGreen(int position) {
