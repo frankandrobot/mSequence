@@ -22,18 +22,18 @@ public class GameDataAdapter extends BaseAdapter {
 	mTree = g;
 	mDisplayIds = new Integer[mTree.getNumberOfChoices()];	
 	getIcons();
-	updateImages();
+	updateGameButtons();
+	notifyDataSetChanged();
     }
 
     public void getIcons() {}
 
-    public void updateImages() { //based on current choices
+    public void updateGameButtons() { //based on current choices
 	if ( !mTree.gameComplete() ) {
 	    //mTree.setCurrentChoices();
 	    for( int i=0; i<mTree.getNumberOfChoices(); i++ ) {
 		mDisplayIds[i] = mThumbIds[ mTree.getCurrentChoice(i) ];
 	    }
-	    notifyDataSetChanged();
 	}
     }
 
