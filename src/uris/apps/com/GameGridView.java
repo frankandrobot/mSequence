@@ -62,7 +62,8 @@ public class GameGridView extends GridView {
     public void refreshGameButtons(GameDataAdapter ia) {
 	for(int i=0; i<getChildCount(); i++) {
 	    button = (GameButtonView) getChildAt(i);
-	    button.setImageResource( ia.getPictureId(i) );
+	    button.invalidate();
+	    //	    button.setImageResource( ia.getPictureId(i) );
 	} 
 	
     }
@@ -81,4 +82,5 @@ public class GameGridView extends GridView {
 
     private Resources myResources;
     private GameButtonView button;
+    private GameDataAdapter adapter;
 }
