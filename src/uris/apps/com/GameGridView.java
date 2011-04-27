@@ -54,7 +54,8 @@ public class GameGridView extends GridView {
     public void updateGameButtons() {
 	GameDataAdapter ia = 
 	    (GameDataAdapter) getAdapter();
-	ia.updateGameButtons();
+	ia.changeGameButtons();
+	ia.refreshGameButtons();
 	invalidate();
     }
 
