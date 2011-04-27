@@ -21,14 +21,14 @@ public class GameDataAdapter extends BaseAdapter {
         mContext = c;
 	mTree = g;
 	mDisplayIds = new Integer[mTree.getNumberOfChoices()];	
-	getIcons();
-	updateGameButtons();
+	getGameButtons();
+	changeGameButtons();
 	notifyDataSetChanged();
     }
 
-    public void getIcons() {}
+    public void getGameButtons() {}
 
-    public void updateGameButtons() { //based on current choices
+    public void changeGameButtons() { //based on current choices
 	if ( !mTree.gameComplete() ) {
 	    //mTree.setCurrentChoices();
 	    for( int i=0; i<mTree.getNumberOfChoices(); i++ ) {
@@ -78,6 +78,10 @@ public class GameDataAdapter extends BaseAdapter {
 					);
         imageView.setImageResource(mDisplayIds[position]);
         return imageView;
+    }
+
+    public Integer getPictureId(int p) {
+	return mDisplayIds(p);
     }
 
     // references to our images
