@@ -129,7 +129,7 @@ public class PlayGame extends Activity
 		    }
 
 		    //update pictures
-		    PlayGame.this.mGameGridView.updateImages();
+		    PlayGame.this.mGameGridView.updateGameButtons();
 
 		    //update progress bar
 		    PlayGame.this.updateProgressBar();
@@ -196,7 +196,7 @@ public class PlayGame extends Activity
 	switch (item.getItemId()) {
 	case (RESTART): {
 	    mGameEngine.reset();
-	    mGameGridView.updateImages();
+	    mGameGridView.updateGameButtons();
 	    mRunningClock.initStartTime();
 	    updateProgressBar();
 	    return true;
