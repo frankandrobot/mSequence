@@ -130,11 +130,12 @@ public class GameEngine {
 	return answers[cur_stage] == choice;
     }
 
-    //assumes right answer
-    public void updateScores(int choice) {
+    //if correct answer then
+    public void calculateScores(int choice) {
 	
     }
 
+    //and
     public boolean goNextStage() {
 	cur_stage++;
 
@@ -156,6 +157,7 @@ public class GameEngine {
 	return false;
     }
 
+    //otherwise if incorrect answer
     public void resetGame() {
 	
 	//scoring, int scores[cur_stage][choice]
@@ -172,12 +174,12 @@ public class GameEngine {
 	cur_stage = 0;
     }
 
+    public boolean gameComplete() { return game_complete; }
+
     public void nextGame() {
 	no_stages++;
 	generateStages();
     }
-
-    public boolean gameComplete() { return game_complete; }
 
     public int currentStage() { return cur_stage+1; } //human readable
 						      //format
