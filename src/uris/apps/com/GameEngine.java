@@ -18,6 +18,7 @@ public class GameEngine {
     int cur_stage=0;
     boolean game_complete=false;
     Random rg; //used to generate choices
+    long startTime;
 
     int[] current_setup;
 
@@ -79,6 +80,10 @@ public class GameEngine {
 	game_complete=false;
     }
 
+    public void setStartTime(long s) {
+	startTime = s;
+    }
+
     //Actually initializes the GameEngine given the difficulty
     //settings, no of art pices, and number of stages.
     public void generateStages() {
@@ -121,46 +126,50 @@ public class GameEngine {
 
     public int getNumberOfChoices() { return no_choices; }
 
-    //This gives the answer and advances to the next stage (or resets
-    //on failure). What happens when you win? Set boolean. You also
-    //keep track of all the correct/incorrect answer choices per
-    //stage. This is to calculate the score
     public boolean checkAnswer(int choice) {
-	if ( answers[cur_stage] == choice ) {
-	    cur_stage++;
+	return answers[cur_stage] == choice;
+    }
 
-	    //Scoring
-	    //do nothing if correct
+    //assumes right answer
+    public void updateScores(int choice) {
+	
+    }
 
-	    if ( cur_stage == no_stages ) { 
-		game_complete = true;
-		no_correct = no_stages - no_incorrect;
-		Score.score = no_correct * 1000;
+    public boolean goNextStage() {
+	cur_stage++;
+
+	//Scoring
+	//do nothing if correct
+
+	if ( cur_stage == no_stages ) { 
+	    game_complete = true;
+	    no_correct = no_stages - no_incorrect;
+	    Score.score = no_correct * 1000;
 		//time_bonus = 
-		Score.incorrect_penal = no_incorrect * 1000;
-		Score.duplicate_penal = no_duplicates * 100;
-		Score.error_bonus = 0;
-		if ( no_incorrect == 0 && no_duplicates == 0 )
-		    Score.error_bonus = no_correct * 1000;
-	    }
+	    Score.incorrect_penal = no_incorrect * 1000;
+	    Score.duplicate_penal = no_duplicates * 100;
+	    Score.error_bonus = 0;
+	    if ( no_incorrect == 0 && no_duplicates == 0 )
+		Score.error_bonus = no_correct * 1000;
 	    return true;
 	}
-	else { //reset game (wrong answer)
+	return false;
+    }
 
-	    //scoring, int scores[cur_stage][choice]
-	    //test for incorrect answer
-	    int inc=0;
-	    for(int i=0; i<no_choices; i++) 
-		inc+=scores[cur_stage][i];
-	    if ( inc == (no_choices-1) ) 
-		no_incorrect++;
-	    //test for duplicates
-	    if ( scores[cur_stage][choice] == 1 )
-		no_duplicates++;
-	    else scores[cur_stage][choice] = 1; 
-	    cur_stage = 0;
-	    return false;
-	}
+    public void resetGame() {
+	
+	//scoring, int scores[cur_stage][choice]
+	//test for incorrect answer
+	int inc=0;
+	for(int i=0; i<no_choices; i++) 
+	    inc+=scores[cur_stage][i];
+	if ( inc == (no_choices-1) ) 
+	    no_incorrect++;
+	//test for duplicates
+	if ( scores[cur_stage][choice] == 1 )
+	    no_duplicates++;
+	else scores[cur_stage][choice] = 1; 
+	cur_stage = 0;
     }
 
     public void nextGame() {
