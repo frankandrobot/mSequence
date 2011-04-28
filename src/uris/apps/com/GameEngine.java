@@ -35,12 +35,12 @@ public class GameEngine {
     //or stages each game will have. The choices array actually holds
     //the choices for each stage.
 
-    //The way it works is that no_art_pieces is actually the size of an array
-    //containing the art pieces: 0, 1, 2, ... #no_art_pieces. Each stage
-    //consists of a fixed number of choices. These *could* be simple
-    //booleans (in the case of two choices) or numbers (ex: 1, 2, 3).
-    //However, the catch is that the choices actually represent art
-    //pieces and sometimes you don't want repetitions.
+    //The way it works is that no_art_pieces is actually the size of
+    //an array containing the art pieces: 0, 1, 2, ... #no_art_pieces.
+    //Each stage consists of a fixed number of choices. These *could*
+    //be simple booleans (in the case of two choices) or numbers (ex:
+    //1, 2, 3). However, the catch is that the choices actually
+    //represent art pieces and sometimes you don't want repetitions.
 
     public GameEngine(int art, int difficulty_, int stages) {
 	//setup variables
@@ -78,10 +78,6 @@ public class GameEngine {
     private void init() {
 	cur_stage=0;
 	game_complete=false;
-    }
-
-    public void setStartTime(long s) {
-	startTime = s;
     }
 
     //Actually initializes the GameEngine given the difficulty
@@ -126,24 +122,31 @@ public class GameEngine {
 
     public int getNumberOfChoices() { return no_choices; }
 
+    public void setStartTime(long s) {
+	startTime = s;
+    }
+
     public boolean checkAnswer(int choice) {
 	return answers[cur_stage] == choice;
     }
 
-    //if correct answer then
-    public void calculateScores(int choice) {
-	
+    //if answer correct 
+    public void updateScores() {
+	//the only score we track is checking to see we guessed
+	//correctly the first try
+	if ( !beenHereBefore[cur_stage] ) {
+	    bonus_guess++;
+	}
+	markLocation();
     }
 
     //and
     public boolean goNextStage() {
 	cur_stage++;
 
-	//Scoring
-	//do nothing if correct
-
 	if ( cur_stage == no_stages ) { 
 	    game_complete = true;
+	    //Report scores
 	    no_correct = no_stages - no_incorrect;
 	    Score.score = no_correct * 1000;
 		//time_bonus = 
@@ -159,7 +162,8 @@ public class GameEngine {
 
     //otherwise if incorrect answer
     public void resetGame() {
-	
+	markLocation();
+
 	//scoring, int scores[cur_stage][choice]
 	//test for incorrect answer
 	int inc=0;
@@ -173,6 +177,12 @@ public class GameEngine {
 	else scores[cur_stage][choice] = 1; 
 	cur_stage = 0;
     }
+
+    private void markLocation() { //called regardless of correct or
+				  //incorrect answer
+	beenHereBefore[cur_stage] = true;
+    }
+
 
     public boolean gameComplete() { return game_complete; }
 
