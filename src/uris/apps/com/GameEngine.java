@@ -46,36 +46,26 @@ public class GameEngine {
 	if ( difficulty == HARD ) {
 	    no_choices = 3;
 	}
+	cur_stage=0;
+	game_complete=false;
+	beenHereBefore = new boolean[no_stages];
+	//setup random number generator
 	rg = new Random();
 	//actually generate stages
 	generateStages();
-	//save current settings
+	//set countdown timer
 	setCountdownTimer();
+	//save current settings
 	saveSettings();
     }
 
     public int getStages() { return no_stages; }
 
-    private void saveSettings() {
-	current_settings = new int[4];
-	current_settings[0] = no_art_pieces;
-	current_settings[1] = difficulty;
-	current_settings[2] = no_stages;
-	current_settings[3] = no_choices;
-    }
+    private void saveSettings() { }	
 
-    public void reset() {
-	no_art_pieces = current_settings[0];
-	difficulty = current_settings[1];
-	no_stages = current_settings[2];
-	no_choices = current_settings[3];
-	generateStages();
-    }
-
-    private void init() {
+    public void reset() { 
 	cur_stage=0;
 	game_complete=false;
-	beenHereBefore = new boolean[no_stages];
 	for(int i; i<no_stages; i++)
 	    beenHereBefore[i] = false;
     }
@@ -83,7 +73,6 @@ public class GameEngine {
     //Actually initializes the GameEngine given the difficulty
     //settings, no of art pices, and number of stages.
     public void generateStages() {
-	init();
 	choices = new int[no_stages][no_choices];
 	scores = new int[no_stages][no_choices];
 	for (int i=0; i<no_stages; i++) {
@@ -122,22 +111,22 @@ public class GameEngine {
 
     public int getNumberOfChoices() { return no_choices; }
 
-    private void startCountdownTimer() {
+    //start the game
+    private void setCountdownTimer() {
+    }
+
+    //actually start the game
+    public void startCountdownTimer() {
 	startTime = s;
     }
 
-    private void stopCountdownTimer() {}
-
-    public long getTimeLeft() {}
-
+    //playing game, lets...
     public boolean checkAnswer(int choice) {
 	return answers[cur_stage] == choice;
     }
 
-    //if answer correct 
+    //if answer correct, then 
     public void updateScores() {
-	//the only score we track is checking to see we guessed
-	//correctly the first try
 	if ( !beenHereBefore[cur_stage] ) guess_bonus++;
 	markLocation();
     }
@@ -175,6 +164,11 @@ public class GameEngine {
 	no_stages++;
 	generateStages();
     }
+
+    private void stopCountdownTimer() {}
+
+    public long getTimeLeft() {}
+
 
     public int currentStage() { return cur_stage+1; } //human readable
 						      //format
