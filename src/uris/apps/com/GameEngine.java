@@ -137,7 +137,6 @@ public class GameEngine {
 
 	if ( cur_stage == no_stages ) { 
 	    game_complete = true;
-	    stopCountdownTimer();
 	    //Report scores
 	    Score.time_bonus = getTimeLeft() * 1000;
 	    Score.guess_bonus = guess_bonus * 1000;
@@ -146,13 +145,26 @@ public class GameEngine {
 	return false;
     }
 
+    //and
+    public void stopCountdownTimer() {
+
+    }
+    
+    //
+    public void nextGame() {
+	no_stages++;
+	generateStages();
+    }
+
+    private void stopCountdownTimer() {}
+
     //otherwise if incorrect answer
     public void resetGame() {
-	markLocation();
+	markCurrentLocation();
 	cur_stage = 0;
     }
 
-    private void markLocation() { //called regardless of correct or
+    private void markCurrentLocation() { //called regardless of correct or
 				  //incorrect answer
 	beenHereBefore[cur_stage] = true;
     }
@@ -160,12 +172,6 @@ public class GameEngine {
 
     public boolean gameComplete() { return game_complete; }
 
-    public void nextGame() {
-	no_stages++;
-	generateStages();
-    }
-
-    private void stopCountdownTimer() {}
 
     public long getTimeLeft() {}
 
