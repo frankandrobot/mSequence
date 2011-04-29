@@ -3,30 +3,26 @@ package uris.apps.com;
 import java.util.Random;
 
 public class GameEngine {
-    //settings
+    //public settings
     static int EASY=0, MEDIUM=1, HARD=2;
     static int MAX_CHOICES=3;
-    int no_art_pieces=0; //number of art pieces
+
+    //private (inner) settings
     int difficulty=EASY; //default difficulty
+    int no_art_pieces=0; //number of art pieces
     int no_stages;
     int no_choices=2; //default number of choices
     int[][] choices;
-    int[] cur_choices;
     int[] answers;
-
-    //track game states
     int cur_stage=0;
     boolean game_complete=false;
     Random rg; //used to generate choices
-    long startTime;
-
-    int[] current_setup;
+    int[] current_settings; //used to save current settings
 
     //scoring
-    int no_duplicates;
-    int no_incorrect;
-    int no_correct;
-    int scores[][];
+    boolean[] beenHereBefore;
+    int guess_bonus;
+    
 
     //This creates a GameEngine with no_art_pieces of art pieces, given
     //difficulty, and the given number of stages.
@@ -54,30 +50,34 @@ public class GameEngine {
 	//actually generate stages
 	generateStages();
 	//save current settings
+	setCountdownTimer();
 	saveSettings();
     }
 
     public int getStages() { return no_stages; }
 
     private void saveSettings() {
-	current_setup = new int[4];
-	current_setup[0] = no_art_pieces;
-	current_setup[1] = difficulty;
-	current_setup[2] = no_stages;
-	current_setup[3] = no_choices;
+	current_settings = new int[4];
+	current_settings[0] = no_art_pieces;
+	current_settings[1] = difficulty;
+	current_settings[2] = no_stages;
+	current_settings[3] = no_choices;
     }
 
     public void reset() {
-	no_art_pieces = current_setup[0];
-	difficulty = current_setup[1];
-	no_stages = current_setup[2];
-	no_choices = current_setup[3];
+	no_art_pieces = current_settings[0];
+	difficulty = current_settings[1];
+	no_stages = current_settings[2];
+	no_choices = current_settings[3];
 	generateStages();
     }
 
     private void init() {
 	cur_stage=0;
 	game_complete=false;
+	beenHereBefore = new boolean[no_stages];
+	for(int i; i<no_stages; i++)
+	    beenHereBefore[i] = false;
     }
 
     //Actually initializes the GameEngine given the difficulty
@@ -122,9 +122,13 @@ public class GameEngine {
 
     public int getNumberOfChoices() { return no_choices; }
 
-    public void setStartTime(long s) {
+    private void startCountdownTimer() {
 	startTime = s;
     }
+
+    private void stopCountdownTimer() {}
+
+    public long getTimeLeft() {}
 
     public boolean checkAnswer(int choice) {
 	return answers[cur_stage] == choice;
@@ -134,27 +138,20 @@ public class GameEngine {
     public void updateScores() {
 	//the only score we track is checking to see we guessed
 	//correctly the first try
-	if ( !beenHereBefore[cur_stage] ) {
-	    bonus_guess++;
-	}
+	if ( !beenHereBefore[cur_stage] ) guess_bonus++;
 	markLocation();
     }
 
     //and
-    public boolean goNextStage() {
+    public boolean goNextStage(long finishTime) {
 	cur_stage++;
 
 	if ( cur_stage == no_stages ) { 
 	    game_complete = true;
+	    stopCountdownTimer();
 	    //Report scores
-	    no_correct = no_stages - no_incorrect;
-	    Score.score = no_correct * 1000;
-		//time_bonus = 
-	    Score.incorrect_penal = no_incorrect * 1000;
-	    Score.duplicate_penal = no_duplicates * 100;
-	    Score.error_bonus = 0;
-	    if ( no_incorrect == 0 && no_duplicates == 0 )
-		Score.error_bonus = no_correct * 1000;
+	    Score.time_bonus = getTimeLeft() * 1000;
+	    Score.guess_bonus = guess_bonus * 1000;
 	    return true;
 	}
 	return false;
@@ -163,18 +160,6 @@ public class GameEngine {
     //otherwise if incorrect answer
     public void resetGame() {
 	markLocation();
-
-	//scoring, int scores[cur_stage][choice]
-	//test for incorrect answer
-	int inc=0;
-	for(int i=0; i<no_choices; i++) 
-	    inc+=scores[cur_stage][i];
-	if ( inc == (no_choices-1) ) 
-	    no_incorrect++;
-	//test for duplicates
-	if ( scores[cur_stage][choice] == 1 )
-	    no_duplicates++;
-	else scores[cur_stage][choice] = 1; 
 	cur_stage = 0;
     }
 
