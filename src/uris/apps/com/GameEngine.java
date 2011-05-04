@@ -9,15 +9,15 @@ public class GameEngine {
 
     //private (inner) settings
     int difficulty=EASY; //default difficulty
-    int no_art_pieces=0; //number of art pieces
     int no_stages;
     int no_choices=2; //default number of choices
-    int[][] choices;
+    int[][] stages;
     int[] answers;
     int cur_stage=0;
     boolean game_complete=false;
     Random rg; //used to generate choices
     int[] current_settings; //used to save current settings
+    int no_art_pieces=0; //number of art pieces
 
     //scoring
     boolean[] beenHereBefore;
@@ -43,41 +43,32 @@ public class GameEngine {
 	no_art_pieces = art;
 	difficulty = difficulty_;
 	no_stages = stages;
-	if ( difficulty == HARD ) {
+	if ( difficulty == MEDIUM ) {
+	    no_choices = 3;
+	} 
+	else if ( difficulty == HARD ) {
 	    no_choices = 3;
 	}
 	cur_stage=0;
+	generateStages();
 	game_complete=false;
-	beenHereBefore = new boolean[no_stages];
+	setupBeenHereBefore();
 	//setup random number generator
 	rg = new Random();
-	//actually generate stages
-	generateStages();
 	//set countdown timer
 	setCountdownTimer();
 	//save current settings
 	saveSettings();
     }
 
-    public int getStages() { return no_stages; }
-
-    private void saveSettings() { }	
-
-    public void reset() { 
-	cur_stage=0;
-	game_complete=false;
-	for(int i; i<no_stages; i++)
-	    beenHereBefore[i] = false;
-    }
-
     //Actually initializes the GameEngine given the difficulty
     //settings, no of art pices, and number of stages.
     public void generateStages() {
-	choices = new int[no_stages][no_choices];
+	stages = new int[no_stages][no_choices];
 	scores = new int[no_stages][no_choices];
 	for (int i=0; i<no_stages; i++) {
 	    for (int j=0; j<no_choices; j++) {
-		choices[i][j] = rg.nextInt( no_art_pieces );
+		stages[i][j] = rg.nextInt( no_art_pieces );
 	    }
 	    if ( difficulty == EASY ) 
 	    	eliminateDuplicates( i );
@@ -91,14 +82,32 @@ public class GameEngine {
 	    answers[i] = choice;
 	}
     }
-    
+
+    private void setupBeenHereBefore() {
+	beenHereBefore = new boolean[no_stages];
+	for( int i=0; i<no_stages; i++) 
+	    beenHereBefore[i] = false;
+    }
+
+    public int getStages() { return no_stages; }
+
+    private void saveSettings() { }	
+
+    public void reset() { 
+	cur_stage=0;
+	game_complete=false;
+	for(int i; i<no_stages; i++)
+	    beenHereBefore[i] = false;
+    }
+
+
     //Eliminate duplicates in a given stage/level. Needed by
     //generateStages.
     private void eliminateDuplicates( int cur_stage ) {
 	for (int j=1; j<no_choices; j++) {
 	    for (int k=0; k<j; k++) {
-		while ( choices[cur_stage][k] == choices[cur_stage][j] ) {
-			choices[cur_stage][j] = rg.nextInt( no_art_pieces );
+		while ( stages[cur_stage][k] == stages[cur_stage][j] ) {
+			stages[cur_stage][j] = rg.nextInt( no_art_pieces );
 		    }
 		k = 0;
 	    }
@@ -106,7 +115,7 @@ public class GameEngine {
     }
 
     public int getCurrentChoice(int i) {
-	return choices[cur_stage][i];
+	return stages[cur_stage][i];
     }
 
     public int getNumberOfChoices() { return no_choices; }
@@ -185,7 +194,7 @@ public class GameEngine {
 	for( int i=0; i < no_stages; i++) {
 	    tmp += "Choices: ";
 	    for (int j=0; j < no_choices; j++) {
-		tmp += choices[i][j] + " ";
+		tmp += stages[i][j] + " ";
 	    }
 	    tmp += " Ans: " + answers[i] + "\n";
 	}
