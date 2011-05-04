@@ -39,19 +39,21 @@ public class GameEngine {
     //represent art pieces and sometimes you don't want repetitions.
 
     public GameEngine(int art, int difficulty_, int stages) {
-	//setup variables
+	//setup game variables
 	no_art_pieces = art;
 	difficulty = difficulty_;
 	no_stages = stages;
+	no_choices = 2;
 	if ( difficulty == MEDIUM ) {
 	    no_choices = 3;
 	} 
 	else if ( difficulty == HARD ) {
-	    no_choices = 3;
+	    no_choices = 4;
 	}
+	//setup internal logic variables
 	cur_stage=0;
-	generateStages();
 	game_complete=false;
+	initGameEngine();
 	setupBeenHereBefore();
 	//setup random number generator
 	rg = new Random();
@@ -61,9 +63,9 @@ public class GameEngine {
 	saveSettings();
     }
 
-    //Actually initializes the GameEngine given the difficulty
+    //initializes the GameEngine given the difficulty
     //settings, no of art pices, and number of stages.
-    public void generateStages() {
+    public void initGameEngine() {
 	stages = new int[no_stages][no_choices];
 	scores = new int[no_stages][no_choices];
 	for (int i=0; i<no_stages; i++) {
@@ -98,7 +100,7 @@ public class GameEngine {
     private void saveSettings() { }	
 
     //Eliminate duplicates in a given stage/level. Needed by
-    //generateStages.
+    //initGameEngine.
     private void eliminateDuplicates( int cur_stage ) {
 	for (int j=1; j<no_choices; j++) {
 	    for (int k=0; k<j; k++) {
@@ -110,12 +112,6 @@ public class GameEngine {
 	}
     }
 
-    public int getCurrentChoice(int i) {
-	return stages[cur_stage][i];
-    }
-
-    public int getNumberOfChoices() { return no_choices; }
-    {
     //start the game
     private void setCountdownTimer() {
     }
@@ -136,8 +132,14 @@ public class GameEngine {
 	markLocation();
     }
 
+    private void markCurrentLocation() { 
+	//called regardless of correct or
+	//incorrect answer
+	beenHereBefore[cur_stage] = true;
+    }
+
     //and
-    public boolean goNextStage(long finishTime) {
+    public boolean gotoNextStage() {
 	cur_stage++;
 
 	if ( cur_stage == no_stages ) { 
@@ -149,37 +151,28 @@ public class GameEngine {
 	}
 	return false;
     }
-
-    //and
-    public void stopCountdownTimer() {
-
-    }
     
-    //
-    public void nextGame() {
-	no_stages++;
-	generateStages();
-    }
-
-    private void stopCountdownTimer() {}
-
-    //otherwise if incorrect answer
-    public void resetGame() {
+    //otherwise
+    public void resetCurrentLevel() {
 	markCurrentLocation();
 	cur_stage = 0;
     }
 
-    private void markCurrentLocation() { //called regardless of correct or
-				  //incorrect answer
-	beenHereBefore[cur_stage] = true;
+
+    //check to see if the game is over
+
+    //if successfully completed level,
+    public void gotoNextGame() {
+	no_stages++;
+	initGameEngine();
     }
 
+    private void stopCountdownTimer() {}
 
+    //interface
     public boolean gameComplete() { return game_complete; }
 
-
     public long getTimeLeft() {}
-
 
     public int currentStage() { return cur_stage+1; } //human readable
 						      //format
@@ -194,6 +187,12 @@ public class GameEngine {
 	    beenHereBefore[i] = false;
     }
 
+    public int getCurrentChoice(int i) {
+	return stages[cur_stage][i];
+    }
+
+    public int getNumberOfChoices() { return no_choices; }
+    {
 
 
     public String toString() { /* for debugging */
