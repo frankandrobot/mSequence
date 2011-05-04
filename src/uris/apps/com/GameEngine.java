@@ -89,17 +89,13 @@ public class GameEngine {
 	    beenHereBefore[i] = false;
     }
 
-    public int getStages() { return no_stages; }
-
-    private void saveSettings() { }	
-
-    public void reset() { 
-	cur_stage=0;
-	game_complete=false;
-	for(int i; i<no_stages; i++)
-	    beenHereBefore[i] = false;
+    private void setCountdownTimer() {
+	//TODO
     }
 
+    private void resetBeenHereBefore() { setupBeenHereBefore(); }
+	
+    private void saveSettings() { }	
 
     //Eliminate duplicates in a given stage/level. Needed by
     //generateStages.
@@ -119,7 +115,7 @@ public class GameEngine {
     }
 
     public int getNumberOfChoices() { return no_choices; }
-
+    {
     //start the game
     private void setCountdownTimer() {
     }
@@ -188,6 +184,17 @@ public class GameEngine {
     public int currentStage() { return cur_stage+1; } //human readable
 						      //format
     public int totalStages() { return no_stages; }
+
+    public int getStages() { return no_stages; }
+
+    public void reset() { 
+	cur_stage=0;
+	game_complete=false;
+	for(int i; i<no_stages; i++)
+	    beenHereBefore[i] = false;
+    }
+
+
 
     public String toString() { /* for debugging */
 	String tmp="\n GameEngine Output:\n";
