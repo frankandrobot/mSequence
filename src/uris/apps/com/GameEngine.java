@@ -64,7 +64,8 @@ public class GameEngine {
     }
 
     //initializes the GameEngine given the difficulty
-    //settings, no of art pices, and number of stages.
+    //settings, no of art pieces, and number of stages.
+    //sets stages array and answers array
     public void initGameEngine() {
 	stages = new int[no_stages][no_choices];
 	scores = new int[no_stages][no_choices];
