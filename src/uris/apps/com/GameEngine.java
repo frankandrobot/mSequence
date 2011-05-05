@@ -102,7 +102,7 @@ public class GameEngine {
     }
 
     private void initCountdownTimer() {
-	//TODO
+	timerDuration = 3000 // 30 seconds
     }
 
     private void saveSettings() { }	
