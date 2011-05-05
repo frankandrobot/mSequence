@@ -165,31 +165,23 @@ public class GameEngine {
     //interface
     public boolean gameComplete() { return game_complete; }
 
-    //time
+    //interface: time
     private void stopCountdownTimer() {}
 
     public long getTimeLeft() {}
 
+    //interface: inner logic
     public int currentStage() { return cur_stage+1; } //human readable
 						      //format
     public int totalStages() { return no_stages; }
 
     public int getStages() { return no_stages; }
 
-    public void reset() { 
-	cur_stage=0;
-	game_complete=false;
-	for(int i; i<no_stages; i++)
-	    beenHereBefore[i] = false;
-    }
-
     public int getCurrentChoice(int i) {
 	return stages[cur_stage][i];
     }
 
     public int getNumberOfChoices() { return no_choices; }
-    {
-
 
     public String toString() { /* for debugging */
 	String tmp="\n GameEngine Output:\n";
