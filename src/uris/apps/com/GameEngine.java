@@ -1,6 +1,7 @@
 package uris.apps.com;
 
 import java.util.Random;
+import android.os.SystemClock;
 
 public class GameEngine {
     //public settings
@@ -110,16 +111,15 @@ public class GameEngine {
     // where 1.5 is button-press duration, no choices is the number of
     // choices (for each stage), and n is total number of stages.
     private void initCountdownTimer() {
-	timerDuration = keyPress*no_choices_no_stages 
+	timerDuration = keyPress*no_choices*no_stages 
 	    + keyPress*(no_choices-1)*no_choices/2;
-	timerDuration = 30000 // 30 seconds
     }
 
-    private void saveSettings() { }	
+    //    private void saveSettings() { }	
 
     //start the game
     public void startCountdownTimer() {
-	
+	startTime = SystemClock.uptimeMillis();
     }
 
     //playing game, lets...
@@ -145,7 +145,7 @@ public class GameEngine {
 	if ( cur_stage == no_stages ) { 
 	    game_complete = true;
 	    //Report scores
-	    Score.time_bonus = getTimeLeft() * 1000;
+	    Score.time_bonus = getTimeLeft();
 	    Score.guess_bonus = guess_bonus * 1000;
 	    return true;
 	}
@@ -159,6 +159,14 @@ public class GameEngine {
     }
 
     //check to see if the game is over
+    public long getTimeLeft() {
+	timeElapsed = SystemClock.uptimeMillis() - startTime; //in ms
+	return timerDuration - timeElapsed; //in ms
+    }
+
+    public boolean checkTimer() {
+	return getTimeLeft() < 0;
+    }
 
     //if successfully completed level,
     public void gotoNextLevel() {
