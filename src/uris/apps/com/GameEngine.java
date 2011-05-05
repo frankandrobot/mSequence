@@ -24,7 +24,7 @@ public class GameEngine {
     boolean[] beenHereBefore;
     int guess_bonus;
     //clock
-    long timerDuration;
+    long timerDuration, startTime, timeElapsed;
     long keyPress = 1500; //1.5 seconds
 
     //This creates a GameEngine with no_art_pieces of art pieces, given
@@ -63,7 +63,7 @@ public class GameEngine {
 	//set countdown timer
 	initCountdownTimer();
 	//save current settings
-	saveSettings();
+	//saveSettings();
     }
 
     //initializes the GameEngine given the difficulty
@@ -107,15 +107,12 @@ public class GameEngine {
     // Scoring system:
     //  1.5(no choices)n + 0 + 1.5 + 1.5(2) + ... + 1.5(n-1)
     // = 1.5(choices)(n) + 1.5(n-1)(n)/2 seconds
-    
     // where 1.5 is button-press duration, no choices is the number of
     // choices (for each stage), and n is total number of stages.
     private void initCountdownTimer() {
 	timerDuration = keyPress*no_choices*no_stages 
 	    + keyPress*(no_choices-1)*no_choices/2;
     }
-
-    //    private void saveSettings() { }	
 
     //start the game
     public void startCountdownTimer() {
@@ -164,9 +161,11 @@ public class GameEngine {
 	return timerDuration - timeElapsed; //in ms
     }
 
-    public boolean checkTimer() {
+    public boolean checkTimer() { 
 	return getTimeLeft() < 0;
     }
+
+    public boolean gameComplete() { return game_complete; }
 
     //if successfully completed level,
     public void gotoNextLevel() {
@@ -181,7 +180,6 @@ public class GameEngine {
     //otherwise game is over
 
     //interface
-    public boolean gameComplete() { return game_complete; }
 
     //interface: time
     private void stopCountdownTimer() {}
