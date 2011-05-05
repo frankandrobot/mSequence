@@ -155,17 +155,17 @@ public class GameEngine {
 	cur_stage = 0;
     }
 
-    //check to see if the game is over
+    //check game over/level complete
     public long getTimeLeft() {
 	timeElapsed = SystemClock.uptimeMillis() - startTime; //in ms
 	return timerDuration - timeElapsed; //in ms
     }
 
-    public boolean checkTimer() { 
+    public boolean isTimeOver() { 
 	return getTimeLeft() < 0;
     }
 
-    public boolean gameComplete() { return game_complete; }
+    public boolean isLevelComplete() { return game_complete; }
 
     //if successfully completed level,
     public void gotoNextLevel() {
