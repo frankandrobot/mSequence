@@ -71,13 +71,12 @@ public class PlayGame extends Activity
 					int position, 
 					long id) {
 		    GameEngine mGameEngine = PlayGame.this.mGameEngine;
+
+		    PlayGame.this.mGameGridView.deselect(); //if any
 		
 		    //check answer
 		    boolean result = mGameEngine.checkAnswer(position);
 		    String text = "";
-
-		    PlayGame.this.mGameGridView.deselect(); //if any
-
 		    if ( result ) { // if answer correct
 			text = "Correct!";
 			//update text view
@@ -89,6 +88,9 @@ public class PlayGame extends Activity
 			PlayGame.this.mGameGridView.flashRed(position);
 			PlayGame.this.mProgress.reset();
 		    }
+
+		    //update scores
+		    PlayGame.this.mGameEngine.updateScores();
 
 		    //check if game complete
 		    if ( mGameEngine.gameComplete() ) {
