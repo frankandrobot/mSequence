@@ -79,18 +79,20 @@ public class PlayGame extends Activity
 		    String text = "";
 		    if ( result ) { // if answer correct
 			text = "Correct!";
+			PlayGame.this.mGameEngine.updateScores();
+			PlayGame.this.mGameEngine.gotoNextStage();
 			//update text view
 			PlayGame.this.mGameGridView.flashGreen(position);
 			PlayGame.this.mProgress.next();
 		    }
 		    else {
 			text = "Almost!";
+			PlayGame.this.mGameEngine.updateScores();
+			PlayGame.this.mGameEngine.resetCurrentLevel();
 			PlayGame.this.mGameGridView.flashRed(position);
 			PlayGame.this.mProgress.reset();
 		    }
 
-		    //update scores
-		    PlayGame.this.mGameEngine.updateScores();
 
 		    //check if game complete
 		    if ( mGameEngine.gameComplete() ) {
