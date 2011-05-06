@@ -53,14 +53,17 @@ public class PlayGame extends Activity
 						     // of stages
 	//Set up RunningClock - this should be part of the View, but it's not
 	mGameClock = (GameClock) findViewById(R.id.running_clock);
-	mGameClock.initStartTime();
+	mGameEngine.setGameClock(mGameClock);
+	mGameClock.setGameEngine(mGameEngine);
 	
 	//Set up GridView - this is the View for the GameEngine
 	mGameGridView = (GameGridView) findViewById(R.id.game_grid_view);
 	mGameAdapter = new GameDataAdapter(this, mGameEngine);
 	mGameGridView.setAdapter(mGameAdapter);
-
 	
+	//start clock!
+	mGameClock.startCountdownTimer();
+
 	//Call this method when user selects an image 
 	mGameGridView.setOnItemClickListener(new OnItemClickListener() {
 		public void onItemClick(AdapterView<?> parent, 
