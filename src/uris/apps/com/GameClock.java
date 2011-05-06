@@ -11,7 +11,7 @@ import android.os.SystemClock;
 public class GameClock extends TextView {
 
     private Paint textPaintColor;
-    private long startTime;
+    private long startTime, startTime, timeElapsed, pauseTime, timeShift;
     private float secs;
     private GameEngine mGameEngine;
 
@@ -52,6 +52,30 @@ public class GameClock extends TextView {
 
     public float getRunningTime() {
 	return secs;
+    }
+
+    public long getTimeLeft() {
+	timeElapsed = SystemClock.uptimeMillis() - startTime; //in ms
+	return mGameEngine.getCountdownDuration() - timeElapsed; //in ms
+    }
+
+    public boolean isTimeOver() { 
+	return getTimeLeft() < 0;
+    }
+
+    public void pauseCountdownTimer() {
+	pauseTime = SystemClock.uptimeMillis();
+    }
+
+    public void resumeCountdownTimer() {
+	//startime=8:00;
+	//timeElapsed=timerDuration - (currentTime - startTime); 
+	//            30 - (8:10 - 8:00) = 30 - 10 = 20
+	//pauseTime=8:10;
+	//resumeTime=8:50;
+	//so shift everything by resumeTime-pauseTime
+	timeShift=SystemClock.uptimeMillis() - pauseTime;
+	startTime += timeShift;
     }
 
     @Override
