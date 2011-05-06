@@ -28,7 +28,7 @@
       android:stretchMode="spacingWidthUniform"
       android:stackFromBottom="false"
       />
-  <uris.apps.com.ClockTextView
+  <uris.apps.com.GameClock
       android:id="@+id/running_clock"
       android:layout_width="200sp"
       android:layout_height="wrap_content"
