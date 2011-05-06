@@ -13,6 +13,7 @@ public class GameClock extends TextView {
     private Paint textPaintColor;
     private long startTime;
     private float secs;
+    private GameEngine mGameEngine;
 
     public GameClock (Context context, AttributeSet ats, int ds) {
 	super(context, ats, ds);
@@ -29,7 +30,7 @@ public class GameClock extends TextView {
 	init();
     }
 
-    public void initStartTime() {
+    public void startCountdownTimer() {
 	startTime = SystemClock.uptimeMillis();
     }
 
@@ -42,7 +43,7 @@ public class GameClock extends TextView {
 	textPaintColor.setColor(myResources.getColor(R.color.clockTextColor));
 	textPaintColor.setTextSize( 50 );
 
-	startTime = SystemClock.uptimeMillis();
+	// startCountdownTimer();
 
 	// // Get the paper background color and the margin width.
 	// paperColor = myResources.getColor(R.color.notepad_paper);
