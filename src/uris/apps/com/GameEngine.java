@@ -24,8 +24,10 @@ public class GameEngine {
     boolean[] beenHereBefore;
     int guess_bonus;
     //clock
-    long timerDuration, startTime, timeElapsed, pauseTime, timeShift;
+    long countdownDuration;
     long keyPress = 1500; //1.5 seconds
+
+    GameClock mGameClock;
 
     //This creates a GameEngine with no_art_pieces of art pieces, given
     //difficulty, and the given number of stages.
@@ -110,7 +112,7 @@ public class GameEngine {
     // where 1.5 is button-press duration, no choices is the number of
     // choices (for each stage), and n is total number of stages.
     private void initCountdownTimer() {
-	timerDuration = keyPress*no_choices*no_stages 
+	countdownDuration = keyPress*no_choices*no_stages 
 	    + keyPress*(no_choices-1)*no_choices/2;
     }
 
@@ -139,7 +141,7 @@ public class GameEngine {
 	if ( cur_stage == no_stages ) { 
 	    game_complete = true;
 	    //Report scores
-	    Score.time_bonus = getTimeLeft();
+	    Score.time_bonus = mGameClock.getTimeLeft();
 	    Score.guess_bonus = guess_bonus * 1000;
 	    return true;
 	}
@@ -153,14 +155,6 @@ public class GameEngine {
     }
 
     //check game over/level complete
-    public long getTimeLeft() {
-	timeElapsed = SystemClock.uptimeMillis() - startTime; //in ms
-	return timerDuration - timeElapsed; //in ms
-    }
-
-    public boolean isTimeOver() { 
-	return getTimeLeft() < 0;
-    }
 
     public boolean isLevelComplete() { return game_complete; }
 
@@ -179,22 +173,7 @@ public class GameEngine {
     //interface
 
     //interface: time
-    public long getTimerDuration() { return timerDuration; }
-        
-    public void pauseCountdownTimer() {
-	pauseTime = SystemClock.uptimeMillis();
-    }
-
-    public void resumeCountdownTimer() {
-	//startime=8:00;
-	//timeElapsed=timerDuration - (currentTime - startTime); 
-	//            30 - (8:10 - 8:00) = 30 - 10 = 20
-	//pauseTime=8:10;
-	//resumeTime=8:50;
-	//so shift everything by resumeTime-pauseTime
-	timeShift=SystemClock.uptimeMillis() - pauseTime;
-	startTime += timeShift;
-    }
+    public long getCountdownDuration() { return countdownDuration; }
 
     //interface: inner logic
     public int currentStage() { return cur_stage+1; } //human readable
