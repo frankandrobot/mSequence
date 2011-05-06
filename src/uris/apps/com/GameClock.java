@@ -30,10 +30,6 @@ public class GameClock extends TextView {
 	init();
     }
 
-    public void startCountdownTimer() {
-	startTime = SystemClock.uptimeMillis();
-    }
-
     private void init() {
 	// Get a reference to our resource table.
 	Resources myResources = getResources();
@@ -48,6 +44,12 @@ public class GameClock extends TextView {
 	// // Get the paper background color and the margin width.
 	// paperColor = myResources.getColor(R.color.notepad_paper);
 	//margin = myResources.getDimension(R.dimen.notepad_margin);
+    }
+
+    public void setGameEngine(GameEngine g) { mGameEngine = g; }
+
+    public void startCountdownTimer() {
+	startTime = SystemClock.uptimeMillis();
     }
 
     public float getRunningTime() {
