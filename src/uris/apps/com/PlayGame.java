@@ -19,7 +19,7 @@ public class PlayGame extends Activity
     private GameGridView mGameGridView;
     private GameEngine mGameEngine;
     private GameDataAdapter mGameAdapter;
-    private ClockTextView mRunningClock;
+    private GameClock mGameClock;
     private ProgressBarView mProgress;
 
     // Menu
@@ -58,9 +58,9 @@ public class PlayGame extends Activity
 	mGameGridView.setAdapter(mGameAdapter);
 
 	//Set up RunningClock - this should be part of the View, but it's not
-	mRunningClock = (ClockTextView) findViewById(R.id.running_clock);
+	mGameClock = (GameClock) findViewById(R.id.running_clock);
 
-	//mRunningClock.initStartTime();
+	//mGameClock.initStartTime();
 	
 	//Call this method when user selects an image 
 	mGameGridView.setOnItemClickListener(new OnItemClickListener() {
@@ -90,13 +90,13 @@ public class PlayGame extends Activity
 
 		    //check if game complete
 		    if ( mGameEngine.gameComplete() ) {
-			PlayGame.this.mRunningClock.stop();
+			PlayGame.this.mGameClock.stop();
 			//tally score/calculate scores
 			//: max_score = no_stages * 1000;
 			//: ideal_time = 2 * no_stages + 4;
 			//: f(time,stage) = 1/time * max_score * ideal_time;
 
-			float time = PlayGame.this.mRunningClock
+			float time = PlayGame.this.mGameClock
 			    .getRunningTime();
 			float max_score = mGameEngine.getStages() * 1000.0f;
 			float ideal_time = 2.0f * mGameEngine.getStages() + 4.0f;
@@ -120,8 +120,8 @@ public class PlayGame extends Activity
 			startActivityForResult(scoreReport,InterArt.SCORES);
 
 			PlayGame.this.mGameGridView.reset();
-			PlayGame.this.mRunningClock.initStartTime();
-			PlayGame.this.mRunningClock.resume();
+			PlayGame.this.mGameClock.initStartTime();
+			PlayGame.this.mGameClock.resume();
 			mGameEngine.nextGame();
 			PlayGame.this.mProgress.
 			    setCount( mGameEngine.totalStages()+1 );
@@ -197,7 +197,7 @@ public class PlayGame extends Activity
 	case (RESTART): {
 	    mGameEngine.reset();
 	    mGameGridView.updateGameButtons();
-	    mRunningClock.initStartTime();
+	    mGameClock.initStartTime();
 	    updateProgressBar();
 	    return true;
 	}
@@ -219,8 +219,8 @@ public class PlayGame extends Activity
 				    int resultCode, 
 				    Intent returnedData) {
 
-	mRunningClock.initStartTime();
-	mRunningClock.resume();
+	mGameClock.initStartTime();
+	mGameClock.resume();
 	
 	// // See which child activity is calling us back.
 	// switch (requestCode) {
