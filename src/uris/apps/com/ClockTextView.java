@@ -8,23 +8,23 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.os.SystemClock;
 
-public class ClockTextView extends TextView {
+public class GameClock extends TextView {
 
     private Paint textPaintColor;
     private long startTime;
     private float secs;
 
-    public ClockTextView (Context context, AttributeSet ats, int ds) {
+    public GameClock (Context context, AttributeSet ats, int ds) {
 	super(context, ats, ds);
 	init();
     }
 
-    public ClockTextView (Context context) {
+    public GameClock (Context context) {
 	super(context);
 	init();
     }
 
-    public ClockTextView (Context context, AttributeSet attrs) {
+    public GameClock (Context context, AttributeSet attrs) {
 	super(context, attrs);
 	init();
     }
