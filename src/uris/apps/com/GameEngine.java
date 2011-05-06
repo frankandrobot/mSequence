@@ -24,7 +24,7 @@ public class GameEngine {
     boolean[] beenHereBefore;
     int guess_bonus;
     //clock
-    long timerDuration, startTime, timeElapsed;
+    long timerDuration, startTime, timeElapsed, pauseTime, timeShift;
     long keyPress = 1500; //1.5 seconds
 
     //This creates a GameEngine with no_art_pieces of art pieces, given
@@ -182,9 +182,20 @@ public class GameEngine {
     //interface
 
     //interface: time
-    private void stopCountdownTimer() {}
+    public void pauseCountdownTimer() {
+	pauseTime = SystemClock.uptimeMillis();
+    }
 
-    public long getTimeLeft() {}
+    public void resumeCountdownTimer() {
+	//startime=8:00;
+	//timeElapsed=timerDuration - (currentTime - startTime); 
+	//            30 - (8:10 - 8:00) = 30 - 10 = 20
+	//pauseTime=8:10;
+	//resumeTime=8:50;
+	//so shift everything by resumeTime-pauseTime
+	timeShift=SystemClock.uptimeMillis() - pauseTime;
+	startTime += timeShift;
+    }
 
     //interface: inner logic
     public int currentStage() { return cur_stage+1; } //human readable
