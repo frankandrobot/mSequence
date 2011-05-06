@@ -68,6 +68,8 @@ public class GameEngine {
 	//saveSettings();
     }
 
+    public void setGameClock(GameClock g) { mGameClock = g; }
+
     //initializes the GameEngine given the difficulty
     //settings, no of art pieces, and number of stages.
     //sets stages array and answers array
