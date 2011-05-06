@@ -63,7 +63,7 @@ public class GameEngine {
 	cur_stage=0;
 	game_complete=false;
 	//set countdown timer
-	initCountdownTimer();
+	initCountdownDuration();
 	//save current settings
 	//saveSettings();
     }
@@ -111,7 +111,7 @@ public class GameEngine {
     // = 1.5(choices)(n) + 1.5(n-1)(n)/2 seconds
     // where 1.5 is button-press duration, no choices is the number of
     // choices (for each stage), and n is total number of stages.
-    private void initCountdownTimer() {
+    private void initCountdownDuration() {
 	countdownDuration = keyPress*no_choices*no_stages 
 	    + keyPress*(no_choices-1)*no_choices/2;
     }
@@ -165,7 +165,7 @@ public class GameEngine {
 	initScoring();
 	cur_stage=0;
 	game_complete=false;
-	initCountdownTimer();
+	initCountdownDuration();
     }
 
     //otherwise game is over
