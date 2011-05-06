@@ -115,10 +115,7 @@ public class GameEngine {
     }
 
     //start the game
-    public void startCountdownTimer() {
-	startTime = SystemClock.uptimeMillis();
-    }
-
+ 
     //playing game, lets...
     public boolean checkAnswer(int choice) {
 	return answers[cur_stage] == choice;
@@ -182,6 +179,8 @@ public class GameEngine {
     //interface
 
     //interface: time
+    public long getTimerDuration() { return timerDuration; }
+        
     public void pauseCountdownTimer() {
 	pauseTime = SystemClock.uptimeMillis();
     }
