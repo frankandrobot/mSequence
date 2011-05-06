@@ -21,7 +21,7 @@ public class PlayGame extends Activity
     private GameDataAdapter mGameAdapter;
     private GameClock mGameClock;
     private ProgressBarView mProgress;
-
+}
     // Menu
     static final private int RESTART = Menu.FIRST;
     static final private int BACK = Menu.FIRST + 1;
@@ -51,16 +51,15 @@ public class PlayGame extends Activity
 	mGameEngine = new GameEngine(12, difficulty, 3); // no art pieces,
 						     // difficulty, no
 						     // of stages
+	//Set up RunningClock - this should be part of the View, but it's not
+	mGameClock = (GameClock) findViewById(R.id.running_clock);
+	mGameClock.initStartTime();
 	
 	//Set up GridView - this is the View for the GameEngine
 	mGameGridView = (GameGridView) findViewById(R.id.game_grid_view);
 	mGameAdapter = new GameDataAdapter(this, mGameEngine);
 	mGameGridView.setAdapter(mGameAdapter);
 
-	//Set up RunningClock - this should be part of the View, but it's not
-	mGameClock = (GameClock) findViewById(R.id.running_clock);
-
-	//mGameClock.initStartTime();
 	
 	//Call this method when user selects an image 
 	mGameGridView.setOnItemClickListener(new OnItemClickListener() {
