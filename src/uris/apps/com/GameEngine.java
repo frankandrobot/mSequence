@@ -16,6 +16,7 @@ public class GameEngine {
     int[] answers;
     int cur_stage=0;
     boolean level_complete=false;
+    boolean game_over=false;
     Random rg; //used to generate choices
     int[] current_settings; //used to save current settings
     int no_art_pieces=0; //number of art pieces
@@ -171,6 +172,10 @@ public class GameEngine {
     }
 
     //otherwise game is over
+
+    public void setGameOver(boolean b) {
+	game_over = b;
+    }
 
     //interface
 
