@@ -211,8 +211,8 @@ public class GameEngine {
 	tmp += "Level Complete? " + isLevelComplete() + "   ";
 	tmp += "No. Choices: " + getNumberOfChoices() + "\n";
 	tmp += "Progress: " + currentStage() + "/" + totalStages() + "\n";
-	tmp += "Score: duplicates=" + no_duplicates;
-	tmp += " incorrect=" + no_incorrect;
+	//tmp += "Score: duplicates=" + no_duplicates;
+	//tmp += " incorrect=" + no_incorrect;
 	return tmp;
      }
 
