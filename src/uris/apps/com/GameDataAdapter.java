@@ -29,7 +29,7 @@ public class GameDataAdapter extends BaseAdapter {
     public void getGameButtons() {}
 
     public void changeGameButtons() { //based on current choices
-	if ( !mTree.gameComplete() ) {
+	if ( !mTree.isLevelComplete() ) {
 	    //mTree.setCurrentChoices();
 	    for( int i=0; i<mTree.getNumberOfChoices(); i++ ) {
 		mDisplayIds[i] = mThumbIds[ mTree.getCurrentChoice(i) ];
