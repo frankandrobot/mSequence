@@ -11,7 +11,7 @@ import android.os.SystemClock;
 public class GameClock extends TextView {
 
     private Paint textPaintColor;
-    private long startTime, startTime, timeElapsed, pauseTime, timeShift;
+    private long startTime, timeElapsed, pauseTime, timeShift;
     private float secs;
     private GameEngine mGameEngine;
 
