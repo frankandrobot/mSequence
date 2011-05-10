@@ -129,7 +129,7 @@ public class GameEngine {
     //if answer correct, then 
     public void updateScores() {
 	if ( !beenHereBefore[cur_stage] ) guess_bonus++;
-	markLocation();
+	markCurrentLocation();
     }
 
     private void markCurrentLocation() { 
@@ -144,7 +144,7 @@ public class GameEngine {
 	if ( cur_stage == no_stages ) { 
 	    level_complete = true;
 	    //Report scores
-	    Score.time_bonus = mGameClock.getTimeLeft();
+	    Score.time_bonus = (int) mGameClock.getTimeLeft();
 	    Score.guess_bonus = guess_bonus * 1000;
 	    return true;
 	}
