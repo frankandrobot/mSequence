@@ -93,7 +93,6 @@ public class PlayGame extends Activity
 			PlayGame.this.mProgress.reset();
 		    }
 
-
 		    //check if game complete
 		    if ( mGameEngine.gameComplete() ) {
 			PlayGame.this.mGameClock.stop();
@@ -128,7 +127,7 @@ public class PlayGame extends Activity
 			PlayGame.this.mGameGridView.reset();
 			PlayGame.this.mGameClock.initStartTime();
 			PlayGame.this.mGameClock.resume();
-			mGameEngine.nextGame();
+			PlayGame.this.mGameEngine.nextGame();
 			PlayGame.this.mProgress.
 			    setCount( mGameEngine.totalStages()+1 );
 			PlayGame.this.mProgress.setCurrent( 1 );
