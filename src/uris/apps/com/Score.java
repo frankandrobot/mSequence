@@ -2,7 +2,7 @@ package uris.apps.com;
 
 public class Score {
     static public int score;
-    static public int time_bonus, error_bonus;
+    static public int time_bonus, error_bonus, guess_bonus;
     static public int incorrect_penal, duplicate_penal;
     
     static public String mytoString() {
