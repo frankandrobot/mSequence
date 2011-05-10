@@ -93,8 +93,8 @@ public class PlayGame extends Activity
 			PlayGame.this.mProgress.reset();
 		    }
 
-		    //check if game complete
-		    if ( mGameEngine.gameComplete() ) {
+		    //check if level complete
+		    if ( mGameEngine.isLevelComplete() ) {
 			PlayGame.this.mGameClock.stop();
 			//tally score/calculate scores
 			//: max_score = no_stages * 1000;
@@ -125,9 +125,9 @@ public class PlayGame extends Activity
 			startActivityForResult(scoreReport,InterArt.SCORES);
 
 			PlayGame.this.mGameGridView.reset();
-			PlayGame.this.mGameClock.initStartTime();
+			PlayGame.this.mGameClock.startCountdownTimer();
 			PlayGame.this.mGameClock.resume();
-			PlayGame.this.mGameEngine.nextGame();
+			PlayGame.this.mGameEngine.gotoNextLevel();
 			PlayGame.this.mProgress.
 			    setCount( mGameEngine.totalStages()+1 );
 			PlayGame.this.mProgress.setCurrent( 1 );
@@ -200,9 +200,9 @@ public class PlayGame extends Activity
 	
 	switch (item.getItemId()) {
 	case (RESTART): {
-	    mGameEngine.reset();
+	    //mGameEngine.reset();
 	    mGameGridView.updateGameButtons();
-	    mGameClock.initStartTime();
+	    //mGameClock.initStartTime();
 	    updateProgressBar();
 	    return true;
 	}
@@ -224,7 +224,7 @@ public class PlayGame extends Activity
 				    int resultCode, 
 				    Intent returnedData) {
 
-	mGameClock.initStartTime();
+	//mGameClock.initStartTime();
 	mGameClock.resume();
 	
 	// // See which child activity is calling us back.
