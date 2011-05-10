@@ -83,7 +83,8 @@ public class GameClock extends TextView {
  
 	if ( running ) {
 	    //number of milliseconds elapsed
-	    long curTime = SystemClock.uptimeMillis() - startTime;
+	    long curTime = getTimeLeft();
+	    //long curTime = SystemClock.uptimeMillis() - startTime;
 	    //convert to seconds
 	    secs = curTime / 1000.0f;
 	    //Round to 1 decimal place
