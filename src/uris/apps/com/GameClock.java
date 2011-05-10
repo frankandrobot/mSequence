@@ -24,7 +24,7 @@ public class GameClock extends TextView {
 	super(context);
 	init();
     }
-
+    
     public GameClock (Context context, AttributeSet attrs) {
 	super(context, attrs);
 	init();
@@ -38,8 +38,6 @@ public class GameClock extends TextView {
 	textPaintColor = new Paint(Paint.ANTI_ALIAS_FLAG);
 	textPaintColor.setColor(myResources.getColor(R.color.clockTextColor));
 	textPaintColor.setTextSize( 50 );
-
-	// startCountdownTimer();
 
 	// // Get the paper background color and the margin width.
 	// paperColor = myResources.getColor(R.color.notepad_paper);
@@ -91,6 +89,7 @@ public class GameClock extends TextView {
 	    //Round to 1 decimal place
 	    //float p = (float) Math.pow(10,1);
 	    secs = (float) (Math.round(secs*10.0f)/10.0f);
+	    mGameEngine.setGameOver( isTimeOver() ? true : false );
 	}
 	canvas.drawText(String.valueOf(secs), 60, 60, textPaintColor);
 	
