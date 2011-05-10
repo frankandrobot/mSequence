@@ -21,7 +21,7 @@ public class PlayGame extends Activity
     private GameDataAdapter mGameAdapter;
     private GameClock mGameClock;
     private ProgressBarView mProgress;
-}
+
     // Menu
     static final private int RESTART = Menu.FIRST;
     static final private int BACK = Menu.FIRST + 1;
