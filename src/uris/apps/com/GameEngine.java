@@ -15,7 +15,7 @@ public class GameEngine {
     int[][] stages;
     int[] answers;
     int cur_stage=0;
-    boolean game_complete=false;
+    boolean level_complete=false;
     Random rg; //used to generate choices
     int[] current_settings; //used to save current settings
     int no_art_pieces=0; //number of art pieces
@@ -61,7 +61,7 @@ public class GameEngine {
 	initStages();
 	initScoring();
 	cur_stage=0;
-	game_complete=false;
+	level_complete=false;
 	//set countdown timer
 	initCountdownDuration();
 	//save current settings
@@ -141,7 +141,7 @@ public class GameEngine {
     public boolean gotoNextStage() {
 	cur_stage++;
 	if ( cur_stage == no_stages ) { 
-	    game_complete = true;
+	    level_complete = true;
 	    //Report scores
 	    Score.time_bonus = mGameClock.getTimeLeft();
 	    Score.guess_bonus = guess_bonus * 1000;
@@ -158,7 +158,7 @@ public class GameEngine {
 
     //check game over/level complete
 
-    public boolean isLevelComplete() { return game_complete; }
+    public boolean isLevelComplete() { return level_complete; }
 
     //if successfully completed level,
     public void gotoNextLevel() {
@@ -166,7 +166,7 @@ public class GameEngine {
 	initStages();
 	initScoring();
 	cur_stage=0;
-	game_complete=false;
+	level_complete=false;
 	initCountdownDuration();
     }
 
@@ -203,7 +203,7 @@ public class GameEngine {
 	for ( int i=0; i < no_choices; i++)
 	    tmp += getCurrentChoice(i) + " ";
 	tmp += "\n";
-	tmp += "GameComplete? " + gameComplete() + "   ";
+	tmp += "Level Complete? " + isLevelComplete() + "   ";
 	tmp += "No. Choices: " + getNumberOfChoices() + "\n";
 	tmp += "Progress: " + currentStage() + "/" + totalStages() + "\n";
 	tmp += "Score: duplicates=" + no_duplicates;
