@@ -123,7 +123,6 @@ public class PlayGame extends Activity
 				   );
 			scoreReport.putExtra("timebonus",Score.time_bonus);
 			scoreReport.putExtra("guessbonus",Score.guess_bonus);
-			scoreReport.putExtra("score",Score.score);
 			startActivityForResult(scoreReport,InterArt.SCORES);
 
 			PlayGame.this.mGameEngine.gotoNextLevel();
