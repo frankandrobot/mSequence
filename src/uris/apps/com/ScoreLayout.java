@@ -50,7 +50,8 @@ public class ScoreLayout extends LinearLayout {
     	    int t = sumScores();
     	    Activity activity = (Activity) getContext();
     	    FrameLayout root = (FrameLayout) getParent();
-    	    LinearLayout total = (LinearLayout) root.findViewById(R.id.myfinal_layout);
+    	    LinearLayout total = (LinearLayout) 
+		root.findViewById(R.id.myfinal_layout);
     	    total.setVisibility(VISIBLE);
 
 	    TextView finalText = (TextView) 
