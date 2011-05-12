@@ -50,6 +50,10 @@ public class GameClock extends TextView {
 	startTime = SystemClock.uptimeMillis();
     }
 
+    public void restart() {
+	startTime = SystemClock.uptimeMillis();
+    }
+
     public float getRunningTime() {
 	return secs;
     }
