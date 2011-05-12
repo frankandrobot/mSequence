@@ -38,14 +38,6 @@ public class PlayGame extends Activity
 
 	setContentView(R.layout.play_game);
 
-	//Start GO screen 
-
-	//this starts the GO screen but unfortunately, the rest of the
-	//constructor gets called
-	Intent goScreen = new 
-	    Intent(this,uris.apps.com.GoScreenActivity.class);
-	startActivityForResult(goScreen,InterArt.GO_SCREEN);
-
 	//Set up GameEngine - this is the underlying game engine
 	//difficulty = GameEngine.HARD;
 	mGameEngine = new GameEngine(12, difficulty, 3); // no art pieces,
@@ -62,7 +54,16 @@ public class PlayGame extends Activity
 	mGameGridView.setAdapter(mGameAdapter);
 	
 	//start clock!
-	mGameClock.startCountdownTimer();
+	//See onActivityResult();
+	//mGameClock.startCountdownTimer();
+
+	//Start GO screen 
+
+	//this starts the GO screen but unfortunately, the rest of the
+	//constructor gets called
+	Intent goScreen = new 
+	    Intent(this,uris.apps.com.GoScreenActivity.class);
+	startActivityForResult(goScreen,InterArt.GO_SCREEN);
 
 	//Call this method when user selects an image 
 	mGameGridView.setOnItemClickListener(new OnItemClickListener() {
@@ -225,11 +226,15 @@ public class PlayGame extends Activity
 				    Intent returnedData) {
 
 	//mGameClock.initStartTime();
-	mGameClock.resume();
+	//mGameClock.resume();
 	
-	// // See which child activity is calling us back.
-	// switch (requestCode) {
-	// case <requestCode>: {
+	// See which child activity is calling us back.
+	switch (requestCode) {
+	case InterArt.GO_SCREEN: {
+	    mGameClock.startCountdownTimer();
+	}
+	default: break;
+	}
 	//     if (resultCode == RESULT_CANCELED){
 	// 	//
 	//     } 
