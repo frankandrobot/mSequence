@@ -129,8 +129,7 @@ public class PlayGame extends Activity
 
 			PlayGame.this.mGameEngine.gotoNextLevel();
 			PlayGame.this.mGameGridView.reset();
-			PlayGame.this.mGameClock.restart();
-			PlayGame.this.mGameClock.resume();
+			//GameClock is in onActivityResult()
 			PlayGame.this.mProgress.
 			    setCount( mGameEngine.totalStages()+1 );
 			PlayGame.this.mProgress.setCurrent( 1 );
@@ -237,13 +236,8 @@ public class PlayGame extends Activity
 	    mGameClock.startCountdownTimer();
 	}
 	case InterArt.SCORES: {
-	    // PlayGame.this.mGameEngine.gotoNextLevel();
-	    // PlayGame.this.mGameGridView.reset();
-	    // PlayGame.this.mGameClock.restart();
-	    // PlayGame.this.mGameClock.resume();
-	    // PlayGame.this.mProgress.
-	    // 	setCount( mGameEngine.totalStages()+1 );
-	    // PlayGame.this.mProgress.setCurrent( 1 );
+	    PlayGame.this.mGameClock.restart();
+	    PlayGame.this.mGameClock.resume();
 	}
 	default: break;
 	}
