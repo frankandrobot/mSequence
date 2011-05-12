@@ -103,14 +103,14 @@ public class PlayGame extends Activity
 			//: ideal_time = 2 * no_stages + 4;
 			//: f(time,stage) = 1/time * max_score * ideal_time;
 
-			float time = PlayGame.this.mGameClock
-			    .getRunningTime();
-			float max_score = mGameEngine.getStages() * 1000.0f;
-			float ideal_time = 2.0f * mGameEngine.getStages() 
-			    + 4.0f;
-			Score.time_bonus = (int) (1.0f 
-						  / time * max_score 
-						  * ideal_time);
+			// float time = PlayGame.this.mGameClock
+			//     .getRunningTime();
+			// float max_score = mGameEngine.getStages() * 1000.0f;
+			// float ideal_time = 2.0f * mGameEngine.getStages() 
+			//     + 4.0f;
+			// Score.time_bonus = (int) (1.0f 
+			// 			  / time * max_score 
+			// 			  * ideal_time);
 
 			//Call the score total screen
 
@@ -121,10 +121,9 @@ public class PlayGame extends Activity
 				   PlayGame.this, 
 				   uris.apps.com.ScoreReport.class
 				   );
-			scoreReport.putExtra("score",Score.score);
-			scoreReport.putExtra("incorrect",Score.incorrect_penal);
 			scoreReport.putExtra("timebonus",Score.time_bonus);
-			scoreReport.putExtra("noerrorbonus",Score.error_bonus);
+			scoreReport.putExtra("guessbonus",Score.guess_bonus);
+			scoreReport.putExtra("score",Score.score);
 			startActivityForResult(scoreReport,InterArt.SCORES);
 
 			PlayGame.this.mGameEngine.gotoNextLevel();
