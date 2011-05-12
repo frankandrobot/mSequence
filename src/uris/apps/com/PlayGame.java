@@ -126,6 +126,15 @@ public class PlayGame extends Activity
 			scoreReport.putExtra("timebonus",Score.time_bonus);
 			scoreReport.putExtra("noerrorbonus",Score.error_bonus);
 			startActivityForResult(scoreReport,InterArt.SCORES);
+
+			PlayGame.this.mGameEngine.gotoNextLevel();
+			PlayGame.this.mGameGridView.reset();
+			PlayGame.this.mGameClock.restart();
+			PlayGame.this.mGameClock.resume();
+			PlayGame.this.mProgress.
+			    setCount( mGameEngine.totalStages()+1 );
+			PlayGame.this.mProgress.setCurrent( 1 );
+
 		    }
 
 		    //update pictures
