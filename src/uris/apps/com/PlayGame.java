@@ -106,7 +106,8 @@ public class PlayGame extends Activity
 			float time = PlayGame.this.mGameClock
 			    .getRunningTime();
 			float max_score = mGameEngine.getStages() * 1000.0f;
-			float ideal_time = 2.0f * mGameEngine.getStages() + 4.0f;
+			float ideal_time = 2.0f * mGameEngine.getStages() 
+			    + 4.0f;
 			Score.time_bonus = (int) (1.0f 
 						  / time * max_score 
 						  * ideal_time);
@@ -227,13 +228,13 @@ public class PlayGame extends Activity
 	    mGameClock.startCountdownTimer();
 	}
 	case InterArt.SCORES: {
-	    PlayGame.this.mGameEngine.gotoNextLevel();
-	    PlayGame.this.mGameGridView.reset();
-	    PlayGame.this.mGameClock.restart();
-	    PlayGame.this.mGameClock.resume();
-	    PlayGame.this.mProgress.
-		setCount( mGameEngine.totalStages()+1 );
-	    PlayGame.this.mProgress.setCurrent( 1 );
+	    // PlayGame.this.mGameEngine.gotoNextLevel();
+	    // PlayGame.this.mGameGridView.reset();
+	    // PlayGame.this.mGameClock.restart();
+	    // PlayGame.this.mGameClock.resume();
+	    // PlayGame.this.mProgress.
+	    // 	setCount( mGameEngine.totalStages()+1 );
+	    // PlayGame.this.mProgress.setCurrent( 1 );
 	}
 	default: break;
 	}
