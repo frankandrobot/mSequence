@@ -34,7 +34,7 @@ public class ScoreReport extends Activity
         setContentView(R.layout.score_table);
 
 	Intent userScores = getIntent();
-	int s[] = new int[4];
+	int s[] = new int[3];
 	s[0] = userScores.getIntExtra("currentscore",Score.current_score);
 	s[1] = userScores.getIntExtra("timebonus",Score.time_bonus);
 	s[2] = userScores.getIntExtra("guessbonus",Score.guess_bonus);
