@@ -13,6 +13,7 @@ public class GameClock extends TextView {
     private Paint textPaintColor;
     private long startTime, timeElapsed, pauseTime, timeShift;
     private float secs;
+    private 
     private GameEngine mGameEngine;
 
     public GameClock (Context context, AttributeSet ats, int ds) {
@@ -112,7 +113,7 @@ public class GameClock extends TextView {
     }
 
     private void flashRed() {
-	setTextColor(0xFFFF0000);
+	setTextColor(myResources.getColor(R.color.red));
     }
 
     public void stop() { running=false; }
