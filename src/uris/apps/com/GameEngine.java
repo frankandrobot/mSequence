@@ -151,7 +151,7 @@ public class GameEngine {
     }
     
     public boolean reportScores(boolean game_over) {
-	Score.time_bonus = game_over ? 0 : (int) mGameClock.getTimeLeft();
+	Score.time_bonus = (game_over) ? 0 : (int) mGameClock.getTimeLeft();
 	Score.guess_bonus = guess_bonus * 1000;
     }
 
