@@ -35,8 +35,9 @@ public class ScoreReport extends Activity
 
 	Intent userScores = getIntent();
 	int s[] = new int[4];
-	s[0] = userScores.getIntExtra("timebonus",Score.time_bonus);
-	s[1] = userScores.getIntExtra("guessbonus",Score.guess_bonus);
+	s[0] = userScores.getIntExtra("currentscore",Score.current_score);
+	s[1] = userScores.getIntExtra("timebonus",Score.time_bonus);
+	s[2] = userScores.getIntExtra("guessbonus",Score.guess_bonus);
 
 	scores = (ScoreLayout) findViewById(R.id.scores);
 	scores.setScores( s );
