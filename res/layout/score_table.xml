@@ -14,7 +14,16 @@
       android:id="@+id/scores"
       >
     <TextView
-	android:id="@+id/timebonus"
+	android:id="@+id/current_score"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:text="Current score:"
+	android:gravity="left"
+	android:textSize="24sp"
+	android:textColor="#59ffbd"
+	/>
+    <TextView
+	android:id="@+id/current_score_pts"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:text="Time bonus:"
