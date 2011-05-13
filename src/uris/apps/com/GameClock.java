@@ -101,8 +101,9 @@ public class GameClock extends TextView {
 		flashRed();
 	    }
 	    if (mGameEngine.gameOver()) {
-		PlayGame parentActivity = (PlayGame) getContext();
-		parentActivity.endGame();
+		mGameEngine.reportScores();
+	     	PlayGame parentActivity = (PlayGame) getContext();
+	     	parentActivity.endGame();
 	    }
 	}
 	canvas.drawText(String.valueOf(secs), 60, 60, textPaintColor);
