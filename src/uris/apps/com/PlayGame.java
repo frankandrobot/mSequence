@@ -121,10 +121,11 @@ public class PlayGame extends Activity
 				   PlayGame.this, 
 				   uris.apps.com.ScoreReport.class
 				   );
+			scoreReport.putExtra("currentscore",
+					     Score.current_score);
 			scoreReport.putExtra("timebonus",Score.time_bonus);
 			scoreReport.putExtra("guessbonus",Score.guess_bonus);
 			startActivityForResult(scoreReport,InterArt.SCORES);
-
 			PlayGame.this.mGameEngine.gotoNextLevel();
 			PlayGame.this.mGameGridView.reset();
 			//GameClock is in onActivityResult()
