@@ -101,6 +101,7 @@ public class GameClock extends TextView {
 		flashRed();
 	    }
 	    if (mGameEngine.gameOver()) {
+		stop();
 		mGameEngine.reportScores();
 	     	PlayGame parentActivity = (PlayGame) getContext();
 	     	parentActivity.endGame();
