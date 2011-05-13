@@ -96,10 +96,10 @@ public class GameClock extends TextView {
 	    //Round to 1 decimal place
 	    //float p = (float) Math.pow(10,1);
 	    secs = (float) (Math.round(secs*10.0f)/10.0f);
-	    mGameEngine.setGameOver( isTimeOver() ? true : false );
 	    if ( curTime < 3000 ) {
 		flashRed();
 	    }
+	    mGameEngine.setGameOver( isTimeOver() ? true : false );
 	    if (mGameEngine.gameOver()) {
 		stop();
 		mGameEngine.reportScores();
