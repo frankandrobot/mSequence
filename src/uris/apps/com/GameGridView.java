@@ -44,13 +44,13 @@ public class GameGridView extends GridView {
  	    button.deselect();
 	} 
     }
-
+    
     @Override
 	public void onDraw(Canvas canvas) {
 
 	super.onDraw(canvas);
     }
-
+    
     public void updateGameButtons() {
 	GameDataAdapter ia = 
 	    (GameDataAdapter) getAdapter();
