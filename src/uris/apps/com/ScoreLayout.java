@@ -64,7 +64,7 @@ public class ScoreLayout extends LinearLayout {
 	    totalText.startAnimation(rotate);
     	    cur_score++;
 	    //update current score with new total
-	    //Score.current_score = t;
+	    Score.current_score = t;
     	    super.dispatchDraw(canvas);
 	    if (MyDebug.scoreLayout == false) {
 		//finish activity
