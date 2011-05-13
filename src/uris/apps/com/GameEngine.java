@@ -177,6 +177,8 @@ public class GameEngine {
 	game_over = b;
     }
 
+    public boolean gameOver() { return game_over; }
+
     //interface
 
     //interface: time
