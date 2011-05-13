@@ -95,6 +95,10 @@ public class GameClock extends TextView {
 	    //float p = (float) Math.pow(10,1);
 	    secs = (float) (Math.round(secs*10.0f)/10.0f);
 	    mGameEngine.setGameOver( isTimeOver() ? true : false );
+	    if (gameOver()) {
+		PlayGame parentActivity = (PlayGame) getContext();
+		parentActivity.endGame();
+	    }
 	}
 	canvas.drawText(String.valueOf(secs), 60, 60, textPaintColor);
 	
