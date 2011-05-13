@@ -95,9 +95,12 @@ public class GameClock extends TextView {
 	    //float p = (float) Math.pow(10,1);
 	    secs = (float) (Math.round(secs*10.0f)/10.0f);
 	    mGameEngine.setGameOver( isTimeOver() ? true : false );
+	    if ( curTime < 3000 ) {
+		flashRed();
+	    }
 	    if (gameOver()) {
 		PlayGame parentActivity = (PlayGame) getContext();
-		parentActivity.endGame();
+		//		parentActivity.endGame();
 	    }
 	}
 	canvas.drawText(String.valueOf(secs), 60, 60, textPaintColor);
@@ -106,6 +109,10 @@ public class GameClock extends TextView {
 	super.onDraw(canvas);
 	//canvas.restore();
 	invalidate();
+    }
+
+    private void flashRed() {
+	setTextColor(0xFFFF0000);
     }
 
     public void stop() { running=false; }
