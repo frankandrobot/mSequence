@@ -7,7 +7,7 @@ public class GameEngine {
     //public settings
     static int EASY=0, MEDIUM=1, HARD=2;
     static int MAX_CHOICES=3;
-
+    static boolean GAME_OVER=true, NEXT_LEVEL=false;
     //private (inner) settings
     int difficulty=EASY; //default difficulty
     int no_stages;
@@ -144,13 +144,17 @@ public class GameEngine {
 	if ( cur_stage == no_stages ) { 
 	    level_complete = true;
 	    //Report scores
-	    Score.time_bonus = (int) mGameClock.getTimeLeft();
-	    Score.guess_bonus = guess_bonus * 1000;
+	    reportScores(NEXT_LEVEL);
 	    return true;
 	}
 	return false;
     }
     
+    public boolean reportScores(boolean game_over) {
+	Score.time_bonus = game_over ? 0 : (int) mGameClock.getTimeLeft();
+	Score.guess_bonus = guess_bonus * 1000;
+    }
+
     //otherwise incorrect
     public void resetCurrentLevel() {
 	markCurrentLocation();
