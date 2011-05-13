@@ -98,7 +98,7 @@ public class GameClock extends TextView {
 	    if ( curTime < 3000 ) {
 		flashRed();
 	    }
-	    if (gameOver()) {
+	    if (mGameEngine.gameOver()) {
 		PlayGame parentActivity = (PlayGame) getContext();
 		//		parentActivity.endGame();
 	    }
