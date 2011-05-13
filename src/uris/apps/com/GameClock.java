@@ -7,13 +7,14 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.os.SystemClock;
+import android.content.res.Resources;
 
 public class GameClock extends TextView {
 
     private Paint textPaintColor;
     private long startTime, timeElapsed, pauseTime, timeShift;
     private float secs;
-    private 
+    private Resources myResources;
     private GameEngine mGameEngine;
 
     public GameClock (Context context, AttributeSet ats, int ds) {
@@ -33,7 +34,7 @@ public class GameClock extends TextView {
 
     private void init() {
 	// Get a reference to our resource table.
-	Resources myResources = getResources();
+	myResources = getResources();
 
 	// Create the paint brushes we will use in the onDraw method.
 	textPaintColor = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -101,7 +102,7 @@ public class GameClock extends TextView {
 	    }
 	    if (mGameEngine.gameOver()) {
 		PlayGame parentActivity = (PlayGame) getContext();
-		//		parentActivity.endGame();
+		parentActivity.endGame();
 	    }
 	}
 	canvas.drawText(String.valueOf(secs), 60, 60, textPaintColor);
@@ -113,7 +114,7 @@ public class GameClock extends TextView {
     }
 
     private void flashRed() {
-	setTextColor(myResources.getColor(R.color.red));
+	setTextColor(myResources.getColor(R.color.realred));
     }
 
     public void stop() { running=false; }
