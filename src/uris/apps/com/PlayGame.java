@@ -253,5 +253,18 @@ public class PlayGame extends Activity
 	//     break;
 	// }
     }
-    
+
+    public void endGame() {
+	Intent scoreReport = new 
+	    Intent(
+		   PlayGame.this, 
+		   uris.apps.com.ScoreReport.class
+		   );
+	scoreReport.putExtra("currentscore",
+			     Score.current_score);
+	scoreReport.putExtra("timebonus",Score.time_bonus);
+	scoreReport.putExtra("guessbonus",Score.guess_bonus);
+	startActivityForResult(scoreReport,InterArt.SCORES);
+    }
+
 }
