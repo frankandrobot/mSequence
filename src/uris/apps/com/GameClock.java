@@ -11,7 +11,7 @@ import android.content.res.Resources;
 
 public class GameClock extends TextView {
 
-    private Paint textPaintColor;
+    private Paint textPaintColor, whitePaintColor, redPaintColor;
     private long startTime, timeElapsed, pauseTime, timeShift;
     private float secs;
     private Resources myResources;
@@ -37,13 +37,15 @@ public class GameClock extends TextView {
 	myResources = getResources();
 
 	// Create the paint brushes we will use in the onDraw method.
-	textPaintColor = new Paint(Paint.ANTI_ALIAS_FLAG);
-	textPaintColor.setColor(myResources.getColor(R.color.clockTextColor));
-	textPaintColor.setTextSize( 50 );
+	whitePaintColor = new Paint(Paint.ANTI_ALIAS_FLAG);
+	whitePaintColor.setColor(myResources.getColor(R.color.clockTextColor));
+	whitePaintColor.setTextSize( 50 );
 
-	// // Get the paper background color and the margin width.
-	// paperColor = myResources.getColor(R.color.notepad_paper);
-	//margin = myResources.getDimension(R.dimen.notepad_margin);
+	redPaintColor = new Paint(Paint.ANTI_ALIAS_FLAG);
+	redPaintColor.setColor(myResources.getColor(R.color.realred));
+	redPaintColor.setTextSize( 50 );
+
+	textPaintColor = whitePaintColor;
     }
 
     public void setGameEngine(GameEngine g) { mGameEngine = g; }
@@ -116,7 +118,11 @@ public class GameClock extends TextView {
     }
 
     private void flashRed() {
-	setTextColor(myResources.getColor(R.color.realred));
+	textPaintColor = redPaintColor;
+    }
+
+    private void flashWhite() {
+	textPaintColor = whitePaintColor;
     }
 
     public void stop() { running=false; }
