@@ -106,7 +106,7 @@ public class GameClock extends TextView {
 		stop();
 		mGameEngine.reportScores(GameEngine.GAME_OVER);
 	     	PlayGame parentActivity = (PlayGame) getContext();
-		//	     	parentActivity.endGame();
+		parentActivity.endGame();
 	    }
 	}
 	canvas.drawText(String.valueOf(secs), 60, 60, textPaintColor);
