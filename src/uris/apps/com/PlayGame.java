@@ -235,8 +235,13 @@ public class PlayGame extends Activity
 	    mGameClock.startCountdownTimer();
 	}
 	case InterArt.SCORES: {
-	    PlayGame.this.mGameClock.restart();
-	    PlayGame.this.mGameClock.resume();
+	    if ( resultCode == InterArt.GAME_OVER ) {
+		// launch game over screen and end this game
+	    }
+	    else {
+		PlayGame.this.mGameClock.restart();
+		PlayGame.this.mGameClock.resume();
+	    }
 	}
 	default: break;
 	}
@@ -264,6 +269,7 @@ public class PlayGame extends Activity
 			     Score.current_score);
 	scoreReport.putExtra("timebonus",Score.time_bonus);
 	scoreReport.putExtra("guessbonus",Score.guess_bonus);
+	scoreReport.putExtra("gameover",true);
 	startActivityForResult(scoreReport,InterArt.SCORES);
     }
 
