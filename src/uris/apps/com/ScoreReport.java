@@ -39,7 +39,8 @@ public class ScoreReport extends Activity
 	s[1] = userScores.getIntExtra("timebonus",Score.time_bonus);
 	s[2] = userScores.getIntExtra("guessbonus",Score.guess_bonus);
 	if ( userScores.getIntExtra("gameover",false) ) {
-	    setResult(Score.game_over);
+	    setResult(InterArt.GAME_OVER);
+	}
 	scores = (ScoreLayout) findViewById(R.id.scores);
 	scores.setScores( s );
 
