@@ -237,6 +237,7 @@ public class PlayGame extends Activity
 	case InterArt.SCORES: {
 	    if ( resultCode == InterArt.GAME_OVER ) {
 		// launch game over screen and end this game
+		Toast.makeText(PlayGame.this, "Game over! booya", Toast.LENGTH_SHORT).show();
 	    }
 	    else {
 		PlayGame.this.mGameClock.restart();
