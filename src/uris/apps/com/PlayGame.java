@@ -269,7 +269,7 @@ public class PlayGame extends Activity
 			     Score.current_score);
 	scoreReport.putExtra("timebonus",Score.time_bonus);
 	scoreReport.putExtra("guessbonus",Score.guess_bonus);
-	scoreReport.putExtra("gameover",true);
+	scoreReport.putExtra("gameover",InterArt.GAME_OVER);
 	startActivityForResult(scoreReport,InterArt.SCORES);
     }
 
