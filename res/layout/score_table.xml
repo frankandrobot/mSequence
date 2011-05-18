@@ -95,10 +95,10 @@
       android:id="@+id/myfinal_layout"
       >
     <TextView
-	android:text="total:"
+	android:text="blank"
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
-	android:id="@+id/myfinal_score"
+	android:id="@+id/blank"
 	android:textColor="#ff0000"
 	android:textSize="47sp"
 	android:paddingBottom="55sp"
