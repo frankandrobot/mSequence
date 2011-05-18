@@ -95,16 +95,7 @@
       android:id="@+id/gameover"
       >
     <TextView
-	android:text="blank"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:id="@+id/blank"
-	android:textColor="#ff0000"
-	android:textSize="47sp"
-	android:paddingBottom="55sp"
-	/>
-    <TextView
-	android:id="@+id/gameover"
+	android:id="@+id/gameover_text"
 	android:text="Game Over"
     	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
