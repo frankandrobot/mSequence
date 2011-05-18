@@ -41,10 +41,11 @@ public class ScoreReport extends Activity
         setContentView(R.layout.score_table);
 
 	Intent userScores = getIntent();
-	int s[] = new int[3];
+	int s[] = new int[4];
 	s[0] = userScores.getIntExtra("currentscore",Score.current_score);
 	s[1] = userScores.getIntExtra("timebonus",Score.time_bonus);
 	s[2] = userScores.getIntExtra("guessbonus",Score.guess_bonus);
+	s[3] = userScores.getIntExtra("totalscore",Score.total_score);
 	if ( userScores.getIntExtra("gameover",0 ) == InterArt.GAME_OVER ){
 	    ScoreReport.GAME_OVER=true;
 	    setResult(InterArt.GAME_OVER);
