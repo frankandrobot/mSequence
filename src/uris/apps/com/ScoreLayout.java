@@ -17,7 +17,7 @@ import android.graphics.Typeface;
 import android.view.ViewParent;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Animation;
-
+import android.widget.Toast;
  
 public class ScoreLayout extends LinearLayout {
 
@@ -71,7 +71,9 @@ public class ScoreLayout extends LinearLayout {
     	    cur_score++;
 	    //update current score with new total
 	    Score.setCurrentScore();
-	    Toast.makeText(ScoreLayout.this, String.valueOf(Score.current_score), Toast.LENGTH_SHORT).show();
+	    Toast.makeText(ScoreLayout.this, 
+			   String.valueOf(Score.current_score), 
+			   Toast.LENGTH_SHORT).show();
     	    super.dispatchDraw(canvas);
 	    if (MyDebug.scoreLayout == false) {
 		//finish activity
