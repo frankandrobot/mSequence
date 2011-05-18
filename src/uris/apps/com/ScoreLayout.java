@@ -45,18 +45,39 @@ public class ScoreLayout extends LinearLayout {
 
     @Override
     public void dispatchDraw(Canvas canvas) {
+	//if game over
+	if ( ScoreReport.GAME_OVER ) {
+  	    Activity activity = (Activity) getContext();
+    	    FrameLayout gameoverFrame = (FrameLayout) getParent();
+    	    LinearLayout gameoverLayout = (LinearLayout) 
+		gameoverFrame.findViewById(R.id.gameover);
+    	    gameoverLayout.setVisibility(VISIBLE);
 
+	    TextView gameoverView = (TextView) 
+		gameoverFrame.findViewById(R.id.gameover_text);
+    	    Animation rotate = AnimationUtils.
+    	    	loadAnimation(activity, R.anim.score_rotate);
+    	    gameoverView.startAnimation(rotate);
+  
+	    super.dispatchDraw(canvas);
+	    return;
+	}
+
+	//If we already updated all the scores
+	//then update total scores
     	if ( cur_score == scores.length) { 
     	    int t = sumScores();
+	    FrameLayout 
+
     	    Activity activity = (Activity) getContext();
-    	    FrameLayout root = (FrameLayout) getParent();
+    	    FrameLayout gameoverFrame = (FrameLayout) getParent();
     	    LinearLayout total = (LinearLayout) 
-		root.findViewById(R.id.myfinal_layout);
+		gameoverFrame.findViewById(R.id.myfinal_layout);
     	    total.setVisibility(VISIBLE);
 
 	    TextView finalText = (TextView) 
-		root.findViewById(R.id.myfinal_score);
-	    TextView totalText = (TextView) root.findViewById(R.id.total);
+		gameoverFrame.findViewById(R.id.myfinal_score);
+	    TextView totalText = (TextView) gameoverFrame.findViewById(R.id.total);
     	    totalText.setText(String.valueOf(t));
     	    Animation rotate = AnimationUtils.
     	    	loadAnimation(activity, R.anim.score_rotate);
