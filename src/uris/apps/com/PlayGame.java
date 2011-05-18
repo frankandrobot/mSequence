@@ -101,7 +101,10 @@ public class PlayGame extends Activity
 			//Report scores for score screen
 			Score.reportScores(false, 
 					   (int) PlayGame.this
-					   .mGameClock.getTimeLeft());
+					   .mGameClock.getTimeLeft(),
+					   PlayGame.this
+					   .mGameEngine.getGuessPts()
+					   );
 	
 			//Call the score total screen
 
@@ -260,7 +263,9 @@ public class PlayGame extends Activity
 
     public void endGame() {
 	Score.reportScores(GameEngine.GAME_OVER,
-			   (int) mGameClock.getTimeLeft());
+			   (int) mGameClock.getTimeLeft(),
+			   mGameEngine.getGuessPts()
+			   );
 	
 	//create intent for score screen
 	Intent scoreReport = new 
