@@ -66,25 +66,8 @@ public class ScoreLayout extends LinearLayout {
 	}
 
 	//If we already updated all the scores
-	//then update total scores
+	//then we are done
     	if ( cur_score == scores.length) { 
-    	    int t = sumScores();
-	    FrameLayout 
-
-    	    Activity activity = (Activity) getContext();
-    	    FrameLayout gameoverFrame = (FrameLayout) getParent();
-    	    LinearLayout total = (LinearLayout) 
-		gameoverFrame.findViewById(R.id.myfinal_layout);
-    	    total.setVisibility(VISIBLE);
-
-	    TextView finalText = (TextView) 
-		gameoverFrame.findViewById(R.id.myfinal_score);
-	    TextView totalText = (TextView) gameoverFrame.findViewById(R.id.total);
-    	    totalText.setText(String.valueOf(t));
-    	    Animation rotate = AnimationUtils.
-    	    	loadAnimation(activity, R.anim.score_rotate);
-    	    finalText.startAnimation(rotate);
-	    totalText.startAnimation(rotate);
     	    cur_score++;
 	    //update current score with new total
 	    Score.current_score = t;
@@ -98,8 +81,8 @@ public class ScoreLayout extends LinearLayout {
     	    super.dispatchDraw(canvas);
     	    return;
     	}
+
     	//update one score at a time
-    	//update cur_score
 
     	//positive score
     	if ( scores[cur_score] > 0 ) {
