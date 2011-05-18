@@ -102,11 +102,15 @@ public class PlayGame extends Activity
 			Score.reportScores(false, 
 					   (int) PlayGame.this
 					   .mGameClock.getTimeLeft());
+			//Update total score
+			Score.setTotalScore();
 
 			//Call the score total screen
 
 			//Unfortunately, the rest of this function
 			//gets called too
+
+			//Create intent
 			Intent scoreReport = new 
 			    Intent(
 				   PlayGame.this, 
@@ -117,7 +121,11 @@ public class PlayGame extends Activity
 			scoreReport.putExtra("timebonus",Score.time_bonus);
 			scoreReport.putExtra("guessbonus",Score.guess_bonus);
 			scoreReport.putExtra("totalscore",Score.total_score);
+			
+			//start score screen
 			startActivityForResult(scoreReport,InterArt.SCORES);
+			
+			//Post-processing
 			PlayGame.this.mGameEngine.gotoNextLevel();
 			PlayGame.this.mGameGridView.reset();
 			//GameClock is in onActivityResult()
@@ -253,6 +261,10 @@ public class PlayGame extends Activity
     }
 
     public void endGame() {
+	Score.reportScores(true,(int) mGameClock.getTimeLeft());
+	Score.setTotalScore();
+
+	//create intent for score screen
 	Intent scoreReport = new 
 	    Intent(
 		   this, 
@@ -263,6 +275,9 @@ public class PlayGame extends Activity
 	scoreReport.putExtra("timebonus",Score.time_bonus);
 	scoreReport.putExtra("guessbonus",Score.guess_bonus);
 	scoreReport.putExtra("gameover",InterArt.GAME_OVER);
+	scoreReport.putExtra("totalscore",Score.total_score);
+	
+	//launch score screen
 	startActivityForResult(scoreReport,InterArt.SCORES);
     }
 
