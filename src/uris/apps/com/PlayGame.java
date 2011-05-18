@@ -83,7 +83,7 @@ public class PlayGame extends Activity
 			PlayGame.this.mGameEngine.updateScores();
 			PlayGame.this.mGameEngine.gotoNextStage();
 			if ( PlayGame.this.mGameEngine.isLevelComplete() ) {
-			    //Report scores
+			    //Report scores for score screen
 			    Score.reportScores(false, 
 					   (int) PlayGame.mGameClock
 					   .getTimeLeft());
