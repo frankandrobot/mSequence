@@ -28,7 +28,7 @@ public class Score {
     }
 
     static public void setCurrentScore() {
-	setTotalScore();
-	current_score = total_score;
+	current_score = current_score + time_bonus + guess_bonus;
     }
+
 }
