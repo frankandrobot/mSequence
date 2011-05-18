@@ -233,7 +233,7 @@ public class PlayGame extends Activity
 	// See which child activity is calling us back.
 	switch (requestCode) {
 	case InterArt.GO_SCREEN: {
-	    mGameClock.startCountdownTimer();
+	    mGameClock.restart();
 	}
 	case InterArt.SCORES: {
 	    if ( resultCode == InterArt.GAME_OVER ) {
