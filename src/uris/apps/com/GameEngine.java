@@ -144,17 +144,12 @@ public class GameEngine {
 	if ( cur_stage == no_stages ) { 
 	    level_complete = true;
 	    //Report scores
-	    reportScores(NEXT_LEVEL);
+	    Scores.reportScores(NEXT_LEVEL, (int) mGameClock.getTimeLeft());
 	    return true;
 	}
 	return false;
     }
-    
-    public void reportScores(boolean game_over) {
-	Score.time_bonus = (game_over) ? 0 : (int) mGameClock.getTimeLeft();
-	Score.guess_bonus = guess_bonus * 1000;
-    }
-
+ 
     //otherwise incorrect
     public void resetCurrentLevel() {
 	markCurrentLocation();
