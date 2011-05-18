@@ -25,6 +25,7 @@ import android.os.Debug;
 //2. Update the array here
 //3. Update ScoreLayout
 //4. Update PlayGame
+//5. Update GameEngine
 
 public class ScoreReport extends Activity
 {
