@@ -29,7 +29,7 @@ import android.os.Debug;
 public class ScoreReport extends Activity
 {
     private ScoreLayout scores;
-    private boolean gameOver=false;
+    static public boolean GAME_OVER=false;
 
     /** Called when the activity is first created. */
     @Override
@@ -46,7 +46,7 @@ public class ScoreReport extends Activity
 	s[1] = userScores.getIntExtra("timebonus",Score.time_bonus);
 	s[2] = userScores.getIntExtra("guessbonus",Score.guess_bonus);
 	if ( userScores.getIntExtra("gameover",0 ) == InterArt.GAME_OVER ){
-	    gameOver=true;
+	    ScoreReport.GAME_OVER=true;
 	    setResult(InterArt.GAME_OVER);
 	}
 	scores = (ScoreLayout) findViewById(R.id.scores);
