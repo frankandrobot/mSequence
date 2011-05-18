@@ -105,7 +105,6 @@ public class GameClock extends TextView {
 	    mGameEngine.setGameOver( isTimeOver() ? true : false );
 	    if (mGameEngine.gameOver()) {
 		stop();
-		mGameEngine.reportScores(GameEngine.GAME_OVER);
 	     	PlayGame parentActivity = (PlayGame) getContext();
 		parentActivity.endGame();
 	    }
