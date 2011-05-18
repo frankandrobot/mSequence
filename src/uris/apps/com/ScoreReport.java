@@ -23,6 +23,8 @@ import android.os.Debug;
 //To change the Scoring screen, change:
 //1. Update the XML
 //2. Update the array here
+//3. Update ScoreLayout
+//4. Update PlayGame
 
 public class ScoreReport extends Activity
 {
