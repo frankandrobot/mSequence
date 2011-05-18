@@ -47,18 +47,20 @@ public class ScoreLayout extends LinearLayout {
     public void dispatchDraw(Canvas canvas) {
 	//if game over
 	if ( ScoreReport.GAME_OVER ) {
-  	    Activity activity = (Activity) getContext();
+	    //unhide gameover 
     	    FrameLayout gameoverFrame = (FrameLayout) getParent();
-    	    LinearLayout gameoverLayout = (LinearLayout) 
-		gameoverFrame.findViewById(R.id.gameover);
-    	    gameoverLayout.setVisibility(VISIBLE);
+	    gameoverFrame.findViewById(R.id.gameover)
+		.setVisibility(VISIBLE);
 
+	    //get gameover text
 	    TextView gameoverView = (TextView) 
 		gameoverFrame.findViewById(R.id.gameover_text);
+
+	    //rotate gameover text
+  	    Activity activity = (Activity) getContext();
     	    Animation rotate = AnimationUtils.
     	    	loadAnimation(activity, R.anim.score_rotate);
     	    gameoverView.startAnimation(rotate);
-  
 	    super.dispatchDraw(canvas);
 	    return;
 	}
