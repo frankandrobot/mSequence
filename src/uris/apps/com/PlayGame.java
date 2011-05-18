@@ -82,10 +82,16 @@ public class PlayGame extends Activity
 			text = "Correct!";
 			PlayGame.this.mGameEngine.updateScores();
 			PlayGame.this.mGameEngine.gotoNextStage();
+			if ( PlayGame.this.mGameEngine.isLevelComplete() ) {
+			    //Report scores
+			    Score.reportScores(false, 
+					   (int) PlayGame.mGameClock
+					   .getTimeLeft());
+			}
 			//update text view
 			PlayGame.this.mGameGridView.flashGreen(position);
 			PlayGame.this.mProgress.next();
-		    }
+			}
 		    else {
 			text = "Almost!";
 			PlayGame.this.mGameEngine.updateScores();
