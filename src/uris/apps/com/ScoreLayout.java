@@ -70,7 +70,7 @@ public class ScoreLayout extends LinearLayout {
     	if ( cur_score == scores.length) { 
     	    cur_score++;
 	    //update current score with new total
-	    Score.current_score = t;
+	    Score.setCurrentScore();
     	    super.dispatchDraw(canvas);
 	    if (MyDebug.scoreLayout == false) {
 		//finish activity
@@ -83,7 +83,6 @@ public class ScoreLayout extends LinearLayout {
     	}
 
     	//update one score at a time
-
     	//positive score
     	if ( scores[cur_score] > 0 ) {
     	    if ( ctr[cur_score] < scores[cur_score]-1 ) {
