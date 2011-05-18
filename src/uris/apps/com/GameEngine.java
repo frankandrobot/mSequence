@@ -143,13 +143,11 @@ public class GameEngine {
 	cur_stage++;
 	if ( cur_stage == no_stages ) { 
 	    level_complete = true;
-	    //Report scores
-	    Scores.reportScores(NEXT_LEVEL, (int) mGameClock.getTimeLeft());
 	    return true;
 	}
 	return false;
     }
- 
+
     //otherwise incorrect
     public void resetCurrentLevel() {
 	markCurrentLocation();
