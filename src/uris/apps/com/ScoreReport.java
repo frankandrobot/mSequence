@@ -20,9 +20,14 @@ import android.os.Debug;
 //src/ScoreLayout.java
 //src/UriSound.java
 
+//To change the Scoring screen, change:
+//1. Update the XML
+//2. Update the array here
+
 public class ScoreReport extends Activity
 {
     private ScoreLayout scores;
+    private boolean gameOver=false;
 
     /** Called when the activity is first created. */
     @Override
@@ -39,6 +44,7 @@ public class ScoreReport extends Activity
 	s[1] = userScores.getIntExtra("timebonus",Score.time_bonus);
 	s[2] = userScores.getIntExtra("guessbonus",Score.guess_bonus);
 	if ( userScores.getIntExtra("gameover",0 ) == InterArt.GAME_OVER ){
+	    gameOver=true;
 	    setResult(InterArt.GAME_OVER);
 	}
 	scores = (ScoreLayout) findViewById(R.id.scores);
@@ -52,7 +58,8 @@ public class ScoreReport extends Activity
 	    myScores.setTypeface(font);
 	}
 	//and final total score
-        LinearLayout totalView = (LinearLayout)findViewById(R.id.myfinal_layout);
+        LinearLayout totalView = (LinearLayout)
+	    findViewById(R.id.myfinal_layout);
         for (int i=0; i<totalView.getChildCount(); i++) {
 	    myScores = (TextView) totalView.getChildAt(i);
 	    myScores.setTypeface(font);
