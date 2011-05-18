@@ -92,7 +92,7 @@
       android:orientation="vertical"
       android:gravity="center"
       android:visibility="gone"
-      android:id="@+id/myfinal_layout"
+      android:id="@+id/gameover"
       >
     <TextView
 	android:text="blank"
