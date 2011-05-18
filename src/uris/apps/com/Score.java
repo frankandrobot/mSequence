@@ -18,9 +18,17 @@ public class Score {
 	return tmp;
     }
 
-   static public void reportScores(boolean isLevelOver, int timeLeft) {
-	Score.time_bonus = (isLevelOver) ? 0 : timeLeft;
-	Score.guess_bonus = guess_bonus * 1000;
+    static public void reportScores(boolean isLevelOver, int timeLeft) {
+	time_bonus = (isLevelOver) ? 0 : timeLeft;
+	guess_bonus = guess_bonus * 1000;
     }
 
+    static public void setTotalScore() {
+	total_score = current_score + time_bonus + guess_bonus;
+    }
+
+    static public void setCurrentScore() {
+	setTotalScore();
+	current_score = total_score;
+    }
 }
