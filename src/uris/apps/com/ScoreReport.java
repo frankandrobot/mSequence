@@ -65,7 +65,7 @@ public class ScoreReport extends Activity
 	}
 	//and final total score
         LinearLayout totalView = (LinearLayout)
-	    findViewById(R.id.myfinal_layout);
+	    findViewById(R.id.gameover);
         for (int i=0; i<totalView.getChildCount(); i++) {
 	    myScores = (TextView) totalView.getChildAt(i);
 	    myScores.setTypeface(font);
