@@ -82,12 +82,6 @@ public class PlayGame extends Activity
 			text = "Correct!";
 			PlayGame.this.mGameEngine.updateScores();
 			PlayGame.this.mGameEngine.gotoNextStage();
-			if ( PlayGame.this.mGameEngine.isLevelComplete() ) {
-			    //Report scores for score screen
-			    Score.reportScores(false, 
-					   (int) PlayGame.mGameClock
-					   .getTimeLeft());
-			}
 			//update text view
 			PlayGame.this.mGameGridView.flashGreen(position);
 			PlayGame.this.mProgress.next();
@@ -104,19 +98,10 @@ public class PlayGame extends Activity
 		    if ( mGameEngine.isLevelComplete() ) {
 			PlayGame.this.mGameClock.stop();
 
-			//tally score/calculate scores
-			//: max_score = no_stages * 1000;
-			//: ideal_time = 2 * no_stages + 4;
-			//: f(time,stage) = 1/time * max_score * ideal_time;
-
-			// float time = PlayGame.this.mGameClock
-			//     .getRunningTime();
-			// float max_score = mGameEngine.getStages() * 1000.0f;
-			// float ideal_time = 2.0f * mGameEngine.getStages() 
-			//     + 4.0f;
-			// Score.time_bonus = (int) (1.0f 
-			// 			  / time * max_score 
-			// 			  * ideal_time);
+			//Report scores for score screen
+			Score.reportScores(false, 
+					   (int) PlayGame.this
+					   .mGameClock.getTimeLeft());
 
 			//Call the score total screen
 
@@ -131,6 +116,7 @@ public class PlayGame extends Activity
 					     Score.current_score);
 			scoreReport.putExtra("timebonus",Score.time_bonus);
 			scoreReport.putExtra("guessbonus",Score.guess_bonus);
+			scoreReport.putExtra("totalscore",Score.total_score);
 			startActivityForResult(scoreReport,InterArt.SCORES);
 			PlayGame.this.mGameEngine.gotoNextLevel();
 			PlayGame.this.mGameGridView.reset();
