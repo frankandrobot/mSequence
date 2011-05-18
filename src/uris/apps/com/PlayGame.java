@@ -105,7 +105,7 @@ public class PlayGame extends Activity
 					   PlayGame.this
 					   .mGameEngine.getGuessPts()
 					   );
-	
+			Score.setTotalScore();
 			//Call the score total screen
 
 			//Unfortunately, the rest of this function
@@ -266,6 +266,7 @@ public class PlayGame extends Activity
 			   (int) mGameClock.getTimeLeft(),
 			   mGameEngine.getGuessPts()
 			   );
+	Score.setTotalScore();
 	
 	//create intent for score screen
 	Intent scoreReport = new 
@@ -283,5 +284,5 @@ public class PlayGame extends Activity
 	//launch score screen
 	startActivityForResult(scoreReport,InterArt.SCORES);
     }
-
+    
 }
