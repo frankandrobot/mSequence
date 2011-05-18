@@ -47,6 +47,8 @@ public class ScoreReport extends Activity
 	s[1] = userScores.getIntExtra("timebonus",Score.time_bonus);
 	s[2] = userScores.getIntExtra("guessbonus",Score.guess_bonus);
 	s[3] = userScores.getIntExtra("totalscore",Score.total_score);
+	//Calculator final score
+	Score.setTotalScore();
 	if ( userScores.getIntExtra("gameover",0 ) == InterArt.GAME_OVER ){
 	    ScoreReport.GAME_OVER=true;
 	    setResult(InterArt.GAME_OVER);
