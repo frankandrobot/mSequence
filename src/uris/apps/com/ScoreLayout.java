@@ -46,7 +46,7 @@ public class ScoreLayout extends LinearLayout {
     @Override
     public void dispatchDraw(Canvas canvas) {
 	//if game over
-	if ( ScoreReport.GAME_OVER ) {
+	if ( (cur_score > scores.length) && ScoreReport.GAME_OVER ) {
 	    //unhide gameover 
     	    FrameLayout gameoverFrame = (FrameLayout) getParent();
 	    gameoverFrame.findViewById(R.id.gameover)
