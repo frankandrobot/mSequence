@@ -72,7 +72,7 @@ public class GameButtonView extends ImageView {
     }
 
     public void flashRed() {
-	redTime = SystemClock.uptimeMillis() + 500;
+	redTime = SystemClock.uptimeMillis() + 400;
 	redFlash = true;
 	setColorFilter(0xFFFF0000,  
 		       Mode.DARKEN);
