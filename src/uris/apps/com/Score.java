@@ -10,11 +10,11 @@ public class Score {
     
     static public String mytoString() {
 	String tmp;
-        tmp = "Score:" + score;
+        tmp = "Scores:";// + score;
 	tmp += "  time bonus:" + time_bonus;
-	tmp += "  error bonus:" + error_bonus + "\n";
-	tmp += "Inc:" + incorrect_penal;
-	tmp += "  dup:" + duplicate_penal;
+	//tmp += "  error bonus:" + error_bonus + "\n";
+	//tmp += "Inc:" + incorrect_penal;
+	//tmp += "  dup:" + duplicate_penal;
 	return tmp;
     }
 
