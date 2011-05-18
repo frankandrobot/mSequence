@@ -102,9 +102,7 @@ public class PlayGame extends Activity
 			Score.reportScores(false, 
 					   (int) PlayGame.this
 					   .mGameClock.getTimeLeft());
-			//Update total score
-			Score.setTotalScore();
-
+	
 			//Call the score total screen
 
 			//Unfortunately, the rest of this function
@@ -261,9 +259,9 @@ public class PlayGame extends Activity
     }
 
     public void endGame() {
-	Score.reportScores(true,(int) mGameClock.getTimeLeft());
-	Score.setTotalScore();
-
+	Score.reportScores(GameEngine.GAME_OVER,
+			   (int) mGameClock.getTimeLeft());
+	
 	//create intent for score screen
 	Intent scoreReport = new 
 	    Intent(
@@ -274,9 +272,9 @@ public class PlayGame extends Activity
 			     Score.current_score);
 	scoreReport.putExtra("timebonus",Score.time_bonus);
 	scoreReport.putExtra("guessbonus",Score.guess_bonus);
-	scoreReport.putExtra("gameover",InterArt.GAME_OVER);
 	scoreReport.putExtra("totalscore",Score.total_score);
-	
+	scoreReport.putExtra("gameover",InterArt.GAME_OVER);	
+
 	//launch score screen
 	startActivityForResult(scoreReport,InterArt.SCORES);
     }
