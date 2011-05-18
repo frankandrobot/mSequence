@@ -47,6 +47,7 @@ public class InterArt extends Activity
 		
 	playButton.setOnClickListener(new OnClickListener() {
 		public void onClick(View v) {
+		    GameEngine.GAME_OVER=false;
 		    startActivityForResult(settings, PLAY_GAME);
 		}
 	    });
