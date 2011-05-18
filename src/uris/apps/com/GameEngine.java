@@ -194,6 +194,8 @@ public class GameEngine {
 
     public int getNumberOfChoices() { return no_choices; }
 
+    public int getGuessPts() { return guess_bonus; }
+
     public String toString() { /* for debugging */
 	String tmp="\n GameEngine Output:\n";
 	for( int i=0; i < no_stages; i++) {
