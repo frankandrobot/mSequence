@@ -76,15 +76,23 @@ public class ScoreReport extends Activity
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-	if (first) { scores.touched(); first=false;}
+	if (firstclick) { 
+	    //update scores all at once
+	    scores.touched(); 
+	    firstclick=false;
+	}
 	else { 
-	    if ( !ScoreReport.GAME_OVER ) 
-		finish(); //don't exit if the game is over. Let the
-			  //user see the game over screen
+	    if (secondclick) {	
+		//need two clicks to exit normally
+		//otherwise need three clicks if game over
+		if ( ScoreReport.GAME_OVER ) secondclick=false;
+		else finish();
+	    }
+	    else finish();
 	}
 	return super.onTouchEvent(event);
     }
 
-    private boolean first=true;
+    private boolean firstclick=true, secondclick=true;
 }
 
