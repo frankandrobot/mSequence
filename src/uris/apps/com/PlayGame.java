@@ -131,7 +131,7 @@ public class PlayGame extends Activity
 			PlayGame.this.mGameGridView.reset();
 			//GameClock is in onActivityResult()
 			PlayGame.this.mProgress.
-			    setCount( mGameEngine.totalStages()+1 );
+			    setCount( mGameEngine.totalStages() );
 			PlayGame.this.mProgress.setCurrent( 1 );
 
 		    }
