@@ -58,7 +58,7 @@ public class ProgressBarView extends GridView {
 	tickWeight = 2;
 	htickWeight = tickWeight / 2;
 	//end
-	blinkTime = 250;
+	blinkTime = 300;
 	switchTime = SystemClock.uptimeMillis() + blinkTime;
 
 	//setup canvas
