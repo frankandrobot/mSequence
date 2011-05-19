@@ -92,7 +92,6 @@ public class ScoreReport extends Activity
 	}
 	return super.onTouchEvent(event);
     }
-
     private boolean firstclick=true, secondclick=true;
 }
 
