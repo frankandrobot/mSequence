@@ -160,7 +160,7 @@ public class PlayGame extends Activity
 
 	//init progress bar
 	mProgress = (ProgressBarView) findViewById(R.id.progress_bar);
-	mProgress.setCount( mGameEngine.totalStages()+1 );
+	mProgress.setCount( mGameEngine.totalStages() );
 	mProgress.setCurrent( 1 );
 
 	getWindow().setFeatureInt(Window.FEATURE_PROGRESS, 0);
