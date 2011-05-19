@@ -77,7 +77,12 @@ public class ScoreReport extends Activity
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 	if (first) { scores.touched(); first=false;}
-	else { finish(); }
+	else { 
+	    if ( !ScoreReport.GAME_OVER ) 
+		finish(); //don't exit if the game is over. Let the
+			  //user see the game over screen
+	    
+	}
 	return super.onTouchEvent(event);
     }
 
