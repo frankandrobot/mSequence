@@ -5,10 +5,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center"
-    android:id="@+id/hiscore_layout"
+    android:id="@+id/hiscores_layout"
     >
   <TextView
-      android:id="@+id/hiscore_heading"
+      android:id="@+id/hiscores_heading"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
