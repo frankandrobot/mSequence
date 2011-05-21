@@ -45,7 +45,7 @@ public class HiScoresActivity extends Activity
 	// setListAdapter(new 
 
 	//setup ListView
-	mHighScoresList = (ListView) findViewById(R.id.hiscores_list);
+	mHiScoresList = (ListView) findViewById(R.id.hiscores_list);
 
  	//default settings
 	// settings = new Intent(this, uris.apps.com.PlayGame.class);
