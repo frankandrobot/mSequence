@@ -34,7 +34,7 @@ public class HiScoresActivity extends Activity
 	super.onCreate(savedInstanceState);
 
 	//set layout for menu
-	setContentView(R.layout.hiscores_layout);
+	setContentView(R.layout.hiscore_table);
 
 	// //setup adapter
 	mHiScoresList = (HiScoresListView) findViewById(R.id.hiscores_list);
