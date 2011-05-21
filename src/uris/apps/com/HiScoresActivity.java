@@ -21,7 +21,7 @@ public class HiScoresActivity extends Activity
     private ListView mHiScoresList;
     private ArrayAdapter mHiScoresAdapter;
     static final String[] HISCORES = new String[]{ 
-	1000, 20000, 50000};
+	"1000", "20000", "50000"};
     
     // private GameEngine mTree;
     // private GameDataAdapter mAdapter;
