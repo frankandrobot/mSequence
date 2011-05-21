@@ -16,8 +16,8 @@
       android:gravity="left"
       android:textSize="24sp"
       android:textColor="@color/yellow"
-	/>
-    <ListView
+      />
+  <uris.apps.com.HiScoresListView
 	android:id="@+id/hiscores_list"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
@@ -25,5 +25,4 @@
 	android:textSize="42sp"
 	android:textColor="@color/yellow"
 	/>
-  </uris.apps.com.HiScoreLayout>
-</FrameLayout>
+</RelativeLayout>
