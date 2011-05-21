@@ -18,7 +18,11 @@ import android.app.Dialog;
 
 public class HiScoresActivity extends Activity
 {
-    private ListView mHighScoresList;
+    private ListView mHiScoresList;
+    private ArrayAdapter mHiScoresAdapter;
+    static final String[] HISCORES = new String[]{ 
+	1000, 20000, 50000};
+    
     // private GameEngine mTree;
     // private GameDataAdapter mAdapter;
     
@@ -30,10 +34,15 @@ public class HiScoresActivity extends Activity
 	super.onCreate(savedInstanceState);
 
 	//set layout for menu
-	setContentView(R.layout.hiscore_layout);
+	setContentView(R.layout.hiscores_layout);
 
 	// //setup adapter
-	// setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, COUNTRIES));
+	mHiScoresList = (HiScoresListView) findViewById(R.id.hiscores_list);
+	mHiScoresAdapter = new ArrayAdapter<String>
+	    (this,android.R.layout.simple_list_item_1,HISCORES);
+	mHiScoresList.setAdapter(mHiScoresAdapter);
+
+	// setListAdapter(new 
 
 	//setup ListView
 	mHighScoresList = (ListView) findViewById(R.id.hiscores_list);
