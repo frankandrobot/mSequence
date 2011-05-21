@@ -22,6 +22,7 @@ public class InterArt extends Activity
     // Menu
     static final private int OPTIONS_MENU=1;
     static final public int PLAY_GAME=2,GO_SCREEN=3,SCORES=4,GAME_OVER=5;
+    static final public int HI_SCORES=6;
     
     Intent settings, optionsMenu;
     
