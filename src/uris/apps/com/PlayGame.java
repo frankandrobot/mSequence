@@ -257,7 +257,7 @@ public class PlayGame extends Activity
 			   uris.apps.com.HiScoresActivity.class
 			   );
 		//launch score screen
-		startActivityForResult(hiScoresReport,InterArt.HISCORES);
+		startActivityForResult(hiScoresReport,InterArt.HI_SCORES);
 		finish();
 	    }
 	    else {
