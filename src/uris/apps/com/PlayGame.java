@@ -251,6 +251,14 @@ public class PlayGame extends Activity
 	    if ( resultCode == InterArt.GAME_OVER ) {
 		// launch game over screen and end this game
 		Toast.makeText(PlayGame.this, "Game over! booya", Toast.LENGTH_SHORT).show();
+		Intent hiScoresReport = new 
+		    Intent(
+			   this, 
+			   uris.apps.com.HiScoresActivity.class
+			   );
+		//launch score screen
+		startActivityForResult(hiScoresReport,InterArt.HISCORES);
+		finish();
 	    }
 	    else {
 		PlayGame.this.mGameClock.restart();
