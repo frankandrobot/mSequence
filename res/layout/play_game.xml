@@ -15,7 +15,10 @@
       android:layout_alignParentTop="true"
       android:paddingTop="10sp"
       android:textSize="24sp"
-      android:textColor="@color/blue"
+      android:textColor="@color/orange"
+      android:shadowColor="@color/white"
+      android:shadowDx="1.2"
+      android:shadowDy="1.2"
       android:text="Level 1"
       />
   <uris.apps.com.ProgressBarView
