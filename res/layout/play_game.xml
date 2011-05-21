@@ -7,6 +7,13 @@
     android:background="@drawable/background_go"
     android:gravity="center"
     >
+  <TextView
+      android:id="@+id/current_level"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:text="Level 1"
+      />
   <uris.apps.com.ProgressBarView
       android:id="@+id/progress_bar"
       android:layout_width="fill_parent"
