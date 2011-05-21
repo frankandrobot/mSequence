@@ -1,26 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:gravity="center"
     android:id="@+id/hiscore_layout"
     >
-  <uris.apps.com.HiScoreLayout
-      android:orientation="vertical"
+  <TextView
+      android:id="@+id/hiscore_heading"
       android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:gravity="center"
-      android:id="@+id/hiscores"
-      >
-    <TextView
-	android:id="@+id/hiscore_heading"
-	android:layout_width="fill_parent"
-	android:layout_height="wrap_content"
-	android:text="Hi scores;"
-	android:gravity="left"
-	android:textSize="24sp"
-	android:textColor="@color/yellow"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:text="Hi scores;"
+      android:gravity="left"
+      android:textSize="24sp"
+      android:textColor="@color/yellow"
 	/>
     <ListView
 	android:id="@+id/hiscores_list"
