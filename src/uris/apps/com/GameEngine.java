@@ -22,6 +22,7 @@ public class GameEngine {
     int no_art_pieces=0; //number of art pieces
 
     //scoring
+    int current_level=1;
     boolean[] beenHereBefore;
     int guess_bonus;
     //clock
@@ -160,6 +161,7 @@ public class GameEngine {
 
     //if successfully completed level,
     public void gotoNextLevel() {
+	current_level++;
 	no_stages++;
 	initStages();
 	initScoring();
@@ -182,6 +184,10 @@ public class GameEngine {
     public long getCountdownDuration() { return countdownDuration; }
 
     //interface: inner logic
+    public int getCurrentLevel() { return current_level; }
+
+    public int getCurrentStage() { return cur_stage+1; }
+
     public int currentStage() { return cur_stage+1; } //human readable
 						      //format
     public int totalStages() { return no_stages; }
