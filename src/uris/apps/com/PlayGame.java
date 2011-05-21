@@ -8,6 +8,7 @@ import android.view.*;
 import android.view.View.*;
 import android.content.*;
 import android.graphics.PorterDuff.Mode;
+import android.graphics.Typeface;
 
 /* the PlayGame class coordinates: (1) the GameEngine (which is
  * actually the underlying board, I don't know why I called it
@@ -21,11 +22,12 @@ public class PlayGame extends Activity
     private GameDataAdapter mGameAdapter;
     private GameClock mGameClock;
     private ProgressBarView mProgress;
+    private TextView mCurrentLevel;
 
     // Menu
     static final private int RESTART = Menu.FIRST;
     static final private int BACK = Menu.FIRST + 1;
-
+    
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 
@@ -37,6 +39,11 @@ public class PlayGame extends Activity
 	requestWindowFeature(Window.FEATURE_PROGRESS);
 
 	setContentView(R.layout.play_game);
+
+	//setup font for Current Level heading
+	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Helwoodica.otf");
+	mCurrentLevel = (TextView)findViewById(R.id.current_level);
+	mCurrentLevel.setTypeface(font);
 
 	//Set up GameEngine - this is the underlying game engine
 	//difficulty = GameEngine.HARD;
