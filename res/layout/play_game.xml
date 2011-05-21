@@ -12,6 +12,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
+      android:textColor="@color/yellow"
       android:text="Level 1"
       />
   <uris.apps.com.ProgressBarView
