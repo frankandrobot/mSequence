@@ -18,7 +18,7 @@ import android.app.Dialog;
 
 public class HiScoresActivity extends Activity
 {
-    private ListView mHiScoresList;
+    private ListView mHighScoresList;
     private ArrayAdapter mHiScoresAdapter;
     static final String[] HISCORES = new String[]{ 
 	"1000", "20000", "50000"};
