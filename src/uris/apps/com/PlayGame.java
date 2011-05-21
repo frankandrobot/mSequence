@@ -142,8 +142,10 @@ public class PlayGame extends Activity
 			PlayGame.this.mProgress.setCurrent( 1 );
 
 			//Update Current Level Heading
-			mCurrentLevel.setText("Level " + 
-					      String.valueOf( mGameEngine.currentLevel() ) );
+			PlayGame.this.mCurrentLevel.setText("Level " + 
+					      String.valueOf( 
+							     PlayGame.this.mGameEngine.getCurrentLevel() 
+							      ) );
 		    }
 
 		    //update pictures
