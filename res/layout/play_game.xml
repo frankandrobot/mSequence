@@ -19,7 +19,7 @@
       android:shadowColor="@color/yellowC"
       android:shadowDx="1.2"
       android:shadowDy="1.2"
-      android:shadowRadius="5"
+      android:shadowRadius="3"
       android:text="Level 1"
       />
   <uris.apps.com.ProgressBarView
