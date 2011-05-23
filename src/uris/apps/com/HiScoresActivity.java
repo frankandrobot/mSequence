@@ -18,6 +18,7 @@ import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.content.Context;
 import java.lang.System;
+import java.lang.String;
 
 public class HiScoresActivity extends Activity
 {
@@ -64,7 +65,7 @@ public class HiScoresActivity extends Activity
 	    //add new hi score
 	    newHighScores[hiLen] = String(finalScore);
 	    //copy rest of hi scores
-	    System.arraycopy(HI_SCORES,hilen,newHighScores,hiLen+1,50-hiLen);
+	    System.arraycopy(HI_SCORES,hiLen,newHighScores,hiLen+1,50-hiLen);
 
 	    SharedPreferences.Editor editor = hiScores.edit();
 	    for (int i=0; i<50; i++) {
