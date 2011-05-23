@@ -16,15 +16,14 @@ import android.content.*;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.context.Context;
 
 public class HiScoresActivity extends Activity
 {
     private ListView mHiScoresList;
     private ArrayAdapter mHiScoresAdapter;
-    static final String[] HISCORES = new String[]{ 
-	"1000", "20000", "50000"};
-    static final String HI_SCORES_FILE = "hiScores"
-    
+    static final String[] HI_SCORES = new String[50];
+    static final String HI_SCORES_FILE = "hiScores";
     // private GameEngine mTree;
     // private GameDataAdapter mAdapter;
     
@@ -38,16 +37,46 @@ public class HiScoresActivity extends Activity
 	//set layout for menu
 	setContentView(R.layout.hiscore_table);
 
+	//setup ListView
+	mHiScoresList = (ListView) findViewById(R.id.hiscores_list);
+
+	//get hi scores list
+	final int finalScore = Score.total_score;
+	SharedPreferences hiScores = getSharedPreferences(HI_SCORES_LIST, 0);
+	boolean newHighScore=false;
+	int hiLen=0;
+	for (int i=0; i<50; i++) {
+	    HI_SCORES[i] = hiScores.getString("hiscore"
+					      + String.valueOf(i), 
+					      "-");
+	    if ( HI_SCORES[i] == "-" ) newHighScore=true;
+	    else if ( Score.total_score >= String.valueOf( HI_SCORES[i] ) ) 
+		newHighScore=true;
+	    if ( !newHighScore ) ++hiLen;
+	}
+	if ( newHighScore ) {
+	    final String[] newHighScores = new String[50];
+	    System.arraycopy(HI_SCORES,0,newHighScores,0,hiLen);
+	    newHighScores[hiLen] = finalScore;
+	    System.arraycopy(HI_SCORES,hilen,newHighScores,hiLen,50-hiLen);
+
+	    SharedPreferences.Editor editor = hiScores.edit();
+	    for (int i=0; i<50; i++) {
+		editor.putString("hiscore"
+				 + String.valueOf(i), 
+				 newHighScores[i]);
+	    }
+	    // Commit the edits!
+	    editor.commit();
+
+	}
+	    
 	// //setup adapter
 	mHiScoresList = (HiScoresListView) findViewById(R.id.hiscores_list);
 	mHiScoresAdapter = new ArrayAdapter<String>
-	    (this,android.R.layout.simple_list_item_1,HISCORES);
+	    (this,android.R.layout.simple_list_item_1,HI_SCORES);
 	mHiScoresList.setAdapter(mHiScoresAdapter);
 
-	// setListAdapter(new 
-
-	//setup ListView
-	mHiScoresList = (ListView) findViewById(R.id.hiscores_list);
 
  	//default settings
 	// settings = new Intent(this, uris.apps.com.PlayGame.class);
