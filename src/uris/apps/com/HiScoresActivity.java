@@ -45,6 +45,7 @@ public class HiScoresActivity extends Activity
 	SharedPreferences hiScores = getSharedPreferences(HI_SCORES_LIST, 0);
 	boolean newHighScore=false;
 	int hiLen=0;
+	
 	for (int i=0; i<50; i++) {
 	    HI_SCORES[i] = hiScores.getString("hiscore"
 					      + String.valueOf(i), 
@@ -55,10 +56,14 @@ public class HiScoresActivity extends Activity
 	    if ( !newHighScore ) ++hiLen;
 	}
 	if ( newHighScore ) {
+	    
+	    //copy hi scores up to new
 	    final String[] newHighScores = new String[50];
 	    System.arraycopy(HI_SCORES,0,newHighScores,0,hiLen);
+	    //add new hi score
 	    newHighScores[hiLen] = finalScore;
-	    System.arraycopy(HI_SCORES,hilen,newHighScores,hiLen,50-hiLen);
+	    //copy rest of hi scores
+	    System.arraycopy(HI_SCORES,hilen,newHighScores,hiLen+1,50-hiLen);
 
 	    SharedPreferences.Editor editor = hiScores.edit();
 	    for (int i=0; i<50; i++) {
@@ -68,6 +73,7 @@ public class HiScoresActivity extends Activity
 	    }
 	    // Commit the edits!
 	    editor.commit();
+	    System.arraycopy(newHighScores,0,HI_SCORES,0,50);
 
 	}
 	    
