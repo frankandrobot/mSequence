@@ -47,6 +47,8 @@ public class HiScoresActivity extends Activity
 	SharedPreferences hiScores = getSharedPreferences(HI_SCORES_FILE, 0);
 	boolean newHighScore=false;
 	int hiLen=0;
+	for (int i=0; i<50; i++) HI_SCORES[i] = "-";
+
 	
 	// for (int i=0; i<50; i++) {
 	//     HI_SCORES[i] = hiScores.getString("hiscore"
@@ -79,11 +81,11 @@ public class HiScoresActivity extends Activity
 
 	// }
 	    
-	// //setup adapter
-	// mHiScoresList = (HiScoresListView) findViewById(R.id.hiscores_list);
-	// mHiScoresAdapter = new ArrayAdapter<String>
-	//     (this,android.R.layout.simple_list_item_1,HI_SCORES);
-	// mHiScoresList.setAdapter(mHiScoresAdapter);
+	//setup adapter
+	mHiScoresList = (HiScoresListView) findViewById(R.id.hiscores_list);
+	mHiScoresAdapter = new ArrayAdapter<String>
+	    (this,android.R.layout.simple_list_item_1,HI_SCORES);
+	mHiScoresList.setAdapter(mHiScoresAdapter);
 
 
  	//default settings
