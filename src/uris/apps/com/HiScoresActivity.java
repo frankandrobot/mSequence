@@ -64,10 +64,10 @@ public class HiScoresActivity extends Activity
 	    //copy hi scores up to new
 	    final String[] newHighScores = new String[50];
 	    System.arraycopy(HI_SCORES,0,newHighScores,0,hiLen);
-	    // //add new hi score
-	    // newHighScores[hiLen] = String.valueOf(finalScore);
-	    // //copy rest of hi scores
-	    // System.arraycopy(HI_SCORES,hiLen,newHighScores,hiLen+1,50-hiLen);
+	    //add new hi score
+	    newHighScores[hiLen] = String.valueOf(finalScore);
+	    //copy rest of hi scores
+	    System.arraycopy(HI_SCORES,hiLen,newHighScores,hiLen+1,50-hiLen);
 
 	    // SharedPreferences.Editor editor = hiScores.edit();
 	    // for (int i=0; i<50; i++) {
