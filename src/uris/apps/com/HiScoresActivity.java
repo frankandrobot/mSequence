@@ -67,17 +67,17 @@ public class HiScoresActivity extends Activity
 	    //add new hi score
 	    newHighScores[hiLen] = String.valueOf(finalScore);
 	    //copy rest of hi scores
-	    System.arraycopy(HI_SCORES,hiLen,newHighScores,hiLen+1,50-hiLen);
+	    System.arraycopy(HI_SCORES,hiLen,newHighScores,hiLen+1,50-hiLen-1);
 
-	    // SharedPreferences.Editor editor = hiScores.edit();
-	    // for (int i=0; i<50; i++) {
-	    // 	editor.putString("hiscore"
-	    // 			 + String.valueOf(i), 
-	    // 			 newHighScores[i]);
-	    // }
-	    // //Commit the edits!
-	    // editor.commit();
-	    // System.arraycopy(newHighScores,0,HI_SCORES,0,50);
+	    SharedPreferences.Editor editor = hiScores.edit();
+	    for (int i=0; i<50; i++) {
+	    	editor.putString("hiscore"
+	    			 + String.valueOf(i), 
+	    			 newHighScores[i]);
+	    }
+	    //Commit the edits!
+	    editor.commit();
+	    System.arraycopy(newHighScores,0,HI_SCORES,0,50);
 
 	}
 	    
