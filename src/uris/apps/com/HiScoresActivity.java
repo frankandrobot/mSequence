@@ -55,31 +55,31 @@ public class HiScoresActivity extends Activity
 					      + String.valueOf(i), 
 					      "-");
 	    if ( HI_SCORES[i] == "-" ) newHighScore=true;
-	    else if ( Score.total_score >= Integer.parseInt( HI_SCORES[i] ))  
+	    else if ( finalScore >= Integer.parseInt( HI_SCORES[i] ))  
 	    	newHighScore=true;
 	    if ( !newHighScore ) ++hiLen;
 	}
-	// if ( newHighScore ) {
+	if ( newHighScore ) {
 	    
-	//     //copy hi scores up to new
-	//     final String[] newHighScores = new String[50];
-	//     System.arraycopy(HI_SCORES,0,newHighScores,0,hiLen);
-	//     //add new hi score
-	//     newHighScores[hiLen] = String.valueOf(finalScore);
-	//     //copy rest of hi scores
-	//     System.arraycopy(HI_SCORES,hiLen,newHighScores,hiLen+1,50-hiLen);
+	    //copy hi scores up to new
+	    final String[] newHighScores = new String[50];
+	    System.arraycopy(HI_SCORES,0,newHighScores,0,hiLen);
+	    //add new hi score
+	    newHighScores[hiLen] = String.valueOf(finalScore);
+	    //copy rest of hi scores
+	    System.arraycopy(HI_SCORES,hiLen,newHighScores,hiLen+1,50-hiLen);
 
-	//     SharedPreferences.Editor editor = hiScores.edit();
-	//     for (int i=0; i<50; i++) {
-	// 	editor.putString("hiscore"
-	// 			 + String.valueOf(i), 
-	// 			 newHighScores[i]);
-	//     }
-	    // Commit the edits!
-	//     editor.commit();
-	//     System.arraycopy(newHighScores,0,HI_SCORES,0,50);
+	    SharedPreferences.Editor editor = hiScores.edit();
+	    for (int i=0; i<50; i++) {
+		editor.putString("hiscore"
+				 + String.valueOf(i), 
+				 newHighScores[i]);
+	    }
+	    Commit the edits!
+	    editor.commit();
+	    System.arraycopy(newHighScores,0,HI_SCORES,0,50);
 
-	// }
+	}
 	    
 	//setup adapter
 	mHiScoresList = (HiScoresListView) findViewById(R.id.hiscores_list);
