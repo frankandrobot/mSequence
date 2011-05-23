@@ -52,7 +52,7 @@ public class HiScoresActivity extends Activity
 					      + String.valueOf(i), 
 					      "-");
 	    if ( HI_SCORES[i] == "-" ) newHighScore=true;
-	    else if ( Score.total_score >= String.valueOf( HI_SCORES[i] ) ) 
+	    else if ( Score.total_score >= (String.valueOf( HI_SCORES[i] )) ) 
 		newHighScore=true;
 	    if ( !newHighScore ) ++hiLen;
 	}
