@@ -53,7 +53,7 @@ public class HiScoresActivity extends Activity
 	for (int i=0; i<50; i++) {
 	    HI_SCORES[i] = hiScores.getString("hiscore"
 					      + String.valueOf(i), 
-					      "-");
+					      "-") + String.valueOf(i);
 	    if ( HI_SCORES[i] == "-" ) newHighScore=true;
 	    else if ( finalScore >= Integer.parseInt( HI_SCORES[i] ))  
 	    	newHighScore=true;
