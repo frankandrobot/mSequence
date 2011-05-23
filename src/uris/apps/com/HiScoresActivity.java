@@ -15,6 +15,7 @@ import android.view.View.*;
 import android.content.*;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.content.SharedPreferences;
 
 public class HiScoresActivity extends Activity
 {
@@ -22,6 +23,7 @@ public class HiScoresActivity extends Activity
     private ArrayAdapter mHiScoresAdapter;
     static final String[] HISCORES = new String[]{ 
 	"1000", "20000", "50000"};
+    static final String HI_SCORES_FILE = "hiScores"
     
     // private GameEngine mTree;
     // private GameDataAdapter mAdapter;
