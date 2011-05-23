@@ -43,7 +43,7 @@ public class HiScoresActivity extends Activity
 
 	//get hi scores list
 	final int finalScore = Score.total_score;
-	SharedPreferences hiScores = getSharedPreferences(HI_SCORES_LIST, 0);
+	SharedPreferences hiScores = getSharedPreferences(HI_SCORES_FILE, 0);
 	boolean newHighScore=false;
 	int hiLen=0;
 	
@@ -62,7 +62,7 @@ public class HiScoresActivity extends Activity
 	    final String[] newHighScores = new String[50];
 	    System.arraycopy(HI_SCORES,0,newHighScores,0,hiLen);
 	    //add new hi score
-	    newHighScores[hiLen] = finalScore;
+	    newHighScores[hiLen] = String(finalScore);
 	    //copy rest of hi scores
 	    System.arraycopy(HI_SCORES,hilen,newHighScores,hiLen+1,50-hiLen);
 
