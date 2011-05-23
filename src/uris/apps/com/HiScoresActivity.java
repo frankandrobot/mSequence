@@ -17,6 +17,7 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.context.Context;
+import java.lang.System;
 
 public class HiScoresActivity extends Activity
 {
