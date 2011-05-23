@@ -19,7 +19,7 @@ import android.content.SharedPreferences;
 import android.content.Context;
 import java.lang.System;
 import java.lang.String;
-
+             
 public class HiScoresActivity extends Activity
 {
     private ListView mHiScoresList;
@@ -80,10 +80,10 @@ public class HiScoresActivity extends Activity
 	// }
 	    
 	// //setup adapter
-	mHiScoresList = (HiScoresListView) findViewById(R.id.hiscores_list);
-	mHiScoresAdapter = new ArrayAdapter<String>
-	    (this,android.R.layout.simple_list_item_1,HI_SCORES);
-	mHiScoresList.setAdapter(mHiScoresAdapter);
+	// mHiScoresList = (HiScoresListView) findViewById(R.id.hiscores_list);
+	// mHiScoresAdapter = new ArrayAdapter<String>
+	//     (this,android.R.layout.simple_list_item_1,HI_SCORES);
+	// mHiScoresList.setAdapter(mHiScoresAdapter);
 
 
  	//default settings
